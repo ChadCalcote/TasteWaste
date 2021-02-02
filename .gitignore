@@ -3,4 +3,6 @@ __pycache__/
 *.py[cod]
 .venv
 .DS_Store
+react-app/
+node_modules
 react-app/node_modules
