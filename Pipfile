@@ -22,6 +22,7 @@ Flask-JWT-Extended = "==3.24.1"
 flask-migrate = "*"
 email-validator = "*"
 flask-login = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
