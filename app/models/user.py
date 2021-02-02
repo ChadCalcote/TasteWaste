@@ -8,6 +8,8 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
+  photo = db.Column(db.String(1000))
+  zip_code = db.Column(string(10), nullable = False)
   hashed_password = db.Column(db.String(255), nullable = False)
 
 
