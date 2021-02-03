@@ -24,13 +24,6 @@ def seed_reviews():
 
     db.session.commit()
 
-    marker10 = Review(user_id=3, restaurant_id=3, body='The most GREEN restaurant I\'ve ever been to. LEED Certified and although not my favorite, there were paper straws', rating=5, bowls=True, cups=True, bags=True, napkins=True, straws=True,
-                created=datetime.datetime.now(), updated=datetime.datetime.now())
-
-    db.session.add(marker10)
-
-    db.session.commit()
-
     cityO = Review(user_id=4, restaurant_id=4, body='GREAT to see vegan restaurants taking the lead in green initiatives in the Mile High City.', rating=4, bowls=True, cups=True , napkins=True, straws=True,
                 created=datetime.datetime.now(), updated=datetime.datetime.now())
 
@@ -69,7 +62,7 @@ def seed_reviews():
     junebaby = Review(user_id=2, restaurant_id=8, body='Great local business doing their part to help the environment', rating=4, bowls=True, cups=True , napkins=True, straws=True,
                 created=datetime.datetime.now(), updated=datetime.datetime.now())
 
-    db.session.add(fats)
+    db.session.add(junebaby)
 
     db.session.commit()
 
