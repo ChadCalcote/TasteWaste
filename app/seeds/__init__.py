@@ -12,11 +12,13 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_restaurants()
+    seed_reviews()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_reviews()
     undo_restaurants()
     undo_users()
 

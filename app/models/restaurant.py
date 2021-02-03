@@ -15,7 +15,7 @@ class Restaurant(db.Model):
   lat = db.Column(db.Float(10,6), nullable = False)
 
   # Set up has many relationship
-#   reviews = db.relationship('Review', back_populates='restaurant')
+  reviews = db.relationship('Review', back_populates='restaurant')
 
   # Access Data From Request
   def to_dict(self):

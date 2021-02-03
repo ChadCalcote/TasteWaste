@@ -18,7 +18,7 @@ class Review(db.Model):
   created = db.Column(db.DateTime, nullable = False)
   updated = db.Column(db.DateTime, nullable = False)
 
-  # Set up has many relationship
+  # Set up belongsTo relationship
   restaurant = db.relationship('Restaurant', back_populates='reviews')
   user = db.relationship('User', back_populates='reviews')
 

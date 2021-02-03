@@ -1,5 +1,4 @@
-from werkzeug.security import generate_password_hash
-from app.models import db, User
+from app.models import db, Restaurant
 
 # Adds a demo restaurant, you can add other restaurants here if you want
 def seed_restaurants():
