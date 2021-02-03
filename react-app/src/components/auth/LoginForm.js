@@ -4,12 +4,12 @@ import { login } from "../../services/auth";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
+    const user = await login(username, password);
     if (!user.errors) {
       setAuthenticated(true);
     } else {
@@ -17,8 +17,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
+  const updateUsername = (e) => {
+    setUsername(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -37,13 +37,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="username">Username</label>
         <input
-          name="email"
+          name="username"
           type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
+          placeholder="Username"
+          value={username}
+          onChange={updateUsername}
         />
       </div>
       <div>

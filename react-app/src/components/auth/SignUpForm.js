@@ -5,13 +5,15 @@ import { signUp } from '../../services/auth';
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [zipCode, setZipCode] = useState("");
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [repeatPassword, setConfirmPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(username, email, photo, zipCode, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -26,12 +28,20 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     setEmail(e.target.value);
   };
 
+  const updatePhoto = (e) => {
+    setPhoto(e.target.value);
+  }
+
+  const updateZipCode = (e) => {
+    setZipCode(e.target.value);
+  }
+
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
 
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
+  const updateConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
   };
 
   if (authenticated) {
@@ -59,6 +69,24 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div>
+        <label>Profile Photo</label>
+        <input
+          type="text"
+          name="photo"
+          onChange={updatePhoto}
+          value={photo}
+        ></input>
+      </div>
+      <div>
+        <label>Zip Code</label>
+        <input
+          type="text"
+          name="zipCode"
+          onChange={updateZipCode}
+          value={zipCode}
+        ></input>
+      </div>
+      <div>
         <label>Password</label>
         <input
           type="password"
@@ -68,11 +96,11 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Confirm Password</label>
         <input
           type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
+          name="confirm_password"
+          onChange={updateConfirmPassword}
           value={repeatPassword}
           required={true}
         ></input>

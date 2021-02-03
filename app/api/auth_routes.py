@@ -40,7 +40,27 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
+        user = User.query.filter(User.username == form.data['username']).first()
+        login_user(user)
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Log-in Demo User
+@auth_routes.route('/demo', methods=['POST'])
+def loginDemo():
+    """
+    Logs a Demo user in
+    """
+    form = LoginForm()
+    print(request.get_json())
+    # Get the csrf_token from the request cookie and put it into the
+    # form manually to validate_on_submit can be used
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['username'].data = 'RickRoso'
+    form['password'].data = 'rossboss'
+    if form.validate_on_submit():
+        # Add the user to the session, we are logged in!
+        user = User.query.filter(User.username == form.data['username']).first()
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -66,6 +86,8 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
+            photo=form.data['photo'],
+            zip_code=form.data['zipCode'],
             password=form.data['password']
         )
         db.session.add(user)

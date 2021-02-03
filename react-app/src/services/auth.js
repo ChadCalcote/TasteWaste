@@ -7,14 +7,14 @@ export const authenticate = async() => {
   return await response.json();
 }
 
-export const login = async (email, password) => {
+export const login = async (username, password) => {
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email,
+      username,
       password
     })
   });
@@ -31,7 +31,7 @@ export const logout = async () => {
 };
 
 
-export const signUp = async (username, email, password) => {
+export const signUp = async (username, email, photo, zipCode, password) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
@@ -40,6 +40,8 @@ export const signUp = async (username, email, password) => {
     body: JSON.stringify({
       username,
       email,
+      photo,
+      zipCode,
       password,
     }),
   });
