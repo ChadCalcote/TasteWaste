@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import axios from 'axios';
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [zipCode, setZipCode] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setConfirmPassword] = useState("");
@@ -19,6 +20,22 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       }
     }
   };
+
+  const onFileChange = (e) => {
+    setPhoto(e.target.files[0])
+  }
+
+  // const onFileUpload = () => {
+  //   const formData = new FormData();
+
+  //   formData.append(
+  //     "Photo",
+  //     photo,
+  //     photo.name
+  //   )
+
+  //   console.log(photo)
+  // }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -71,11 +88,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       <div>
         <label>Profile Photo</label>
         <input
-          type="text"
+          type="file"
           name="photo"
-          onChange={updatePhoto}
+          onChange={onFileChange}
           value={photo}
         ></input>
+        <button>Upload</button>
       </div>
       <div>
         <label>Zip Code</label>
