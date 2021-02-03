@@ -20,6 +20,13 @@ class Restaurant(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
-      "username": self.username,
-      "email": self.email
+      "name": self.name,
+      "description": self.description,
+      "photo": self.photo,
+      "address": self.address,
+      "city": self.city,
+      "state": self.state,
+      "zip_code": self.zip_code,
+      "long": self.long,
+      "lat": self.lat
     }
