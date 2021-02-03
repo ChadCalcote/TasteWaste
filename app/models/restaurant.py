@@ -17,6 +17,7 @@ class Restaurant(db.Model):
   # Set up has many relationship
 #   reviews = db.relationship('Review', back_populates='restaurant')
 
+  # Access Data From Request
   def to_dict(self):
     return {
       "id": self.id,
