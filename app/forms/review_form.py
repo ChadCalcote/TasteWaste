@@ -13,7 +13,7 @@ def user_exists(form, field):
 
 class ReviewForm(FlaskForm):
     user = IntegerField('user', validators=[DataRequired(), user_exists])
-    restuarant = IntegerField('restuarant', validators=[DataRequired()])
+    restaurant = IntegerField('restaurant', validators=[DataRequired()])
     body = TextField('body', validators=[DataRequired()])
     rating = IntegerField('rating', validators=[DataRequired()])
     bags = BooleanField('bags', validators=[DataRequired()])

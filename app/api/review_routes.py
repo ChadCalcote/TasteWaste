@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, session, request
+from flask_login import login_required
 from app.forms import ReviewForm
 from app.models import User, db, Review, Restaurant
 import datetime
@@ -15,13 +16,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f"{field} : {error}")
     return errorMessages
 
-@review_routes.route('/add', methods=['POST'])
+@review_routes.route('', methods=['POST'])
+@login_required
 def addReview():
     """
     Posts a New Review
     """
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
         review = Review(
             user_id=form.data['user'],
