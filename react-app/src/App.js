@@ -8,6 +8,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import MapContainer from "./components/MapContainer"
 import { authenticate } from "./services/auth";
+import ReviewForm from "./components/ReviewForm";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -48,6 +49,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path="/review" exact={true}>
+          <ReviewForm/>
         </Route>
         <ProtectedRoute
           path="/users"
