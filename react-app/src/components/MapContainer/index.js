@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
-
+import googleMapsApiKey from "../../apiKey";
 const MapContainer = () => {
 
     const [selected, setSelected] = useState({});
@@ -42,7 +42,7 @@ const MapContainer = () => {
     };
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyAA2kCPNy65OI5IHsiNhqBrw7jzrHlxG_c">
+    <LoadScript googleMapsApiKey={googleMapsApiKey}>
       <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
         {locations.map((spot) => {
           return (
