@@ -47,7 +47,7 @@ def login():
 
 # Log-in Demo User
 @auth_routes.route('/demo', methods=['POST'])
-def login():
+def loginDemo():
     """
     Logs a Demo user in
     """
@@ -56,9 +56,11 @@ def login():
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
+    form['username'].data = 'RickRoso'
+    form['password'].data = 'rossboss'
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
+        user = User.query.filter(User.username == form.data['username']).first()
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
