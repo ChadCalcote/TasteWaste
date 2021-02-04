@@ -3,9 +3,9 @@
 # dependencies
 /node_modules
 node_modules/
-react-app/node_modules
 /.pnp
 .pnp.js
+/apiKey.js
 
 # testing
 /coverage
