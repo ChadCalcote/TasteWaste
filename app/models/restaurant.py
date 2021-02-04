@@ -28,6 +28,9 @@ class Restaurant(db.Model):
       "city": self.city,
       "state": self.state,
       "zip_code": self.zip_code,
-      "long": self.long,
-      "lat": self.lat
+      "long": str(self.long),
+      "lat": str(self.lat)
     }
+
+  def city_to_lower(self):
+    return self.city.lower()

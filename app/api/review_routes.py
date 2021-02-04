@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.forms import ReviewForm
 from app.models import User, db, Review, Restaurant
 import datetime
@@ -16,6 +16,22 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f"{field} : {error}")
     return errorMessages
 
+# Get all reviews
+@review_routes.route('/')
+@login_required
+def reviews():
+    reviews = Review.query.all()
+    return jsonify([review.to_dict() for review in reviews])
+
+# Get single review
+@review_routes.route('/<int:id>')
+@login_required
+def review(id):
+    review = Review.query.get(id)
+    return review.to_dict()
+
+
+# Post a new review
 @review_routes.route('', methods=['POST'])
 @login_required
 def addReview():
@@ -27,7 +43,7 @@ def addReview():
     print(form.data)
     if form.validate_on_submit():
         review = Review(
-            user_id=form.data['user'],
+            user_id=current_user.id,
             restaurant_id=form.data['restaurant'],
             body=form.data['body'],
             rating=form.data['rating'],
@@ -44,6 +60,31 @@ def addReview():
         db.session.commit()
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+# Edit a review
+@review_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def edit(id):
+    review = Review.query.get(id)
+
+    if "body" in request.json:
+        review.body = request.json["body"]
+    if "rating" in request.json:
+        review.rating = request.json["rating"]
+    review.updated = datetime.datetime.now()
+
+    db.session.commit()
+
+    return {"message": "success"}
+
+# Delete a Review
+@review_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete(id):
+    review = Review.query.get(id)
+    db.session.delete(review)
+    db.commit()
+    return review.to_dict()
 
 @review_routes.route('/unauthorized')
 def unauthorized():
