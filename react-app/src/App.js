@@ -1,5 +1,8 @@
+// Dependencies
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+// Components
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -7,8 +10,14 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import MapContainer from "./components/MapContainer"
-import { authenticate } from "./services/auth";
 import ReviewForm from "./components/ReviewForm";
+import HomePage from "./components/Homepage";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import CityPage from "./components/CityPage";
+import RestaurantPage from "./components/RestaurantPage";
+// Services
+import { authenticate } from "./services/auth";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -40,9 +49,15 @@ function App() {
         </Route>
         <Route path="/map" exact={true}>
           <MapContainer
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path="/" exact={true}>
+          <HomePage
+          />
+          <SignIn/>
+          <SignUp/>
+          <CityPage/>
+          <RestaurantPage/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
