@@ -40,13 +40,14 @@ def addReview():
     """
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
+    print('Request', request.json)
+    print('Form', form.data)
     if form.validate_on_submit():
         review = Review(
-            user_id=current_user.id,
-            restaurant_id=form.data['restaurant'],
+            user_id=(current_user.id),
+            restaurant_id=(form.data['restaurant']),
             body=form.data['body'],
-            rating=form.data['rating'],
+            rating=(form.data['rating']),
             bags=form.data['bags'],
             utensils=form.data['utensils'],
             napkins=form.data['napkins'],
@@ -56,6 +57,7 @@ def addReview():
             created=datetime.datetime.now(),
             updated=datetime.datetime.now()
         )
+        print('Review', review)
         db.session.add(review)
         db.session.commit()
         return review.to_dict()

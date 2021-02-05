@@ -30,5 +30,6 @@ def restaurant_reviews(id):
 @restaurant_routes.route('/<string:city>')
 @login_required
 def city_restaurants(city):
-    city_restaurants = Restaurant.query.filter(Restaurant.city == city).all()
+    search_city = city.capitalize()
+    city_restaurants = Restaurant.query.filter(Restaurant.city == search_city).all()
     return jsonify([restaurant.to_dict() for restaurant in city_restaurants])
