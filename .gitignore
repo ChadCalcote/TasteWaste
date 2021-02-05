@@ -7,3 +7,4 @@ __pycache__/
 node_modules/
 react-app/node_modules
 react-app/src/apiKey.js
+awsS3.py

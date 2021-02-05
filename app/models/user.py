@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  photo = db.Column(db.String(100000), default='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-icon%2Fimportant-person_696850.htm&psig=AOvVaw3pkEtaQXwdXgoV2gLhJoy7&ust=1612388763560000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLD9o7GWzO4CFQAAAAAdAAAAABAD')
+  photo = db.Column(db.Text, default='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-icon%2Fimportant-person_696850.htm&psig=AOvVaw3pkEtaQXwdXgoV2gLhJoy7&ust=1612388763560000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLD9o7GWzO4CFQAAAAAdAAAAABAD')
   zip_code = db.Column(db.String(10), nullable = False)
   hashed_password = db.Column(db.String(255), nullable = False)
 
@@ -38,5 +38,3 @@ class User(db.Model, UserMixin):
       "photo": self.photo,
       "zip_code": self.zip_code
     }
-  
-  

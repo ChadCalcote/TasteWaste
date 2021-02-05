@@ -48,7 +48,7 @@ const NavBar = ({ setAuthenticated }) => {
       >
         <img src={profile} alt="profile" />
       </NavLink>
-      {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
+      <LogoutButton setAuthenticated={setAuthenticated} />
     </nav>
   );
 }

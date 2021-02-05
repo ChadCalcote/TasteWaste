@@ -12,8 +12,6 @@ import User from "./components/User";
 import MapContainer from "./components/MapContainer"
 import ReviewForm from "./components/ReviewForm";
 import HomePage from "./components/HomePage";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
 // Services
@@ -82,9 +80,9 @@ function App() {
         >
           <User />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
-        </ProtectedRoute> */}
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

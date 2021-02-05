@@ -6,7 +6,9 @@ import axios from 'axios';
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState("");
+  const [photoBase64, setPhotoBase64] = useState("");
+  const [src, setSrc] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setConfirmPassword] = useState("");
@@ -14,16 +16,27 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, photo, zipCode, password);
+      const user = await signUp(username, email, photoBase64, zipCode, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
-  const onFileChange = (e) => {
-    setPhoto(e.target.files[0])
+  const onFileChange = async (e) => {
+    setSrc(URL.createObjectURL(e.target.files[0]))
+    setPhoto(e.target.value)
+    setPhotoBase64(JSON.stringify(await toBase64(e.target.files[0])))
   }
+
+  const toBase64 = file => new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => res(reader.result);
+    reader.onerror = error => rej(error);
+  });
+
+
 
   // const onFileUpload = () => {
   //   const formData = new FormData();
@@ -93,8 +106,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           onChange={onFileChange}
           value={photo}
         ></input>
-        <button>Upload</button>
       </div>
+      {photo ? <img width="350px" height="350px" src={src} alt="upload"/> : null}
       <div>
         <label>Zip Code</label>
         <input
