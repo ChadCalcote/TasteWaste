@@ -45,9 +45,9 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path="/map" exact={true}>
+        {/* <Route path="/map" exact={true}>
           <MapContainer />
-        </Route>
+        </Route> */}
         <Route path="/home" exact={true}>
           <HomePage />
         </Route>

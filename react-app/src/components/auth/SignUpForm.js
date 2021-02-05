@@ -36,20 +36,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     reader.onerror = error => rej(error);
   });
 
-
-
-  // const onFileUpload = () => {
-  //   const formData = new FormData();
-
-  //   formData.append(
-  //     "Photo",
-  //     photo,
-  //     photo.name
-  //   )
-
-  //   console.log(photo)
-  // }
-
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -75,7 +61,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (

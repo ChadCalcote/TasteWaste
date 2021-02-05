@@ -7,7 +7,12 @@ import profile from "../resources/profile.png";
 const NavBar = ({ setAuthenticated }) => {
   return (
     <nav>
-      <NavLink to="/home" exact={true} className="fork" activeClassName="active">
+      <NavLink
+        to="/home"
+        exact={true}
+        className="fork"
+        activeClassName="active"
+      >
         <img src={fork} alt="fork" />
       </NavLink>
       {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
