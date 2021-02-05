@@ -3,24 +3,26 @@ import './index.css';
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import addReview from "../../services/review";
+import useToggleState from "../hooks/useToggleHook";
 
 const ReviewForm = ({ authenticated, setAuthenticated }) => {
   const [user, setUser] = useState();
   const [restaurant, setRestaurant] = useState();
   const [body, setBody] = useState("");
   const [rating, setRating] = useState();
-  const [bags, setBags] = useState(false);
-  const [utensils, setUtensils] = useState(false);
-  const [napkins, setNapkins] = useState(false);
-  const [cups, setCups] = useState(false);
-  const [bowls, setBowls] = useState(false);
-  const [straws, setStraws] = useState(false);
+  const [bags, toggleBags] = useToggleState(false);
+  const [utensils, toggleUtensils] = useToggleState(false);
+  const [napkins, toggleNapkins] = useToggleState(false);
+  const [cups, toggleCups] = useToggleState(false);
+  const [bowls, toggleBowls] = useToggleState(false);
+  const [straws, toggleStraws] = useToggleState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
     if (user) {
       const review = await addReview(user, restaurant, body, rating, bags, utensils, napkins, cups, bowls, straws);
+      console.log(review);
     }
   };
 
@@ -40,29 +42,29 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
     setRating(e.target.value);
   };
 
-  const updateBags= (e) => {
-    setBags(e.target.value);
-  };
+  // const updateBags= (e) => {
+  //   setBags(e.target.value);
+  // };
 
-  const updateUtensils = (e) => {
-    setUtensils(e.target.value);
-  };
+  // const updateUtensils = (e) => {
+  //   setUtensils(e.target.value);
+  // };
 
-  const updateNapkins = (e) => {
-     setNapkins(e.target.value);
-   };
+  // const updateNapkins = (e) => {
+  //    setNapkins(e.target.value);
+  //  };
 
-   const updateCups = (e) => {
-     setCups(e.target.value);
-   };
+  //  const updateCups = (e) => {
+  //    setCups(e.target.value);
+  //  };
 
-   const updateBowls = (e) => {
-     setBowls(e.target.value);
-   };
+  //  const updateBowls = (e) => {
+  //    setBowls(e.target.value);
+  //  };
 
-   const updateStraws = (e) => {
-     setStraws(e.target.value);
-   };
+  //  const updateStraws = (e) => {
+  //    setStraws(e.target.value);
+  //  };
 
 
   if (authenticated) {
@@ -115,7 +117,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           type="checkbox"
           name="bags"
           checked={bags}
-          onChange={updateBags}
+          onChange={toggleBags}
           value={bags}
         ></input>
       </div>
@@ -125,7 +127,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           type="checkbox"
           name="utensils"
           checked={utensils}
-          onChange={updateUtensils}
+          onChange={toggleUtensils}
           value={utensils}
         ></input>
       </div>
@@ -135,7 +137,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           type="checkbox"
           name="napkins"
           checked={napkins}
-          onChange={updateNapkins}
+          onChange={toggleNapkins}
           value={napkins}
         ></input>
       </div>
@@ -145,7 +147,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           type="checkbox"
           name="cups"
           checked={cups}
-          onChange={updateCups}
+          onChange={toggleCups}
           value={cups}
         ></input>
       </div>
@@ -155,7 +157,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           type="checkbox"
           name="bowls"
           checked={bowls}
-          onChange={updateBowls}
+          onChange={toggleBowls}
           value={bowls}
         ></input>
       </div>
@@ -165,7 +167,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           type="checkbox"
           name="straws"
           checked={straws}
-          onChange={updateStraws}
+          onChange={toggleStraws}
           value={straws}
         ></input>
       </div>

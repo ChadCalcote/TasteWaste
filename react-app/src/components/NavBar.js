@@ -2,35 +2,53 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import DemoButton from './auth/DemoButton';
 import LogoutButton from './auth/LogoutButton';
-
+import fork from "../resources/forklogo.png";
+import profile from "../resources/profile.png";
 const NavBar = ({ setAuthenticated }) => {
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+      <NavLink to="/home" exact={true} className="fork" activeClassName="active">
+        <img src={fork} alt="fork" />
+      </NavLink>
+      {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
             Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
-        </li>
-      </ul>
+          </NavLink> */}
+      <div>
+        <NavLink
+          to="/city"
+          exact={true}
+          className="city-link"
+          activeClassName="active"
+        >
+          Austin
+        </NavLink>
+        <NavLink
+          to="/city"
+          exact={true}
+          className="city-link"
+          activeClassName="active"
+        >
+          Denver
+        </NavLink>
+        <NavLink
+          to="/city"
+          exact={true}
+          className="city-link"
+          activeClassName="active"
+        >
+          Seattle
+        </NavLink>
+      </div>
+
+      <NavLink
+        to="/login"
+        exact={true}
+        className="profile"
+        activeClassName="active"
+      >
+        <img src={profile} alt="profile" />
+      </NavLink>
+      {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
     </nav>
   );
 }

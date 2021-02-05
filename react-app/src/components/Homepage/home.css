@@ -1,0 +1,19 @@
+.homepage-container {
+    background-image: url("../../resources/space.jpg");
+    background-size: cover;
+    height: 125vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.homepage-container__body {
+
+}
+
+h1, h2 {
+    color: white;
+}
