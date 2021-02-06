@@ -45,15 +45,21 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
+        <Route path="/austin" exact={true}>
+          <CityPage
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        </Route>
         {/* <Route path="/map" exact={true}>
           <MapContainer />
         </Route> */}
         <Route path="/home" exact={true}>
           <HomePage />
         </Route>
-        <Route path="/city" exact={true}>
+        {/* <Route path="/city" exact={true}>
           <CityPage />
-        </Route>
+        </Route> */}
         <Route path="/restaurant" exact={true}>
           <RestaurantPage />
         </Route>
