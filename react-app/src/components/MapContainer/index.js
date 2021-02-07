@@ -1,61 +1,46 @@
 import React, { useState } from "react";
 import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import googleMapsApiKey from "../../apiKey";
-const MapContainer = () => {
+
+const MapContainer = ({restaurants, city}) => {
 
     const [selected, setSelected] = useState({});
 
     const onSelect = item => {
       setSelected(item)
     };
-      const locations = [
-        {
-          name: "Location 1",
-          location: {
-            lat: 39.763204628672554,
-            lng: -104.98088346701806,
-          },
-        },
-        {
-          name: "Location 2",
-          location: {
-            lat: 39.7485560497633,
-            lng: -104.9987362485851,
-          },
-        },
-        {
-          name: "Location 3",
-          location: {
-            lat: 39.7498758692336,
-            lng: -104.97736440908503,
-          },
-        },
-      ];
 
     const mapStyles = {
-    height: "500px",
-    width: "200px"};
+      height: "200px",
+      width: "300px",
+      borderRadius: "20px",
+      boxShadow: "5px 0 5px -2px #036603",
+    };
 
     const defaultCenter = {
-      lat: 39.76233445692628,
-      lng: -104.98388880044858,
+      lat: parseFloat(city["lat"]),
+      lng: parseFloat(city["lng"])
     };
 
   return (
     <LoadScript googleMapsApiKey={googleMapsApiKey}>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
-        {locations.map((spot) => {
+      <GoogleMap className="map" mapContainerStyle={mapStyles} zoom={11} center={defaultCenter}>
+        {restaurants.map((spot) => {
+          let location = {
+            lat: parseFloat(spot.lat),
+            lng: parseFloat(spot.lng),
+          }
           return (
             <Marker
               key={spot.name}
-              position={spot.location}
+              position={location}
               onClick={() => onSelect(spot)}
             />
           );
         })}
-        {selected.location && (
+        {selected.lat && (
           <InfoWindow
-            position={selected.location}
+            position={{lat: parseFloat(selected.lat), lng: parseFloat(selected.lng)}}
             clickable={true}
             onCloseClick={() => setSelected({})}
           >

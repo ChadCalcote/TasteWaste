@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import restaurantsReducer from "./restaurants.js";
 import reviewsReducer from "./reviews.js";
 import usersReducer from "./users.js";
+import citiesReducer from "./cities.js";
 import sessionReducer from "./session";
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   restaurants: restaurantsReducer,
   reviews: reviewsReducer,
   users: usersReducer,
+  cities: citiesReducer
 });
 
 let enhancer;

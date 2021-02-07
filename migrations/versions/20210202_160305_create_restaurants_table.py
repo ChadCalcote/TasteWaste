@@ -27,8 +27,8 @@ def upgrade():
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=3), nullable=False),
     sa.Column('zip_code', sa.String(length=10), nullable=False),
-    sa.Column('long', sa.Float(precision=10, asdecimal=6), nullable=False),
-    sa.Column('lat', sa.Float(precision=10, asdecimal=6), nullable=False),
+    sa.Column('lng', sa.String(), nullable=False),
+    sa.Column('lat', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )

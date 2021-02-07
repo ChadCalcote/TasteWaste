@@ -11,8 +11,8 @@ class Restaurant(db.Model):
   city = db.Column(db.String(50), nullable = False)
   state = db.Column(db.String(3), nullable = False)
   zip_code = db.Column(db.String(10), nullable = False)
-  long = db.Column(db.Float(10,6), nullable = False)
-  lat = db.Column(db.Float(10,6), nullable = False)
+  lng = db.Column(db.String, nullable = False)
+  lat = db.Column(db.String, nullable = False)
 
   # Set up has many relationship
   reviews = db.relationship('Review', back_populates='restaurant')
@@ -28,8 +28,8 @@ class Restaurant(db.Model):
       "city": self.city,
       "state": self.state,
       "zip_code": self.zip_code,
-      "long": str(self.long),
-      "lat": str(self.lat)
+      "lng": self.lng,
+      "lat": self.lat
     }
 
   def city_to_lower(self):
