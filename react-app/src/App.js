@@ -35,9 +35,9 @@ function App() {
     return null;
   }
 
-  const func = () => {
-    
-  }
+  // const func = () => {
+
+  // }
 
   return (
     <BrowserRouter>
@@ -62,6 +62,9 @@ function App() {
           </Route>
           <Route path="/restaurant" exact={true}>
             <RestaurantPage />
+          </Route>
+          <Route path="/map" exact={true}>
+            <MapContainer />
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm
