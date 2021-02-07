@@ -18,12 +18,12 @@ const CityPage = () => {
   });
 
   useEffect(() => {
+    
     dispatch(fetchCityRestaurants(city))
   }, [dispatch])
 
     return (
       <div className="city-page-container">
-        <NavBar />
         <div className="city-page-container__restaurant-card1">
           <RestaurantCard />
         </div>

@@ -37,59 +37,55 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
+      <div id="mainContainer">
+        <NavBar setAuthenticated={setAuthenticated} />
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/austin" exact={true}>
+            <CityPage
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/home" exact={true}>
+            <HomePage />
+          </Route>
+          <Route path="/restaurant" exact={true}>
+            <RestaurantPage />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/review" exact={true}>
+            <ReviewForm />
+          </Route>
+          <ProtectedRoute
+            path="/users"
+            exact={true}
             authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/austin" exact={true}>
-          <CityPage
+          >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path="/users/:userId"
+            exact={true}
             authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        {/* <Route path="/map" exact={true}>
-          <MapContainer />
-        </Route> */}
-        <Route path="/home" exact={true}>
-          <HomePage />
-        </Route>
-        {/* <Route path="/city" exact={true}>
-          <CityPage />
-        </Route> */}
-        <Route path="/restaurant" exact={true}>
-          <RestaurantPage />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/review" exact={true}>
-          <ReviewForm />
-        </Route>
-        <ProtectedRoute
-          path="/users"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
+          >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
