@@ -11,10 +11,11 @@ const MapContainer = ({restaurants, city}) => {
     };
 
     const mapStyles = {
-    height: "200px",
-    width: "300px",
-    borderRadius: "20px"
-  };
+      height: "200px",
+      width: "300px",
+      borderRadius: "20px",
+      boxShadow: "5px 0 5px -2px #036603",
+    };
 
     const defaultCenter = {
       lat: parseFloat(city["lat"]),
@@ -23,7 +24,7 @@ const MapContainer = ({restaurants, city}) => {
 
   return (
     <LoadScript googleMapsApiKey={googleMapsApiKey}>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={11} center={defaultCenter}>
+      <GoogleMap className="map" mapContainerStyle={mapStyles} zoom={11} center={defaultCenter}>
         {restaurants.map((spot) => {
           let location = {
             lat: parseFloat(spot.lat),

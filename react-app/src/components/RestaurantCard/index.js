@@ -1,19 +1,5 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-    maxHeight: 500,
-  },
-});
+import "./index.css"
+import React from "react"
 
 const restaurant = {
   address: "1224 S Congress Ave",
@@ -28,40 +14,31 @@ const restaurant = {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROPbs93YKsB4YQpGis0wY4adNYc8FhdwFXvg&usqp=CAU",
   state: "TX",
   zip_code: "78704",
+  rating: 3
 };
 
 
-export default function RestaurantCard() {
-  const classes = useStyles();
+const RestaurantCard = () => {
+
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image={restaurant.photo}
-          title="Contemplative Reptile"
+    <div className="restaurant-card-container">
+      <div className="restaurant-card-container__title">{restaurant.name}</div>
+      <div className="restaurant-card-container__rating">
+        <img
+          src="https://lh3.googleusercontent.com/proxy/FbGWNQjICuLl5S5N4WRQmARk-c-UL4_A15_fgxOTmn1rc__MQ_9_YHkdr1Uc2xSq22Ftie96XDgq1tb-iKZ3DpEOkV_CnRDtC_0qn4G2EhRY"
+          alt="stars"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+      </div>
+      <div className="restaurant-card-container__address street">
+        {restaurant.address}
+      </div>
+      <div className="restaurant-card-container__address city">{`${restaurant.city}, ${restaurant.state}, ${restaurant.zip_code}`}</div>
+      <div className="restaurant-card-container__photo">
+        <img src={restaurant.photo} alt="restaurant" />
+      </div>
+    </div>
   );
 }
+
+export default RestaurantCard;
