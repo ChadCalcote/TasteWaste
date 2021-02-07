@@ -6,10 +6,11 @@ import MapContainer from "../MapContainer";
 import NavBar from "../NavBar";
 import { fetchCityRestaurants } from "../../store/restaurants";
 import RestaurantCard from "../RestaurantCard";
+import { useRef } from "react";
 
 const CityPage = () => {
 
-  const city = window.location.pathname.slice(1);
+  const { city } = useParams();
 
   const dispatch = useDispatch();
 
@@ -18,7 +19,6 @@ const CityPage = () => {
   });
 
   useEffect(() => {
-    
     dispatch(fetchCityRestaurants(city))
   }, [dispatch])
 

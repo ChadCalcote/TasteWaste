@@ -21,7 +21,7 @@ const NavBar = ({ setAuthenticated }) => {
           </NavLink> */}
       <div>
         <NavLink
-          to="/austin"
+          to="/city/austin"
           exact={true}
           className="city-link"
           activeClassName="active"
@@ -29,7 +29,7 @@ const NavBar = ({ setAuthenticated }) => {
           Austin
         </NavLink>
         <NavLink
-          to="/austin"
+          to="/city/denver"
           exact={true}
           className="city-link"
           activeClassName="active"
@@ -37,7 +37,7 @@ const NavBar = ({ setAuthenticated }) => {
           Denver
         </NavLink>
         <NavLink
-          to="/austin"
+          to="/city/seattle"
           exact={true}
           className="city-link"
           activeClassName="active"

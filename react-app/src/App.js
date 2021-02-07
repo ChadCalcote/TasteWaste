@@ -35,18 +35,23 @@ function App() {
     return null;
   }
 
+  const func = () => {
+    
+  }
+
   return (
     <BrowserRouter>
       <div id="mainContainer">
         <NavBar setAuthenticated={setAuthenticated} />
         <Switch>
           <Route path="/login" exact={true}>
+            {}
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
             />
           </Route>
-          <Route path="/austin" exact={true}>
+          <Route path="/city/:city" exact={true}>
             <CityPage
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
