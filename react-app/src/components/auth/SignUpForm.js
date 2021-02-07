@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import axios from 'axios';
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
+  const [photoBase64, setPhotoBase64] = useState("");
+  const [src, setSrc] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setConfirmPassword] = useState("");
@@ -13,12 +16,25 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, photo, zipCode, password);
+      const user = await signUp(username, email, photoBase64, zipCode, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
+
+  const onFileChange = async (e) => {
+    setSrc(URL.createObjectURL(e.target.files[0]))
+    setPhoto(e.target.value)
+    setPhotoBase64(JSON.stringify(await toBase64(e.target.files[0])))
+  }
+
+  const toBase64 = file => new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => res(reader.result);
+    reader.onerror = error => rej(error);
+  });
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -45,7 +61,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
@@ -71,12 +87,13 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       <div>
         <label>Profile Photo</label>
         <input
-          type="text"
+          type="file"
           name="photo"
-          onChange={updatePhoto}
+          onChange={onFileChange}
           value={photo}
         ></input>
       </div>
+      {photo ? <img width="350px" height="350px" src={src} alt="upload"/> : null}
       <div>
         <label>Zip Code</label>
         <input

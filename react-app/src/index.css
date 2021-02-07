@@ -1,1 +1,57 @@
 /* TODO Add site wide styles */
+body {
+    padding: 0px;
+    margin: 0px
+}
+
+#mainContainer {
+    background-image: url("./resources/austin.png");
+    background-size: cover;
+    height: 100vh;
+}
+
+.nav2 {
+    background-color: transparent;
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    width: 100%;
+    padding-bottom: 1px;
+}
+
+.nav * {
+    display: inline;
+}
+
+.fork {
+    align-self:flex-start;
+    margin-left: 30px;
+}
+
+.fork img {
+    height: 80px;
+}
+
+.city-link {
+    margin: 80px;
+    text-decoration: none;
+    color: white;
+    font-size: 23px;
+}
+
+.profile {
+    align-self: flex-end;
+    margin-right: 30px;
+}
+
+.profile img {
+    height: 60px;
+    width: 60px;
+}

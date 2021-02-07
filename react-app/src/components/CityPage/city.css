@@ -1,0 +1,7 @@
+.city-page-container {
+    /* background-image: url("../../resources/austin.png"); */
+    background-size: cover;
+    background-color: transparent;
+    overflow: auto;
+    height: 100%;
+}

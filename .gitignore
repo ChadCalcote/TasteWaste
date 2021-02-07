@@ -3,7 +3,8 @@ __pycache__/
 *.py[cod]
 .venv
 .DS_Store
-react-app/
 /node_modules
 node_modules/
 react-app/node_modules
+react-app/src/apiKey.js
+awsS3.py
