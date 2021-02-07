@@ -27,5 +27,6 @@ def restaurant_reviews(id):
 @restaurant_routes.route('/<string:city>')
 def city_restaurants(city):
     search_city = city.capitalize()
+    print(search_city)
     city_restaurants = Restaurant.query.filter(Restaurant.city == search_city).all()
     return jsonify([restaurant.to_dict() for restaurant in city_restaurants])

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import MapContainer from "../MapContainer";
 import NavBar from "../NavBar";
 import { fetchCityRestaurants } from "../../store/restaurants";
+import { fetchOneCity } from "../../store/cities";
 import RestaurantCard from "../RestaurantCard";
 import { useRef } from "react";
 
@@ -18,7 +19,12 @@ const CityPage = () => {
     return reduxState.restaurants
   });
 
+  const reduxCity = useSelector(reduxState => {
+    return reduxState.cities
+  })
+
   useEffect(() => {
+    dispatch(fetchOneCity(city));
     dispatch(fetchCityRestaurants(city))
   }, [dispatch])
 
@@ -34,7 +40,7 @@ const CityPage = () => {
           {/* Community Impact Card  */}
         </div>
         <div className="city-page-container__map-container">
-          {/* <MapContainer /> */}
+          {restaurants.length > 0 ? <MapContainer restaurants={restaurants} city={reduxCity}/> : null}
         </div>
       </div>
     );
