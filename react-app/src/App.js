@@ -20,6 +20,9 @@ import { authenticate } from "./services/auth";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [img, changeImg] = useState(
+    "url(" + "https://cdn.wallpapersafari.com/59/17/Mp2ga4.jpg" + ")"
+  );
 
   useEffect(() => {
     (async() => {
@@ -35,14 +38,15 @@ function App() {
     return null;
   }
 
-  // const func = () => {
-
-  // }
-
   return (
     <BrowserRouter>
-      <div id="mainContainer">
-        <NavBar setAuthenticated={setAuthenticated} />
+      <div
+        style={{
+          backgroundImage: img
+        }}
+        id="mainContainer"
+      >
+        <NavBar setAuthenticated={setAuthenticated} img={img} changeImg={changeImg} />
         <Switch>
           <Route path="/login" exact={true}>
             {}

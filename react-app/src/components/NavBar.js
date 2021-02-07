@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import fork from "../resources/forklogo.png";
 import profile from "../resources/profile.png";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = ({ setAuthenticated, img, changeImg }) => {
   return (
     <nav className="nav2">
       <NavLink
@@ -13,6 +13,11 @@ const NavBar = ({ setAuthenticated }) => {
         exact={true}
         className="fork"
         activeClassName="active"
+        onClick={() =>
+          changeImg(
+            "url(" + "https://cdn.wallpapersafari.com/59/17/Mp2ga4.jpg" + ")"
+          )
+        }
       >
         <img src={fork} alt="fork" />
       </NavLink>
@@ -25,6 +30,13 @@ const NavBar = ({ setAuthenticated }) => {
           exact={true}
           className="city-link"
           activeClassName="active"
+          onClick={() =>
+            changeImg(
+              "url(" +
+                "https://rmcdmc.com/wp-content/uploads/2015/03/BIG-Austin-Skyline-.jpeg" +
+                ")"
+            )
+          }
         >
           Austin
         </NavLink>
@@ -33,6 +45,13 @@ const NavBar = ({ setAuthenticated }) => {
           exact={true}
           className="city-link"
           activeClassName="active"
+          onClick={() =>
+            changeImg(
+              "url(" +
+                "https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg" +
+                ")"
+            )
+          }
         >
           Denver
         </NavLink>
@@ -41,6 +60,9 @@ const NavBar = ({ setAuthenticated }) => {
           exact={true}
           className="city-link"
           activeClassName="active"
+          onClick={() =>
+            changeImg("url(" + "https://fi.co/system/posts/Seattle.jpg" + ")")
+          }
         >
           Seattle
         </NavLink>
