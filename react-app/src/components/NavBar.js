@@ -68,7 +68,7 @@ const NavBar = ({ setAuthenticated, img, changeImg }) => {
         </NavLink>
       </div>
       <div className="dropdown">
-        <Dropdown className="dropdown__button"/>
+        <Dropdown setAuthenticated={setAuthenticated} className="dropdown__button"/>
       </div>
 
       {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}

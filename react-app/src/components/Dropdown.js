@@ -1,45 +1,6 @@
-// import React from "react";
-// import Button from "@material-ui/core/Button";
-// import Menu from "@material-ui/core/Menu";
-// import MenuItem from "@material-ui/core/MenuItem";
-
-// import profile from "../resources/profile.png";
-
-// export default function Dropdown() {
-//   const [anchorEl, setAnchorEl] = React.useState(null);
-
-//   const handleClick = (event) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-
-//   return (
-//     <div>
-//       <Button
-//         aria-controls="simple-menu"
-//         aria-haspopup="true"
-//         onClick={handleClick}
-//       >
-//         <img src={profile} alt="profile" />
-//       </Button>
-//       <Menu
-//         id="simple-menu"
-//         anchorEl={anchorEl}
-//         keepMounted
-//         open={Boolean(anchorEl)}
-//         onClose={handleClose}
-//       >
-//         <MenuItem onClick={handleClose}>Log In</MenuItem>
-//         <MenuItem onClick={handleClose}>Sign Up</MenuItem>
-//         <MenuItem onClick={handleClose}>Logout</MenuItem>
-//       </Menu>
-//     </div>
-//   );
-// }
 import React from "react";
+import { Redirect, NavLink } from "react-router-dom";
+import { logout } from "../services/auth";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
@@ -98,7 +59,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function Dropdown() {
+export default function Dropdown({setAuthenticated}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const classes = useStyles();
@@ -109,6 +70,13 @@ export default function Dropdown() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const onLogout = async (e) => {
+    e.preventDefault();
+    await logout();
+    setAuthenticated(false);
+    return <Redirect to="/home" />;
   };
 
   return (
@@ -133,24 +101,35 @@ export default function Dropdown() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <ListItemIcon>
-            <ExitToAppSharpIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Sign In" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <ArrowUpwardSharpIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Sign Up" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <AssignmentReturnRoundedIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
-        </StyledMenuItem>
+        <NavLink style={{ backgroundColor: "red", textDecoration: "none" }} to="/login" exact={true}>
+          <StyledMenuItem>
+            <ListItemIcon>
+              <ExitToAppSharpIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText style={{color: "red"}}primary="Sign In" />
+          </StyledMenuItem>
+        </NavLink>
+        <NavLink style={{ textDecoration: "none" }} to="/sign-up" exact={true}>
+          <StyledMenuItem>
+            <ListItemIcon>
+              <ArrowUpwardSharpIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Sign Up" />
+          </StyledMenuItem>
+        </NavLink>
+        <NavLink
+          style={{ textDecoration: "none" }}
+          to="/home"
+          onClick={onLogout}
+          exact={true}
+        >
+          <StyledMenuItem>
+            <ListItemIcon>
+              <AssignmentReturnRoundedIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </StyledMenuItem>
+        </NavLink>
       </StyledMenu>
     </div>
   );
