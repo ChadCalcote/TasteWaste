@@ -16,6 +16,7 @@ import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
 // Services
 import { authenticate } from "./services/auth";
+import Dropdown from "./components/Dropdown";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -42,11 +43,15 @@ function App() {
     <BrowserRouter>
       <div
         style={{
-          backgroundImage: img
+          backgroundImage: img,
         }}
         id="mainContainer"
       >
-        <NavBar setAuthenticated={setAuthenticated} img={img} changeImg={changeImg} />
+        <NavBar
+          setAuthenticated={setAuthenticated}
+          img={img}
+          changeImg={changeImg}
+        />
         <Switch>
           <Route path="/login" exact={true}>
             {}
@@ -60,6 +65,9 @@ function App() {
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
             />
+          </Route>
+          <Route path="/dropdown" exact={true}>
+            <Dropdown />
           </Route>
           <Route path="/home" exact={true}>
             <HomePage />

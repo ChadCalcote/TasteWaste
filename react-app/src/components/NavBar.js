@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import DemoButton from './auth/DemoButton';
 import LogoutButton from './auth/LogoutButton';
 import fork from "../resources/forklogo.png";
 import profile from "../resources/profile.png";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
+import Dropdown from './Dropdown';
+
 const NavBar = ({ setAuthenticated, img, changeImg }) => {
   return (
     <nav className="nav2">
@@ -67,14 +67,10 @@ const NavBar = ({ setAuthenticated, img, changeImg }) => {
           Seattle
         </NavLink>
       </div>
-      <NavLink
-        to="/login"
-        exact={true}
-        className="profile"
-        activeClassName="active"
-      >
-        <img src={profile} alt="profile" />
-      </NavLink>
+      <div className="dropdown">
+        <Dropdown className="dropdown__button"/>
+      </div>
+
       {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
     </nav>
   );
