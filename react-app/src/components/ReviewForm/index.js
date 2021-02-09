@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
 
-const ReviewForm = ({ authenticated, setAuthenticated }) => {
+const ReviewForm = ({ authenticated }) => {
   const [user, setUser] = useState();
   const [restaurant, setRestaurant] = useState();
   const [body, setBody] = useState("");

@@ -5,7 +5,7 @@ import fork from "../resources/forklogo.png";
 import profile from "../resources/profile.png";
 import Dropdown from './Dropdown';
 
-const NavBar = ({ setAuthenticated, img, changeImg }) => {
+const NavBar = ({ authenticated, setAuthenticated, img, changeImg }) => {
   return (
     <nav className="nav2">
       <NavLink
@@ -68,7 +68,7 @@ const NavBar = ({ setAuthenticated, img, changeImg }) => {
         </NavLink>
       </div>
       <div className="dropdown">
-        <Dropdown setAuthenticated={setAuthenticated} className="dropdown__button"/>
+        <Dropdown authenticated={authenticated} setAuthenticated={setAuthenticated} className="dropdown__button"/>
       </div>
 
       {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}

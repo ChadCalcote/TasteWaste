@@ -12,6 +12,7 @@ import ArrowUpwardSharpIcon from "@material-ui/icons/ArrowUpwardSharp";
 import ExitToAppSharpIcon from "@material-ui/icons/ExitToAppSharp";
 import AssignmentReturnRoundedIcon from "@material-ui/icons/AssignmentReturnRounded";
 import { makeStyles } from "@material-ui/core/styles";
+import SignInModal from "./auth/SignInModal";
 
 const useStyles = makeStyles({
   root: {
@@ -59,7 +60,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function Dropdown({setAuthenticated}) {
+export default function Dropdown({authenticated, setAuthenticated}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const classes = useStyles();
@@ -101,14 +102,13 @@ export default function Dropdown({setAuthenticated}) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <NavLink style={{ backgroundColor: "red", textDecoration: "none" }} to="/login" exact={true}>
           <StyledMenuItem>
             <ListItemIcon>
               <ExitToAppSharpIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText style={{color: "red"}}primary="Sign In" />
+            <SignInModal authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+            {/* <ListItemText style={{color: "red"}}primary="Sign In" /> */}
           </StyledMenuItem>
-        </NavLink>
         <NavLink style={{ textDecoration: "none" }} to="/sign-up" exact={true}>
           <StyledMenuItem>
             <ListItemIcon>
