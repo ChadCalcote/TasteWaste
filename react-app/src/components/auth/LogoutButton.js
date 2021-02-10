@@ -10,7 +10,11 @@ const LogoutButton = ({setAuthenticated}) => {
     return <Redirect to="/home" />;
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return (
+    <div style={{ color: "#f37588" }} onClick={onLogout}>
+      Logout
+    </div>
+  );
 };
 
 export default LogoutButton;

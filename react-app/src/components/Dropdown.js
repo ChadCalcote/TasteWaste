@@ -13,6 +13,8 @@ import ExitToAppSharpIcon from "@material-ui/icons/ExitToAppSharp";
 import AssignmentReturnRoundedIcon from "@material-ui/icons/AssignmentReturnRounded";
 import { makeStyles } from "@material-ui/core/styles";
 import SignInModal from "./auth/SignInModal";
+import SignUpDrawer from "./auth/SignUpDrawer";
+import LogoutButton from "./auth/LogoutButton";
 
 const useStyles = makeStyles({
   root: {
@@ -102,21 +104,24 @@ export default function Dropdown({authenticated, setAuthenticated}) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-          <StyledMenuItem>
-            <ListItemIcon>
-              <ExitToAppSharpIcon fontSize="small" />
-            </ListItemIcon>
-            <SignInModal authenticated={authenticated} setAuthenticated={setAuthenticated}/>
-            {/* <ListItemText style={{color: "red"}}primary="Sign In" /> */}
-          </StyledMenuItem>
-        <NavLink style={{ textDecoration: "none" }} to="/sign-up" exact={true}>
+        <StyledMenuItem>
+          <ListItemIcon>
+            <ExitToAppSharpIcon fontSize="small" />
+          </ListItemIcon>
+          <SignInModal
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        </StyledMenuItem>
           <StyledMenuItem>
             <ListItemIcon>
               <ArrowUpwardSharpIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText primary="Sign Up" />
+            <SignUpDrawer
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </StyledMenuItem>
-        </NavLink>
         <NavLink
           style={{ textDecoration: "none" }}
           to="/home"
@@ -127,7 +132,7 @@ export default function Dropdown({authenticated, setAuthenticated}) {
             <ListItemIcon>
               <AssignmentReturnRoundedIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
+            <LogoutButton setAuthenticated={setAuthenticated}/>
           </StyledMenuItem>
         </NavLink>
       </StyledMenu>

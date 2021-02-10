@@ -18,6 +18,7 @@ import RestaurantPage from "./components/RestaurantPage";
 import { authenticate } from "./services/auth";
 import Dropdown from "./components/Dropdown";
 import SimpleModal from "./components/auth/SignInModal";
+import SignUpDrawer from "./components/auth/SignUpDrawer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -61,13 +62,6 @@ function App() {
               setAuthenticated={setAuthenticated}
             />
           </Route>
-          <Route path="/sign-in" exact={true}>
-            {}
-            <SimpleModal
-              // authenticated={authenticated}
-              // setAuthenticated={setAuthenticated}
-            />
-          </Route>
           <Route path="/city/:city" exact={true}>
             <CityPage
               authenticated={authenticated}
@@ -76,6 +70,9 @@ function App() {
           </Route>
           <Route path="/home" exact={true}>
             <HomePage />
+          </Route>
+          <Route path="/drawer" exact={true}>
+            <SignUpDrawer />
           </Route>
           <Route path="/restaurant" exact={true}>
             <RestaurantPage />
