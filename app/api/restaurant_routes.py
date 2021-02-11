@@ -17,7 +17,7 @@ def restaurant(id):
     restaurant = Restaurant.query.get(id)
     return restaurant.to_dict()
 
-# Retrieve all reviews from single user
+# Retrieve all reviews from single restaurant
 @restaurant_routes.route('/<int:id>/reviews')
 def restaurant_reviews(id):
     restaurant_reviews = Review.query.filter(Review.restaurant_id == id).all()

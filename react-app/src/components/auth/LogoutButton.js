@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { logout } from "../../services/auth";
 import { Redirect } from "react-router-dom";
 

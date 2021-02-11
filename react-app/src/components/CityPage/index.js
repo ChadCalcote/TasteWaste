@@ -1,15 +1,13 @@
 import "./city.css";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import MapContainer from "../MapContainer";
-import NavBar from "../NavBar";
 import { fetchCityRestaurants } from "../../store/restaurants";
 import { fetchOneCity } from "../../store/cities";
 import RestaurantCard from "../RestaurantCard";
-import { useRef } from "react";
 
-const CityPage = () => {
+const CityPage = ({changeImg}) => {
 
   const { city } = useParams();
 
@@ -23,15 +21,38 @@ const CityPage = () => {
     return reduxState.cities
   })
 
+  console.log(city)
+
+  useEffect(() => {
+    switch(city) {
+      case "denver":
+        changeImg(
+          "url(https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg)"
+        );
+        return;
+      case "austin":
+        changeImg(
+          "url(https://rmcdmc.com/wp-content/uploads/2015/03/BIG-Austin-Skyline-.jpeg)"
+        );
+        return;
+      case "seattle":
+        changeImg("url(https://fi.co/system/posts/Seattle.jpg)");
+        return;
+      default:
+        changeImg("url(https://cdn.wallpapersafari.com/59/17/Mp2ga4.jpg)");
+        return;
+    }
+  });
+
   useEffect(() => {
     dispatch(fetchOneCity(city));
     dispatch(fetchCityRestaurants(city))
-  }, [dispatch])
+  }, [dispatch, city])
 
     return (
       <div className="city-page-container">
         <div className="city-page-container__restaurant-card1">
-          <RestaurantCard />
+          {restaurants.length > 0 ? <RestaurantCard restaurant={restaurants[0]}/> : null}
         </div>
         <div className="city-page-container__restaurant-cards">
           {/* Restaurant Cards */}

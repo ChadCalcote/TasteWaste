@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
-import axios from 'axios';
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
@@ -43,10 +42,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
-
-  const updatePhoto = (e) => {
-    setPhoto(e.target.value);
-  }
 
   const updateZipCode = (e) => {
     setZipCode(e.target.value);

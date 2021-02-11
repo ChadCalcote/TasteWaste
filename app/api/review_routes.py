@@ -92,6 +92,13 @@ def delete(id):
 
     return review.to_dict()
 
+# Retrieve the user of the review
+@review_routes.route('/<int:id>/user')
+def get_user(id):
+    user_of_review = User.query.join(Review).filter(Review.id == id).filter(User.id == Review.user_id).all()
+    return jsonify([user.to_dict() for user in user_of_review])
+
+
 @review_routes.route('/unauthorized')
 def unauthorized():
     """

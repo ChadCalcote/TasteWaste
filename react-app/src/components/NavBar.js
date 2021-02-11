@@ -1,11 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 import fork from "../resources/forklogo.png";
-import profile from "../resources/profile.png";
 import Dropdown from './Dropdown';
 
-const NavBar = ({ authenticated, setAuthenticated, img, changeImg }) => {
+const NavBar = ({ authenticated, setAuthenticated, changeImg }) => {
   return (
     <nav className="nav2">
       <NavLink
@@ -15,7 +13,7 @@ const NavBar = ({ authenticated, setAuthenticated, img, changeImg }) => {
         activeClassName="active"
         onClick={() =>
           changeImg(
-            "url(" + "https://cdn.wallpapersafari.com/59/17/Mp2ga4.jpg" + ")"
+            "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
           )
         }
       >
@@ -30,13 +28,6 @@ const NavBar = ({ authenticated, setAuthenticated, img, changeImg }) => {
           exact={true}
           className="city-link"
           activeClassName="active"
-          onClick={() =>
-            changeImg(
-              "url(" +
-                "https://rmcdmc.com/wp-content/uploads/2015/03/BIG-Austin-Skyline-.jpeg" +
-                ")"
-            )
-          }
         >
           Austin
         </NavLink>
@@ -45,13 +36,6 @@ const NavBar = ({ authenticated, setAuthenticated, img, changeImg }) => {
           exact={true}
           className="city-link"
           activeClassName="active"
-          onClick={() =>
-            changeImg(
-              "url(" +
-                "https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg" +
-                ")"
-            )
-          }
         >
           Denver
         </NavLink>
@@ -60,15 +44,16 @@ const NavBar = ({ authenticated, setAuthenticated, img, changeImg }) => {
           exact={true}
           className="city-link"
           activeClassName="active"
-          onClick={() =>
-            changeImg("url(" + "https://fi.co/system/posts/Seattle.jpg" + ")")
-          }
         >
           Seattle
         </NavLink>
       </div>
       <div className="dropdown">
-        <Dropdown authenticated={authenticated} setAuthenticated={setAuthenticated} className="dropdown__button"/>
+        <Dropdown
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+          className="dropdown__button"
+        />
       </div>
 
       {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}

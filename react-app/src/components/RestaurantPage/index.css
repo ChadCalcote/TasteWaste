@@ -1,0 +1,16 @@
+.restaurant-page-container__banner {
+}
+
+.restaurant-page-container__banner .photo {
+    width: 100%;
+    height: 300px;
+    display: block;
+}
+
+.restaurant-card {
+    margin-top: -50px;
+}
+
+.review {
+    width: 100px;
+}

@@ -14,17 +14,17 @@ import ReviewForm from "./components/ReviewForm";
 import HomePage from "./components/HomePage";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
+import SignUpDrawer from "./components/auth/SignUpDrawer";
+import ReviewCard from "./components/ReviewCard";
 // Services
 import { authenticate } from "./services/auth";
-import Dropdown from "./components/Dropdown";
-import SimpleModal from "./components/auth/SignInModal";
-import SignUpDrawer from "./components/auth/SignUpDrawer";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [img, changeImg] = useState(
-    "url(" + "https://cdn.wallpapersafari.com/59/17/Mp2ga4.jpg" + ")"
+    "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
   );
 
   useEffect(() => {
@@ -45,18 +45,16 @@ function App() {
     <BrowserRouter>
       <div
         style={{
-          backgroundImage: img,
+          background: img,
         }}
         id="mainContainer"
       >
         <NavBar
           setAuthenticated={setAuthenticated}
-          img={img}
           changeImg={changeImg}
         />
         <Switch>
           <Route path="/login" exact={true}>
-            {}
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
@@ -64,21 +62,17 @@ function App() {
           </Route>
           <Route path="/city/:city" exact={true}>
             <CityPage
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
+              changeImg={changeImg}
             />
           </Route>
           <Route path="/home" exact={true}>
             <HomePage />
           </Route>
-          <Route path="/drawer" exact={true}>
-            <SignUpDrawer />
+          <Route path="/review-card" exact={true}>
+            <ReviewCard />
           </Route>
-          <Route path="/restaurant" exact={true}>
-            <RestaurantPage />
-          </Route>
-          <Route path="/map" exact={true}>
-            <MapContainer />
+          <Route path="/restaurants/:restaurantId" exact={true}>
+            <RestaurantPage changeImg={changeImg}/>
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm

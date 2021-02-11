@@ -1,24 +1,27 @@
+// React Dependencies
 import React from "react";
 import { Redirect, NavLink } from "react-router-dom";
+// Services
 import { logout } from "../services/auth";
+// Material UI Items
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import ArrowUpwardSharpIcon from "@material-ui/icons/ArrowUpwardSharp";
 import ExitToAppSharpIcon from "@material-ui/icons/ExitToAppSharp";
 import AssignmentReturnRoundedIcon from "@material-ui/icons/AssignmentReturnRounded";
 import { makeStyles } from "@material-ui/core/styles";
+// Local Components
 import SignInModal from "./auth/SignInModal";
 import SignUpDrawer from "./auth/SignUpDrawer";
 import LogoutButton from "./auth/LogoutButton";
 
 const useStyles = makeStyles({
   root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    background: "transparent",
     borderRadius: 3,
     border: 0,
     color: "white",

@@ -1,13 +1,11 @@
 import "./home.css";
 import DemoButton from "../auth/DemoButton";
 import React, { useState } from "react";
-import NavBar from "../NavBar";
 
 const HomePage = () => {
     const [authenticated, setAuthenticated] = useState(false);
     return (
       <div className="homepage-container">
-        {/* <NavBar /> */}
         <div className="homepage-container__body">
           <div className="homepage-container__header">
             <h1>TasteWaste</h1>
