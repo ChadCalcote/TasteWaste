@@ -17,6 +17,7 @@ export default function SignUpDrawer({authenticated, setAuthenticated}) {
         <SignUpForm
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
+          closeDrawer={() => setOpen(false)}
         />
       </Drawer>
     </div>

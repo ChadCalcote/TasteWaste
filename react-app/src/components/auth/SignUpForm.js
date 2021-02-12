@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({authenticated, setAuthenticated, closeDrawer}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
@@ -12,12 +12,16 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setConfirmPassword] = useState("");
 
+  const history = useHistory();
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const user = await signUp(username, email, photoBase64, zipCode, password);
       if (!user.errors) {
         setAuthenticated(true);
+        closeDrawer();
+        history.push("/city/austin")
       }
     }
   };
