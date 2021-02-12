@@ -48,6 +48,7 @@ export default function ReviewModal({ authenticated, setAuthenticated }) {
     <div style={modalStyle} className={classes.paper}>
       <ReviewForm
         authenticated={authenticated}
+        closeModal={() => setOpen(false)}
       />
     </div>
   );

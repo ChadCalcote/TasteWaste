@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInModal({authenticated, setAuthenticated}) {
+export default function SignInModal({authenticated, setAuthenticated, setUser}) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -48,6 +48,8 @@ export default function SignInModal({authenticated, setAuthenticated}) {
       <LoginForm
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
+        closeModal={() => setOpen(false)}
+        setUser={setUser}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import fork from "../resources/forklogo.png";
 import Dropdown from './Dropdown';
 
-const NavBar = ({ authenticated, setAuthenticated, changeImg }) => {
+const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
   return (
     <nav className="nav2">
       <NavLink
@@ -53,6 +53,7 @@ const NavBar = ({ authenticated, setAuthenticated, changeImg }) => {
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
           className="dropdown__button"
+          setUser={setUser}
         />
       </div>
 

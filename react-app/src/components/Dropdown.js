@@ -65,7 +65,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function Dropdown({authenticated, setAuthenticated}) {
+export default function Dropdown({authenticated, setAuthenticated, setUser}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const classes = useStyles();
@@ -114,6 +114,7 @@ export default function Dropdown({authenticated, setAuthenticated}) {
           <SignInModal
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
+            setUser={setUser}
           />
         </StyledMenuItem>
           <StyledMenuItem>

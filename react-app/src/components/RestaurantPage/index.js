@@ -21,8 +21,7 @@ import { fetchOneRestaurant } from "../../store/restaurants";
 import { fetchAllReviews } from "../../store/reviews";
 import { fetchAllUsers } from "../../store/users";
 
-
-const RestaurantPage = ({ changeImg }) => {
+const RestaurantPage = ({ changeImg, user }) => {
   const params = useParams();
   const dispatch = useDispatch();
 

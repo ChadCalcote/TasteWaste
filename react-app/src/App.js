@@ -22,6 +22,7 @@ function App() {
   const [img, changeImg] = useState(
     "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
   );
+  const [user, setUser] = useState()
 
   useEffect(() => {
     (async() => {
@@ -45,12 +46,13 @@ function App() {
         }}
         id="mainContainer"
       >
-        <NavBar setAuthenticated={setAuthenticated} changeImg={changeImg} />
+        <NavBar setAuthenticated={setAuthenticated} changeImg={changeImg} setUser={setUser} />
         <Switch>
           <Route path="/login" exact={true}>
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
+              setUser={setUser}
             />
           </Route>
           <Route path="/city/:city" exact={true}>
@@ -60,7 +62,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
-            <RestaurantPage changeImg={changeImg} />
+            <RestaurantPage changeImg={changeImg} user={user} />
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm

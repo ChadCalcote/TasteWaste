@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
 
-const ReviewForm = ({ authenticated }) => {
+const ReviewForm = ({ authenticated, closeModal }) => {
   const [user, setUser] = useState();
   const [restaurant, setRestaurant] = useState();
   const [body, setBody] = useState("");
@@ -19,11 +19,11 @@ const ReviewForm = ({ authenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-    if (user) {
       const review = await addReview(user, restaurant, body, rating, bags, utensils, napkins, cups, bowls, straws);
-      console.log(review);
-    }
+      if (!review.errors) {
+        closeModal();
+        console.log(review);
+      }
   };
 
   const updateUser = (e) => {
@@ -41,35 +41,6 @@ const ReviewForm = ({ authenticated }) => {
   const updateRating = (e) => {
     setRating(e.target.value);
   };
-
-  // const updateBags= (e) => {
-  //   setBags(e.target.value);
-  // };
-
-  // const updateUtensils = (e) => {
-  //   setUtensils(e.target.value);
-  // };
-
-  // const updateNapkins = (e) => {
-  //    setNapkins(e.target.value);
-  //  };
-
-  //  const updateCups = (e) => {
-  //    setCups(e.target.value);
-  //  };
-
-  //  const updateBowls = (e) => {
-  //    setBowls(e.target.value);
-  //  };
-
-  //  const updateStraws = (e) => {
-  //    setStraws(e.target.value);
-  //  };
-
-
-  if (authenticated) {
-    return <Redirect to="/home" />;
-  }
 
   return (
     <form onSubmit={onSubmit}>

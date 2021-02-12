@@ -18,7 +18,7 @@ export const getAllReviews = (reviews) => {
 
 export const createReview = (data) => {
   return async (dispatch) => {
-    const responseFromDb = await fetch(`/api/reviews`, {
+    const responseFromDb = await fetch("/api/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
