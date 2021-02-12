@@ -9,7 +9,6 @@ import ReviewCard from "../ReviewCard";
 import ReviewModal from "../auth/ReviewModal";
 
 // Icons
-import addReview from "../../resources/addReview.svg";
 import directions from "../../resources/directions.svg";
 import order from "../../resources/orderFood.svg";
 import call from "../../resources/phone.svg";

@@ -9,12 +9,9 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import ReviewForm from "./components/ReviewForm";
 import HomePage from "./components/HomePage";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
-import ReviewCard from "./components/ReviewCard";
-import ReviewModal from "./components/auth/ReviewModal";
 // Services
 import { authenticate } from "./services/auth";
 
@@ -62,12 +59,6 @@ function App() {
           <Route path="/home" exact={true}>
             <HomePage />
           </Route>
-          <Route path="/review-modal" exact={true}>
-            <ReviewModal />
-          </Route>
-          <Route path="/review-form" exact={true}>
-            <ReviewForm />
-          </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
             <RestaurantPage changeImg={changeImg} />
           </Route>
@@ -76,9 +67,6 @@ function App() {
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
             />
-          </Route>
-          <Route path="/review" exact={true}>
-            <ReviewForm />
           </Route>
           <ProtectedRoute
             path="/users"

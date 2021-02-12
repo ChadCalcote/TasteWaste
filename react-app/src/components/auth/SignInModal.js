@@ -49,7 +49,6 @@ export default function SignInModal({authenticated, setAuthenticated}) {
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
       />
-      {/* <SignInModal /> */}
     </div>
   );
 
