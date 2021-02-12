@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import ReviewForm from "../ReviewForm";
+import addReview from "../../resources/addReview.svg";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -53,8 +54,8 @@ export default function ReviewModal({ authenticated, setAuthenticated }) {
 
   return (
     <div>
-      <div style={{ color: "#f37588" }} onClick={handleOpen}>
-        Add Review
+      <div onClick={handleOpen}>
+        <img src={addReview} alt="addReview" />
       </div>
       <Modal
         open={open}

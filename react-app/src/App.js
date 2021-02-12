@@ -9,13 +9,12 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import MapContainer from "./components/MapContainer"
 import ReviewForm from "./components/ReviewForm";
 import HomePage from "./components/HomePage";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
-import SignUpDrawer from "./components/auth/SignUpDrawer";
 import ReviewCard from "./components/ReviewCard";
+import ReviewModal from "./components/auth/ReviewModal";
 // Services
 import { authenticate } from "./services/auth";
 
@@ -49,10 +48,7 @@ function App() {
         }}
         id="mainContainer"
       >
-        <NavBar
-          setAuthenticated={setAuthenticated}
-          changeImg={changeImg}
-        />
+        <NavBar setAuthenticated={setAuthenticated} changeImg={changeImg} />
         <Switch>
           <Route path="/login" exact={true}>
             <LoginForm
@@ -61,18 +57,19 @@ function App() {
             />
           </Route>
           <Route path="/city/:city" exact={true}>
-            <CityPage
-              changeImg={changeImg}
-            />
+            <CityPage changeImg={changeImg} />
           </Route>
           <Route path="/home" exact={true}>
             <HomePage />
           </Route>
-          <Route path="/review-card" exact={true}>
-            <ReviewCard />
+          <Route path="/review-modal" exact={true}>
+            <ReviewModal />
+          </Route>
+          <Route path="/review-form" exact={true}>
+            <ReviewForm />
           </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
-            <RestaurantPage changeImg={changeImg}/>
+            <RestaurantPage changeImg={changeImg} />
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm

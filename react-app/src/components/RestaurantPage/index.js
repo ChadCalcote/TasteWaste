@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Local Components
 import RestaurantCard from "../RestaurantCard";
+import ReviewCard from "../ReviewCard";
+import ReviewModal from "../auth/ReviewModal";
 
 // Icons
 import addReview from "../../resources/addReview.svg";
@@ -19,7 +21,7 @@ import "./index.css";
 import { fetchOneRestaurant } from "../../store/restaurants";
 import { fetchAllReviews } from "../../store/reviews";
 import { fetchAllUsers } from "../../store/users";
-import ReviewCard from "../ReviewCard";
+
 
 const RestaurantPage = ({ changeImg }) => {
   const params = useParams();
@@ -44,15 +46,18 @@ const RestaurantPage = ({ changeImg }) => {
   })
 
   useEffect(() => {
-    dispatch(fetchOneRestaurant(restaurantId));
-    dispatch(fetchAllReviews(restaurantId));
     dispatch(fetchAllUsers());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchOneRestaurant(restaurantId));
+    dispatch(fetchAllReviews(restaurantId));
+  }, [dispatch, restaurantId]);
 
   const reviewUser = (review) => {
     if (Array.isArray(users)) {
       let foundUser = users.find((user) => {
-        return user.id == review.user_id;
+        return user.id === review.user_id;
       });
       return foundUser;
     } else {
@@ -70,7 +75,7 @@ const RestaurantPage = ({ changeImg }) => {
       </div>
       <div className="restaurant-page-container__link-bar">
         Leave Review
-        <img src={addReview} alt="addReview" />
+        <ReviewModal />
         Get Directions
         <img src={directions} alt="directions" />
         Order Food

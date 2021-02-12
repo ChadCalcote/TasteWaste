@@ -19,9 +19,7 @@ const CityPage = ({changeImg}) => {
 
   const reduxCity = useSelector(reduxState => {
     return reduxState.cities
-  })
-
-  console.log(city)
+  });
 
   useEffect(() => {
     switch(city) {
@@ -51,17 +49,27 @@ const CityPage = ({changeImg}) => {
 
     return (
       <div className="city-page-container">
-        <div className="city-page-container__restaurant-card1">
-          {restaurants.length > 0 ? <RestaurantCard restaurant={restaurants[0]}/> : null}
-        </div>
+        {restaurants.length > 0 ? (
+          <RestaurantCard className="restaurant" restaurant={restaurants[0]} />
+        ) : null}
         <div className="city-page-container__restaurant-cards">
-          {/* Restaurant Cards */}
+          {restaurants.length > 0
+            ? restaurants.slice(1).map((restaurant) => (
+                <RestaurantCard
+                  className="restaurant"
+                  key={restaurant.id}
+                  restaurant={restaurant}
+                />
+              ))
+            : null}
         </div>
         <div className="city-page-container__community-impact">
           {/* Community Impact Card  */}
         </div>
         <div className="city-page-container__map-container">
-          {restaurants.length > 0 ? <MapContainer restaurants={restaurants} city={reduxCity}/> : null}
+          {restaurants.length > 0 ? (
+            <MapContainer restaurants={restaurants} city={reduxCity} />
+          ) : null}
         </div>
       </div>
     );

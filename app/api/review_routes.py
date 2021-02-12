@@ -33,7 +33,6 @@ def review(id):
 
 # Post a new review
 @review_routes.route('', methods=['POST'])
-@login_required
 def addReview():
     """
     Posts a New Review
@@ -43,8 +42,9 @@ def addReview():
     print('Request', request.json)
     print('Form', form.data)
     if form.validate_on_submit():
+        print('Current User', current_user)
         review = Review(
-            user_id=(current_user.id),
+            user_id=(form.data['user']),
             restaurant_id=(form.data['restaurant']),
             body=form.data['body'],
             rating=(form.data['rating']),
