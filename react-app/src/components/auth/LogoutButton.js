@@ -1,6 +1,6 @@
 import React from "react";
 import { logout } from "../../services/auth";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const LogoutButton = ({setAuthenticated}) => {
 

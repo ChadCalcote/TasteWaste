@@ -37,6 +37,7 @@ const RestaurantPage = ({ changeImg, user }) => {
     return reduxState.users;
   });
 
+
   const { restaurantId } = params;
 
   useEffect(() => {
@@ -73,7 +74,7 @@ const RestaurantPage = ({ changeImg, user }) => {
       </div>
       <div className="restaurant-page-container__link-bar">
         Leave Review
-        <ReviewModal />
+        <ReviewModal user={user} restaurant={restaurant}/>
         Get Directions
         <img src={directions} alt="directions" />
         Order Food

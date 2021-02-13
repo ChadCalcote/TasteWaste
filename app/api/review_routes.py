@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 # Get all reviews
 @review_routes.route('/')
-@login_required
+# @login_required
 def reviews():
     reviews = Review.query.all()
     return jsonify([review.to_dict() for review in reviews])

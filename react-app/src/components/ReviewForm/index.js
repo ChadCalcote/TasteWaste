@@ -1,13 +1,10 @@
 import './index.css';
 
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
 
-const ReviewForm = ({ authenticated, closeModal }) => {
-  const [user, setUser] = useState();
-  const [restaurant, setRestaurant] = useState();
+const ReviewForm = ({ authenticated, closeModal, user, restaurant }) => {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState();
   const [bags, toggleBags] = useToggleState(false);
@@ -19,19 +16,11 @@ const ReviewForm = ({ authenticated, closeModal }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-      const review = await addReview(user, restaurant, body, rating, bags, utensils, napkins, cups, bowls, straws);
+      const review = await addReview(user.id, restaurant.id, body, rating, bags, utensils, napkins, cups, bowls, straws);
       if (!review.errors) {
         closeModal();
         console.log(review);
       }
-  };
-
-  const updateUser = (e) => {
-    setUser(e.target.value);
-  };
-
-  const updateRestaurant = (e) => {
-    setRestaurant(e.target.value);
   };
 
   const updateBody = (e) => {
@@ -44,26 +33,23 @@ const ReviewForm = ({ authenticated, closeModal }) => {
 
   return (
     <form onSubmit={onSubmit}>
+    <h1 style={{color: "black"}}>{`${restaurant.name} Waste Review`}</h1>
       <div>
-        <label>User</label>
         <input
-          type="number"
+          type="hidden"
           name="user"
-          onChange={updateUser}
-          value={user}
+          value={user ? user.id : 1}
         ></input>
       </div>
       <div>
-        <label>Restaurant</label>
         <input
-          type="number"
+          type="hidden"
           name="restaurant"
-          onChange={updateRestaurant}
-          value={restaurant}
+          value={restaurant.id}
         ></input>
       </div>
       <div>
-        <label>Body</label>
+        <label>How was your experience?</label>
         <br />
         <textarea
           className="body"
@@ -82,6 +68,7 @@ const ReviewForm = ({ authenticated, closeModal }) => {
           value={rating}
         ></input>
       </div>
+      <h3>Check Box if Items were Compostable, Recyclable, or not offered</h3>
       <div>
         <label>Bags</label>
         <input
