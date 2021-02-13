@@ -1,12 +1,12 @@
 // React Dependencies
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // Local Components
 import RestaurantCard from "../RestaurantCard";
-import ReviewCard from "../ReviewCard";
 import ReviewModal from "../auth/ReviewModal";
+import ReviewFeed from "../ReviewFeed";
 
 // Icons
 import directions from "../../resources/directions.svg";
@@ -37,21 +37,33 @@ const RestaurantPage = ({ changeImg, user }) => {
     return reduxState.users;
   });
 
+  const [ reviewsToDisplay, setReviewsToDisplay ] = useState([])
+
 
   const { restaurantId } = params;
 
   useEffect(() => {
     changeImg("darkgreen")
-  })
+  });
+
+  useEffect(() => {
+    dispatch(fetchOneRestaurant(restaurantId));
+    dispatch(fetchAllReviews(restaurantId));
+  }, [dispatch, restaurantId]);
+
+  useEffect(() => {
+    dispatch(fetchAllReviews(restaurantId))
+  }, [ReviewModal, restaurantId]);
 
   useEffect(() => {
     dispatch(fetchAllUsers());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchOneRestaurant(restaurantId));
-    dispatch(fetchAllReviews(restaurantId));
-  }, [dispatch, restaurantId]);
+    if (reviews[0]) {
+      setReviewsToDisplay([...reviews])
+    }
+  }, [dispatch, reviews]);
 
   const reviewUser = (review) => {
     if (Array.isArray(users)) {
@@ -74,7 +86,7 @@ const RestaurantPage = ({ changeImg, user }) => {
       </div>
       <div className="restaurant-page-container__link-bar">
         Leave Review
-        <ReviewModal user={user} restaurant={restaurant}/>
+        <ReviewModal user={user} restaurant={restaurant} reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} />
         Get Directions
         <img src={directions} alt="directions" />
         Order Food
@@ -82,18 +94,8 @@ const RestaurantPage = ({ changeImg, user }) => {
         Call Business
         <img src={call} alt="call" />
       </div>
-      <div className="restaurant-page-container__reviews">
-        Recent Reviews
-        {reviews.length > 0
-          ? reviews.map((review) => (
-              <ReviewCard
-                className="review"
-                key={review.id}
-                review={review}
-                user={reviewUser(review)}
-              />
-            ))
-          : null}
+      <div>
+        <ReviewFeed reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} />
       </div>
     </div>
   );

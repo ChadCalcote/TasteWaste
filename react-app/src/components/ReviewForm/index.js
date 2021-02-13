@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
 
-const ReviewForm = ({ authenticated, closeModal, user, restaurant }) => {
+const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisplay, setReviewsToDisplay }) => {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState();
   const [bags, toggleBags] = useToggleState(false);
@@ -19,7 +19,7 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant }) => {
       const review = await addReview(user.id, restaurant.id, body, rating, bags, utensils, napkins, cups, bowls, straws);
       if (!review.errors) {
         closeModal();
-        console.log(review);
+        setReviewsToDisplay([...reviewsToDisplay, review])
       }
   };
 

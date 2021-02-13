@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ReviewModal({ authenticated, setAuthenticated, user, restaurant }) {
+export default function ReviewModal({ authenticated, setAuthenticated, user, restaurant, reviewsToDisplay, setReviewsToDisplay }) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -51,6 +51,8 @@ export default function ReviewModal({ authenticated, setAuthenticated, user, res
         closeModal={() => setOpen(false)}
         user={user}
         restaurant={restaurant}
+        reviewsToDisplay={reviewsToDisplay}
+        setReviewsToDisplay={setReviewsToDisplay}
       />
     </div>
   );
