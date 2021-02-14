@@ -31,6 +31,7 @@ const ReviewFeed = ({ reviewsToDisplay }) => {
       dispatch(fetchAllUsers());
     });
 
+    
   return (
     <div className="review-feed">
       {!Array.isArray(reviewsToDisplay) && <h3>Start the Conversation</h3>}
