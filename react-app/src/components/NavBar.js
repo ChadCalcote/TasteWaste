@@ -7,15 +7,15 @@ const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
   return (
     <nav className="nav2">
       <NavLink
-        to="/home"
+        to="/"
         exact={true}
         className="fork"
         activeClassName="active"
-        onClick={() =>
-          changeImg(
-            "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
-          )
-        }
+        // onClick={() =>
+        //   changeImg(
+        //     "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
+        //   )
+        // }
       >
         <img src={fork} alt="fork" />
       </NavLink>

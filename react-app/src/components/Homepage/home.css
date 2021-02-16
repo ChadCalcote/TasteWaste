@@ -1,17 +1,8 @@
 .homepage-container {
-    /* background-image: url("../../resources/space.jpg"); */
     background-size: cover;
-    /* height: 125vh; */
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* z-index: -1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0; */
     overflow: auto;
 }
 
@@ -19,6 +10,7 @@
     display: flex;
     flex-direction: column;
     height: 500px;
+    align-content: center;
 }
 
 .homepage-container__body div {

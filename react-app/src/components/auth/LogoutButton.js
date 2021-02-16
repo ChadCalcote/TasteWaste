@@ -9,7 +9,7 @@ const LogoutButton = ({setAuthenticated}) => {
     e.preventDefault();
     await logout();
     setAuthenticated(false);
-    history.push("/home")
+    history.push("/")
   };
 
   return (

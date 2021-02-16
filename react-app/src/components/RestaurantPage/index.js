@@ -33,12 +33,7 @@ const RestaurantPage = ({ changeImg, user }) => {
     return reduxState.reviews;
   });
 
-  const users = useSelector((reduxState) => {
-    return reduxState.users;
-  });
-
   const [ reviewsToDisplay, setReviewsToDisplay ] = useState([])
-
 
   const { restaurantId } = params;
 
@@ -52,10 +47,6 @@ const RestaurantPage = ({ changeImg, user }) => {
   }, [dispatch, restaurantId]);
 
   useEffect(() => {
-    dispatch(fetchAllReviews(restaurantId))
-  }, [ReviewModal, restaurantId]);
-
-  useEffect(() => {
     dispatch(fetchAllUsers());
   }, [dispatch]);
 
@@ -64,19 +55,6 @@ const RestaurantPage = ({ changeImg, user }) => {
       setReviewsToDisplay([...reviews])
     }
   }, [dispatch, reviews]);
-
-  const reviewUser = (review) => {
-    if (Array.isArray(users)) {
-      let foundUser = users.find((user) => {
-        return user.id === review.user_id;
-      });
-      return foundUser;
-    } else {
-      return {
-        username: "Demo",
-      };
-    }
-  };
 
   return (
     <div className="restaurant-page-container">

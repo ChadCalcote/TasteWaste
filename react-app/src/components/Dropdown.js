@@ -82,7 +82,7 @@ export default function Dropdown({authenticated, setAuthenticated, setUser}) {
     e.preventDefault();
     await logout();
     setAuthenticated(false);
-    return <Redirect to="/home" />;
+    return <Redirect to="/" />;
   };
 
   return (
@@ -128,7 +128,7 @@ export default function Dropdown({authenticated, setAuthenticated, setUser}) {
           </StyledMenuItem>
         <NavLink
           style={{ textDecoration: "none" }}
-          to="/home"
+          to="/"
           onClick={onLogout}
           exact={true}
         >

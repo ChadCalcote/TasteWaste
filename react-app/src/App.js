@@ -46,7 +46,11 @@ function App() {
         }}
         id="mainContainer"
       >
-        <NavBar setAuthenticated={setAuthenticated} changeImg={changeImg} setUser={setUser} />
+        <NavBar
+          setAuthenticated={setAuthenticated}
+          changeImg={changeImg}
+          setUser={setUser}
+        />
         <Switch>
           <Route path="/login" exact={true}>
             <LoginForm
@@ -58,8 +62,8 @@ function App() {
           <Route path="/city/:city" exact={true}>
             <CityPage changeImg={changeImg} />
           </Route>
-          <Route path="/home" exact={true}>
-            <HomePage />
+          <Route path="/" exact={true}>
+            <HomePage changeImg={changeImg} />
           </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
             <RestaurantPage changeImg={changeImg} user={user} />
@@ -84,9 +88,9 @@ function App() {
           >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+          {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
-          </ProtectedRoute>
+          </ProtectedRoute> */}
         </Switch>
       </div>
     </BrowserRouter>

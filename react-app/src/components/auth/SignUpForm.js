@@ -60,7 +60,7 @@ const SignUpForm = ({authenticated, setAuthenticated, closeDrawer}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/" />;
   }
 
   return (
