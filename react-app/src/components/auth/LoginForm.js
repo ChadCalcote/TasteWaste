@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = ({ authenticated, setAuthenticated, closeModal, setUser }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(username, password);
     if (!user.errors) {
       setAuthenticated(true);
+      closeModal();
+      history.push("/city/austin");
+      setUser(user);
     } else {
       setErrors(user.errors);
     }
@@ -26,7 +31,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/city/austin" />;
   }
 
   return (

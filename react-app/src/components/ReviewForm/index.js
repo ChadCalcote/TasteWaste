@@ -1,13 +1,10 @@
 import './index.css';
 
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
 
-const ReviewForm = ({ authenticated, setAuthenticated }) => {
-  const [user, setUser] = useState();
-  const [restaurant, setRestaurant] = useState();
+const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisplay, setReviewsToDisplay }) => {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState();
   const [bags, toggleBags] = useToggleState(false);
@@ -19,19 +16,11 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-    if (user) {
-      const review = await addReview(user, restaurant, body, rating, bags, utensils, napkins, cups, bowls, straws);
-      console.log(review);
-    }
-  };
-
-  const updateUser = (e) => {
-    setUser(e.target.value);
-  };
-
-  const updateRestaurant = (e) => {
-    setRestaurant(e.target.value);
+      const review = await addReview(user.id, restaurant.id, body, rating, bags, utensils, napkins, cups, bowls, straws);
+      if (!review.errors) {
+        closeModal();
+        setReviewsToDisplay([...reviewsToDisplay, review])
+      }
   };
 
   const updateBody = (e) => {
@@ -42,57 +31,25 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
     setRating(e.target.value);
   };
 
-  // const updateBags= (e) => {
-  //   setBags(e.target.value);
-  // };
-
-  // const updateUtensils = (e) => {
-  //   setUtensils(e.target.value);
-  // };
-
-  // const updateNapkins = (e) => {
-  //    setNapkins(e.target.value);
-  //  };
-
-  //  const updateCups = (e) => {
-  //    setCups(e.target.value);
-  //  };
-
-  //  const updateBowls = (e) => {
-  //    setBowls(e.target.value);
-  //  };
-
-  //  const updateStraws = (e) => {
-  //    setStraws(e.target.value);
-  //  };
-
-
-  if (authenticated) {
-    return <Redirect to="/home" />;
-  }
-
   return (
     <form onSubmit={onSubmit}>
+    <h1 style={{color: "black"}}>{`${restaurant.name} Waste Review`}</h1>
       <div>
-        <label>User</label>
         <input
-          type="number"
+          type="hidden"
           name="user"
-          onChange={updateUser}
-          value={user}
+          value={user ? user.id : 1}
         ></input>
       </div>
       <div>
-        <label>Restaurant</label>
         <input
-          type="number"
+          type="hidden"
           name="restaurant"
-          onChange={updateRestaurant}
-          value={restaurant}
+          value={restaurant.id}
         ></input>
       </div>
       <div>
-        <label>Body</label>
+        <label>How was your experience?</label>
         <br />
         <textarea
           className="body"
@@ -111,6 +68,7 @@ const ReviewForm = ({ authenticated, setAuthenticated }) => {
           value={rating}
         ></input>
       </div>
+      <h3>Check Box if Items were Compostable, Recyclable, or not offered</h3>
       <div>
         <label>Bags</label>
         <input

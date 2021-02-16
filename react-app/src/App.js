@@ -9,20 +9,20 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import MapContainer from "./components/MapContainer"
-import ReviewForm from "./components/ReviewForm";
 import HomePage from "./components/HomePage";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
 // Services
 import { authenticate } from "./services/auth";
 
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [img, changeImg] = useState(
-    "url(" + "https://cdn.wallpapersafari.com/59/17/Mp2ga4.jpg" + ")"
+    "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
   );
+  const [user, setUser] = useState()
 
   useEffect(() => {
     (async() => {
@@ -42,42 +42,37 @@ function App() {
     <BrowserRouter>
       <div
         style={{
-          backgroundImage: img
+          background: img,
         }}
         id="mainContainer"
       >
-        <NavBar setAuthenticated={setAuthenticated} img={img} changeImg={changeImg} />
+        <NavBar
+          setAuthenticated={setAuthenticated}
+          changeImg={changeImg}
+          setUser={setUser}
+        />
         <Switch>
           <Route path="/login" exact={true}>
-            {}
             <LoginForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
+              setUser={setUser}
             />
           </Route>
           <Route path="/city/:city" exact={true}>
-            <CityPage
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
+            <CityPage changeImg={changeImg} />
           </Route>
-          <Route path="/home" exact={true}>
-            <HomePage />
+          <Route path="/" exact={true}>
+            <HomePage changeImg={changeImg} />
           </Route>
-          <Route path="/restaurant" exact={true}>
-            <RestaurantPage />
-          </Route>
-          <Route path="/map" exact={true}>
-            <MapContainer />
+          <Route path="/restaurants/:restaurantId" exact={true}>
+            <RestaurantPage changeImg={changeImg} user={user} />
           </Route>
           <Route path="/sign-up" exact={true}>
             <SignUpForm
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
             />
-          </Route>
-          <Route path="/review" exact={true}>
-            <ReviewForm />
           </Route>
           <ProtectedRoute
             path="/users"
@@ -93,9 +88,9 @@ function App() {
           >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+          {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
             <h1>My Home Page</h1>
-          </ProtectedRoute>
+          </ProtectedRoute> */}
         </Switch>
       </div>
     </BrowserRouter>

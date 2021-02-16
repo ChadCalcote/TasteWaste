@@ -1,17 +1,19 @@
 import "./home.css";
 import DemoButton from "../auth/DemoButton";
-import React, { useState } from "react";
-import NavBar from "../NavBar";
+import React, { useState, useEffect } from "react";
 
-const HomePage = () => {
+const HomePage = ({changeImg}) => {
     const [authenticated, setAuthenticated] = useState(false);
+
+    useEffect(() => {
+      changeImg("url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)");
+    });
+
     return (
       <div className="homepage-container">
-        {/* <NavBar /> */}
         <div className="homepage-container__body">
-          <div className="homepage-container__header">
+          <div className="homepage-container__header"></div>
             <h1>TasteWaste</h1>
-          </div>
           <div className="homepage-container__description">
             <h2>Find out what your favorite restaurant is doing to help save the planet!</h2>
           </div>

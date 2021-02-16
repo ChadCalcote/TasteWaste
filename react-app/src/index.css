@@ -46,12 +46,11 @@ body {
     font-size: 23px;
 }
 
-.profile {
-    align-self: flex-end;
-    margin-right: 30px;
+.dropdown {
+    margin-right: 50px;
 }
 
-.profile img {
-    height: 60px;
-    width: 60px;
+.dropdown__button {
+    background-color: white;
 }
+

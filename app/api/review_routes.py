@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 # Get all reviews
 @review_routes.route('/')
-@login_required
+# @login_required
 def reviews():
     reviews = Review.query.all()
     return jsonify([review.to_dict() for review in reviews])
@@ -33,7 +33,6 @@ def review(id):
 
 # Post a new review
 @review_routes.route('', methods=['POST'])
-@login_required
 def addReview():
     """
     Posts a New Review
@@ -43,8 +42,9 @@ def addReview():
     print('Request', request.json)
     print('Form', form.data)
     if form.validate_on_submit():
+        print('Current User', current_user)
         review = Review(
-            user_id=(current_user.id),
+            user_id=(form.data['user']),
             restaurant_id=(form.data['restaurant']),
             body=form.data['body'],
             rating=(form.data['rating']),
@@ -91,6 +91,13 @@ def delete(id):
         return {"error": "You are not authorized to delete this review"}
 
     return review.to_dict()
+
+# Retrieve the user of the review
+@review_routes.route('/<int:id>/user')
+def get_user(id):
+    user_of_review = User.query.join(Review).filter(Review.id == id).filter(User.id == Review.user_id).all()
+    return jsonify([user.to_dict() for user in user_of_review])
+
 
 @review_routes.route('/unauthorized')
 def unauthorized():

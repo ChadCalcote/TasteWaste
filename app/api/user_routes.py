@@ -6,14 +6,14 @@ user_routes = Blueprint('users', __name__)
 
 # Retrieve All Users
 @user_routes.route('/')
-@login_required
+# @login_required
 def users():
     users = User.query.all()
     return jsonify([user.to_dict() for user in users])
 
 # Retrieve single user by ID
 @user_routes.route('/<int:id>')
-@login_required
+# @login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()

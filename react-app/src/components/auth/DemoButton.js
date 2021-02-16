@@ -18,7 +18,7 @@ const DemoButton = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/austin" />;
+    return <Redirect to="/city/austin" />;
   }
 
   return (

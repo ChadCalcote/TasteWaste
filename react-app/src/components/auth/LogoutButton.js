@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { logout } from "../../services/auth";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const LogoutButton = ({setAuthenticated}) => {
+
+  const history = useHistory();
   const onLogout = async (e) => {
     e.preventDefault();
     await logout();
     setAuthenticated(false);
-    return <Redirect to="/home" />;
+    history.push("/")
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return (
+    <div style={{ color: "#f37588" }} onClick={onLogout}>
+      Logout
+    </div>
+  );
 };
 
 export default LogoutButton;

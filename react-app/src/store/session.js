@@ -8,7 +8,7 @@ export const setCurrentUser = (user) => {
 };
 
 export const getCurrentUser = () => async (dispatch) => {
-  const response = await fetch(`/api/auth/`);
+  const response = await fetch("/api/auth");
   const current_user = await response.json();
   dispatch(setCurrentUser(current_user));
 };
