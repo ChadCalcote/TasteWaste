@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 
 const LoginForm = ({ authenticated, setAuthenticated, closeModal, setUser }) => {
@@ -29,10 +29,6 @@ const LoginForm = ({ authenticated, setAuthenticated, closeModal, setUser }) => 
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  if (authenticated) {
-    return <Redirect to="/city/austin" />;
-  }
 
   return (
     <form onSubmit={onLogin}>

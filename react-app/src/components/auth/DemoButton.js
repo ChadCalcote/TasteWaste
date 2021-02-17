@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import "./DemoButton.css";
 
-
-const DemoButton = ({ authenticated, setAuthenticated }) => {
+const DemoButton = ({ authenticated, setAuthenticated, setUser }) => {
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
 
   const onLogin = async (e) => {
@@ -12,14 +12,12 @@ const DemoButton = ({ authenticated, setAuthenticated }) => {
     const user = await login('RickRoso', 'rossboss');
     if (!user.errors) {
       setAuthenticated(true);
+      setUser(user);
+      history.push("/city/austin");
     } else {
       setErrors(user.errors);
     }
   };
-
-  if (authenticated) {
-    return <Redirect to="/city/austin" />;
-  }
 
   return (
     <form onSubmit={onLogin}>

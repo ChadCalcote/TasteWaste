@@ -27,6 +27,7 @@ const SignUpForm = ({authenticated, setAuthenticated, closeDrawer}) => {
   };
 
   const onFileChange = async (e) => {
+    console.log(e.target.value)
     setSrc(URL.createObjectURL(e.target.files[0]))
     setPhoto(e.target.value)
     setPhotoBase64(JSON.stringify(await toBase64(e.target.files[0])))

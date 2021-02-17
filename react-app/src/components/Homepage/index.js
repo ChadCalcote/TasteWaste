@@ -2,7 +2,7 @@ import "./home.css";
 import DemoButton from "../auth/DemoButton";
 import React, { useState, useEffect } from "react";
 
-const HomePage = ({changeImg}) => {
+const HomePage = ({changeImg, setUser}) => {
     const [authenticated, setAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const HomePage = ({changeImg}) => {
             <DemoButton
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
+              setUser={setUser}
             />
           </div>
         </div>
