@@ -1,8 +1,21 @@
 import "./index.css"
-import React from "react"
+import React, { useEffect } from "react"
 import { NavLink } from "react-router-dom"
 
+import { fetchAllReviews } from "../../store/reviews";
+import { useSelector } from "react-redux";
+
 const RestaurantCard = ({ restaurant }) => {
+
+  const currentRestaurantReviews = useSelector((reduxState) => {
+    return reduxState.reviews;
+  });
+
+  useEffect(() => {
+    dispatch(fetchAllReviews(restaurant.id))
+  });
+
+  
 
   return (
     <div className="restaurant-card-container">

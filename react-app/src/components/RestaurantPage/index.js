@@ -73,7 +73,7 @@ const RestaurantPage = ({ changeImg, user }) => {
         <img src={call} alt="call" />
       </div>
       <div>
-        <ReviewFeed reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} />
+        <ReviewFeed reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} currentUser={user} />
       </div>
     </div>
   );

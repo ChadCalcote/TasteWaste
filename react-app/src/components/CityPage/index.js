@@ -7,7 +7,7 @@ import { fetchCityRestaurants } from "../../store/restaurants";
 import { fetchOneCity } from "../../store/cities";
 import RestaurantCard from "../RestaurantCard";
 
-const CityPage = ({changeImg}) => {
+const CityPage = ({changeImg, user}) => {
 
   const { city } = useParams();
 
@@ -49,18 +49,21 @@ const CityPage = ({changeImg}) => {
 
     return (
       <div className="city-page-container">
+        {user ? <h1>{`Welcome to TasteWaste, ${user.username}!`}</h1> : null}
         {restaurants.length > 0 ? (
           <RestaurantCard className="restaurant" restaurant={restaurants[0]} />
         ) : null}
         <div className="city-page-container__restaurant-cards">
           {restaurants.length > 0
-            ? restaurants.slice(1).map((restaurant) => (
-                <RestaurantCard
-                  className="restaurant"
-                  key={restaurant.id}
-                  restaurant={restaurant}
-                />
-              ))
+            ? restaurants
+                .slice(1)
+                .map((restaurant) => (
+                  <RestaurantCard
+                    className="restaurant"
+                    key={restaurant.id}
+                    restaurant={restaurant}
+                  />
+                ))
             : null}
         </div>
         <div className="city-page-container__community-impact">

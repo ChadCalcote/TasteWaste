@@ -12,6 +12,7 @@ import User from "./components/User";
 import HomePage from "./components/HomePage";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
+import Footer from "./components/Footer";
 // Services
 import { authenticate } from "./services/auth";
 
@@ -60,7 +61,7 @@ function App() {
             />
           </Route>
           <Route path="/city/:city" exact={true}>
-            <CityPage changeImg={changeImg} />
+            <CityPage changeImg={changeImg} user={user} />
           </Route>
           <Route path="/" exact={true}>
             <HomePage changeImg={changeImg} setUser={setUser} />
@@ -92,6 +93,7 @@ function App() {
             <h1>My Home Page</h1>
           </ProtectedRoute> */}
         </Switch>
+        <Footer />
       </div>
     </BrowserRouter>
   );
