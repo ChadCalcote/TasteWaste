@@ -3,10 +3,11 @@ import React, { useEffect } from "react"
 import { NavLink } from "react-router-dom"
 
 import { fetchAllReviews } from "../../store/reviews";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const RestaurantCard = ({ restaurant }) => {
-
+  const dispatch = useDispatch();
+  
   const currentRestaurantReviews = useSelector((reduxState) => {
     return reduxState.reviews;
   });
