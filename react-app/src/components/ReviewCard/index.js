@@ -23,7 +23,7 @@ const ReviewCard = ({ review, user, currentUser }) => {
     <div className="review-card-container">
       <div className="review-card-container__username">
           {user.username}
-          {user == currentUser ? <CancelRoundedIcon onClick={onDelete}/> : null}
+          {user === currentUser ? <CancelRoundedIcon onClick={onDelete}/> : null}
       </div>
       <div className="review-card-container__date">
           {dateFormat(review.created)}

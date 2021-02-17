@@ -7,14 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 const RestaurantCard = ({ restaurant }) => {
   const dispatch = useDispatch();
-  
+
   const currentRestaurantReviews = useSelector((reduxState) => {
     return reduxState.reviews;
   });
 
   useEffect(() => {
     dispatch(fetchAllReviews(restaurant.id))
-  });
+  }, [dispatch, restaurant.id]);
 
   
 
