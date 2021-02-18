@@ -1,56 +1,54 @@
 /* TODO Add site wide styles */
 body {
-    padding: 0px;
-    margin: 0px
+  padding: 0px;
+  margin: 0px;
+}
+
+h1,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-family: "Merriweather", serif;
+  line-height: 1;
 }
 
 #mainContainer {
-    background-image: url("./resources/austin.png");
-    background-size: cover;
-    height: 100vh;
+  background: linear-gradient(#031176, #d66d97);
+  height: 100vh;
 }
 
 .nav2 {
-    background-color: transparent;
-    display: flex;
-    margin: 0;
-    justify-content: space-between;
-    align-items: center;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 4;
-    width: 100%;
-    padding-bottom: 1px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .nav * {
-    display: inline;
-}
-
-.fork {
-    align-self:flex-start;
-    margin-left: 30px;
+  display: inline;
 }
 
 .fork img {
+  height: 60px;
+
+  @media (min-width: 769px) {
     height: 80px;
+  }
 }
 
 .city-link {
-    margin: 80px;
-    text-decoration: none;
-    color: white;
-    font-size: 23px;
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 20px;
+  text-decoration: none;
 }
 
-.dropdown {
-    margin-right: 50px;
+@media (min-width: 769px) {
+  .city-link {
+    font-size: 1.375rem;
+    margin-left: 80px;
+  }
 }
-
-.dropdown__button {
-    background-color: white;
-}
-

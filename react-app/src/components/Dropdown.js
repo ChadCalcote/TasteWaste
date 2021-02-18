@@ -21,13 +21,14 @@ import LogoutButton from "./auth/LogoutButton";
 
 const useStyles = makeStyles({
   root: {
+    appearance: "none",
     background: "transparent",
     borderRadius: 3,
     border: 0,
+    boxShadow: "none",
     color: "white",
-    height: 48,
-    padding: "0 30px",
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    minWidth: "auto",
+    padding: 0,
   },
   label: {
     textTransform: "capitalize",
@@ -48,7 +49,7 @@ const StyledMenu = withStyles({
     }}
     transformOrigin={{
       vertical: "top",
-      horizontal: "center",
+      horizontal: "right",
     }}
     {...props}
   />
@@ -65,7 +66,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
-export default function Dropdown({authenticated, setAuthenticated, setUser}) {
+export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const classes = useStyles();
@@ -117,15 +118,15 @@ export default function Dropdown({authenticated, setAuthenticated, setUser}) {
             setUser={setUser}
           />
         </StyledMenuItem>
-          <StyledMenuItem>
-            <ListItemIcon>
-              <ArrowUpwardSharpIcon fontSize="small" />
-            </ListItemIcon>
-            <SignUpDrawer
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </StyledMenuItem>
+        <StyledMenuItem>
+          <ListItemIcon>
+            <ArrowUpwardSharpIcon fontSize="small" />
+          </ListItemIcon>
+          <SignUpDrawer
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        </StyledMenuItem>
         <NavLink
           style={{ textDecoration: "none" }}
           to="/"
@@ -136,7 +137,7 @@ export default function Dropdown({authenticated, setAuthenticated, setUser}) {
             <ListItemIcon>
               <AssignmentReturnRoundedIcon fontSize="small" />
             </ListItemIcon>
-            <LogoutButton setAuthenticated={setAuthenticated}/>
+            <LogoutButton setAuthenticated={setAuthenticated} />
           </StyledMenuItem>
         </NavLink>
       </StyledMenu>

@@ -9,13 +9,12 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import HomePage from "./components/HomePage";
+import Homepage from "./components/Homepage";
 import CityPage from "./components/CityPage";
 import RestaurantPage from "./components/RestaurantPage";
 import Footer from "./components/Footer";
 // Services
 import { authenticate } from "./services/auth";
-
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -23,10 +22,10 @@ function App() {
   const [img, changeImg] = useState(
     "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
   );
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
@@ -64,7 +63,7 @@ function App() {
             <CityPage changeImg={changeImg} user={user} />
           </Route>
           <Route path="/" exact={true}>
-            <HomePage changeImg={changeImg} setUser={setUser} />
+            <HomePage setUser={setUser} />
           </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
             <RestaurantPage changeImg={changeImg} user={user} />
