@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import "./DemoButton.css";
@@ -9,7 +9,7 @@ const DemoButton = ({ authenticated, setAuthenticated, setUser }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login('RickRoso', 'rossboss');
+    const user = await login("RickRoso", "rossboss");
     if (!user.errors) {
       setAuthenticated(true);
       setUser(user);
@@ -20,14 +20,16 @@ const DemoButton = ({ authenticated, setAuthenticated, setUser }) => {
   };
 
   return (
-    <form onSubmit={onLogin}>
+    <Fragment>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
-        <button type="submit">Demo</button>
-    </form>
+      <button type="submit" onClick={onLogin}>
+        Demo
+      </button>
+    </Fragment>
   );
 };
 
