@@ -63,7 +63,7 @@ function App() {
             <CityPage changeImg={changeImg} user={user} />
           </Route>
           <Route path="/" exact={true}>
-            <HomePage setUser={setUser} />
+            <Homepage setUser={setUser} />
           </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
             <RestaurantPage changeImg={changeImg} user={user} />

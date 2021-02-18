@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import "./DemoButton.css";
 
-const DemoButton = ({ authenticated, setAuthenticated }) => {
+const DemoButton = ({ authenticated, setAuthenticated, setUser }) => {
   const history = useHistory();
   const [errors, setErrors] = useState([]);
 
