@@ -11,12 +11,30 @@ const RestaurantCard = ({ restaurant }) => {
   const currentRestaurantReviews = useSelector((reduxState) => {
     return reduxState.reviews;
   });
+  // state to track all reviews
+    // set state
+  // Another state for the rating
+  // useEffect to get all restaurant reviews
+  // useEffect listens to first fetch
+
+  const overallScore = (reviews) => {
+    let scores = []
+    for (let i = 0; i < reviews.length; i++) {
+      let review = reviews[i];
+      scores.push(review["rating"]);
+    }
+
+    let score = 0;
+    for (let j = 0; j < scores.length; j++) {
+      score += scores[j];
+    }
+
+    return score / scores.length;
+}
 
   useEffect(() => {
     dispatch(fetchAllReviews(restaurant.id))
   }, [dispatch, restaurant.id]);
-
-  
 
   return (
     <div className="restaurant-card-container">
@@ -28,10 +46,11 @@ const RestaurantCard = ({ restaurant }) => {
           {restaurant.name}
         </div>
         <div className="restaurant-card-container__rating">
-          <img
+          {overallScore(currentRestaurantReviews)}
+          {/* <img
             src="https://lh3.googleusercontent.com/proxy/FbGWNQjICuLl5S5N4WRQmARk-c-UL4_A15_fgxOTmn1rc__MQ_9_YHkdr1Uc2xSq22Ftie96XDgq1tb-iKZ3DpEOkV_CnRDtC_0qn4G2EhRY"
             alt="stars"
-          />
+          /> */}
         </div>
         <div className="restaurant-card-container__address street">
           {restaurant.address}
