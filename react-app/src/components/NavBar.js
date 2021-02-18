@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 import fork from "../resources/forklogo.png";
-import Dropdown from './Dropdown';
+import Dropdown from "./Dropdown";
 
 const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
   return (
@@ -52,7 +52,6 @@ const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
         <Dropdown
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
-          className="dropdown__button"
           setUser={setUser}
         />
       </div>
@@ -60,6 +59,6 @@ const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
       {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
     </nav>
   );
-}
+};
 
 export default NavBar;
