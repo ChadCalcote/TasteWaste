@@ -1,5 +1,5 @@
 // React Dependencies
-import React from "react";
+import React, { useState } from "react";
 import { Redirect, NavLink } from "react-router-dom";
 // Services
 import { logout } from "../services/auth";
@@ -68,6 +68,16 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openSignInModal, setOpenSignInModal] = useState(false);
+  const [openSignUpDrawer, setOpenSignUpDrawer] = useState(false);
+
+  const handleOpen = () => {
+    setOpenSignInModal(true);
+  };
+
+  const handleDrawer = () => {
+    setOpenSignUpDrawer(true);
+  };
 
   const classes = useStyles();
 
@@ -108,7 +118,7 @@ export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
+        <StyledMenuItem onClick={handleOpen}>
           <ListItemIcon>
             <ExitToAppSharpIcon fontSize="small" />
           </ListItemIcon>
@@ -116,15 +126,19 @@ export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
             setUser={setUser}
+            open={openSignInModal}
+            setOpen={setOpenSignInModal}
           />
         </StyledMenuItem>
-        <StyledMenuItem>
+        <StyledMenuItem onClick={handleDrawer}>
           <ListItemIcon>
             <ArrowUpwardSharpIcon fontSize="small" />
           </ListItemIcon>
           <SignUpDrawer
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
+            open={openSignUpDrawer}
+            setOpen={setOpenSignUpDrawer}
           />
         </StyledMenuItem>
         <NavLink
