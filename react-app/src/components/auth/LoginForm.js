@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 
-const LoginForm = ({ authenticated, setAuthenticated, closeModal, setUser }) => {
+const LoginForm = ({
+  authenticated,
+  setAuthenticated,
+  closeModal,
+  setUser,
+}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,34 +36,35 @@ const LoginForm = ({ authenticated, setAuthenticated, closeModal, setUser }) => 
   };
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <Fragment>
+      <h1 className="form__heading">Sign In</h1>
+      <form onSubmit={onLogin}>
         {errors.map((error) => (
-          <div>{error}</div>
+          <p>{error}</p>
         ))}
-      </div>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={updateUsername}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-      </div>
-    </form>
+        <div className="form__item">
+          <label htmlFor="username">Username</label>
+          <input
+            name="username"
+            type="text"
+            value={username}
+            onChange={updateUsername}
+          />
+        </div>
+        <div className="form__item">
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            type="password"
+            value={password}
+            onChange={updatePassword}
+          />
+        </div>
+        <div className="form__item">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </Fragment>
   );
 };
 
