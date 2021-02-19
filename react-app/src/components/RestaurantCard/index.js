@@ -2,15 +2,15 @@ import "./index.css";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 import { fetchAllReviews } from "../../store/reviews";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const RestaurantCard = ({ restaurant }) => {
   const dispatch = useDispatch();
 
-  const currentRestaurantReviews = useSelector((reduxState) => {
-    return reduxState.reviews;
-  });
+  // const [reviews, setReviews] = useState({});
+  // const [rating, setRating] = useState();
 
   useEffect(() => {
     dispatch(fetchAllReviews(restaurant.id));

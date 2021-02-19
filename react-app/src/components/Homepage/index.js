@@ -2,7 +2,7 @@ import "./home.css";
 import DemoButton from "../auth/DemoButton";
 import React, { useState } from "react";
 
-const HomePage = ({ setUser }) => {
+const Homepage = ({ setUser }) => {
   const [authenticated, setAuthenticated] = useState(false);
 
   return (
@@ -22,4 +22,4 @@ const HomePage = ({ setUser }) => {
   );
 };
 
-export default HomePage;
+export default Homepage;
