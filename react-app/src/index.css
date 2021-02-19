@@ -1,4 +1,10 @@
 /* TODO Add site wide styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Merriweather", serif;
   padding: 0px;
@@ -17,19 +23,25 @@ h1 {
 
 #mainContainer {
   background: linear-gradient(#031176, rgb(243, 117, 136));
-  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
 }
 
 .nav2 {
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.33);
   display: flex;
   justify-content: space-between;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
 }
-
-.nav * {
-  display: inline;
+@media (min-width: 769px) {
+  .nav2 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 .fork img {
@@ -65,7 +77,12 @@ h1 {
 }
 
 .drawer {
-  padding: 3rem;
+  padding: 0.75rem;
+}
+@media (min-width: 769px) {
+  .drawer {
+    padding: 3rem;
+  }
 }
 
 /* FORM STYLES */
@@ -92,8 +109,9 @@ h1 {
   border: 1px solid #031176;
   border-radius: 8px;
   font-family: "Merriweather", serif;
-  min-width: 240px;
+  max-width: 240px;
   padding: 0.75rem;
+  width: 100%;
 }
 
 .form__item button {

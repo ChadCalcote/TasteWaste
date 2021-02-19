@@ -1,7 +1,35 @@
 .city-page-container {
-    /* background-image: url("../../resources/austin.png"); */
-    background-size: cover;
-    background-color: transparent;
-    overflow: auto;
-    height: 100%;
+  padding: 1.5rem;
+}
+@media (min-width: 400px) {
+  .city-page-container {
+    padding: 1.5rem 0.75rem;
+  }
+}
+@media (min-width: 800px) and (min-height: 880px) {
+  .city-page-container {
+    height: calc(100vh - 64px - 130px);
+  }
+}
+
+.city-page-container h1 {
+  text-align: center;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0, 0.67);
+}
+
+.city-page-container__restaurant-cards {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 400px) {
+  .city-page-container__restaurant-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+.city-page-container__map-container {
+  display: flex;
+  justify-content: center;
 }

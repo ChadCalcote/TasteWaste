@@ -42,7 +42,7 @@ function App() {
     <BrowserRouter>
       <div
         style={{
-          background: img,
+          backgroundImage: img,
         }}
         id="mainContainer"
       >

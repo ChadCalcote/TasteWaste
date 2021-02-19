@@ -4,10 +4,8 @@ import "./index.css";
 
 const Footer = () => {
   return (
-    <div className="footer-container">
-      <div className="footer-container_title">
-        TasteWaste
-      </div>
+    <footer class="footer-container" role="contentinfo">
+      <p className="footer-container_title">TasteWaste</p>
       <div className="footer-container_chad">
         <div className="name">Chad Calcote</div>
         <div className="icons">
@@ -16,7 +14,7 @@ const Footer = () => {
           <SocialIcon url="mailto:calcote@att.net" />
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
