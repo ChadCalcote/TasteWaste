@@ -7,22 +7,21 @@ import { fetchCityRestaurants } from "../../store/restaurants";
 import { fetchOneCity } from "../../store/cities";
 import RestaurantCard from "../RestaurantCard";
 
-const CityPage = ({changeImg, user}) => {
-
+const CityPage = ({ changeImg, user }) => {
   const { city } = useParams();
 
   const dispatch = useDispatch();
 
-  const restaurants = useSelector(reduxState => {
-    return reduxState.restaurants
+  const restaurants = useSelector((reduxState) => {
+    return reduxState.restaurants;
   });
 
-  const reduxCity = useSelector(reduxState => {
-    return reduxState.cities
+  const reduxCity = useSelector((reduxState) => {
+    return reduxState.cities;
   });
 
   useEffect(() => {
-    switch(city) {
+    switch (city) {
       case "denver":
         changeImg(
           "url(https://red.msudenver.edu/media/red/2020/august/denversummer_hero2_RED.jpg)"
@@ -44,38 +43,36 @@ const CityPage = ({changeImg, user}) => {
 
   useEffect(() => {
     dispatch(fetchOneCity(city));
-    dispatch(fetchCityRestaurants(city))
-  }, [dispatch, city])
+    dispatch(fetchCityRestaurants(city));
+  }, [dispatch, city]);
 
-    return (
-      <div className="city-page-container">
-        {user ? <h1>{`Welcome to TasteWaste, ${user.username}!`}</h1> : null}
-        {restaurants.length > 0 ? (
-          <RestaurantCard className="restaurant" restaurant={restaurants[0]} />
-        ) : null}
-        <div className="city-page-container__restaurant-cards">
-          {restaurants.length > 0
-            ? restaurants
-                .slice(1)
-                .map((restaurant) => (
-                  <RestaurantCard
-                    className="restaurant"
-                    key={restaurant.id}
-                    restaurant={restaurant}
-                  />
-                ))
-            : null}
-        </div>
-        <div className="city-page-container__community-impact">
-          {/* Community Impact Card  */}
-        </div>
-        <div className="city-page-container__map-container">
-          {restaurants.length > 0 ? (
-            <MapContainer restaurants={restaurants} city={reduxCity} />
-          ) : null}
-        </div>
+  return (
+    <div className="city-page-container">
+      {user ? <h1>{`Welcome to TasteWaste, ${user.username}!`}</h1> : null}
+
+      <div className="city-page-container__restaurant-cards">
+        {restaurants.length > 0
+          ? restaurants.map((restaurant) => (
+              <RestaurantCard
+                className="restaurant"
+                key={restaurant.id}
+                restaurant={restaurant}
+              />
+            ))
+          : null}
       </div>
-    );
-}
+
+      {/*<div className="city-page-container__community-impact">
+        Community Impact Card
+      </div>*/}
+
+      <div className="city-page-container__map-container">
+        {restaurants.length > 0 ? (
+          <MapContainer restaurants={restaurants} city={reduxCity} />
+        ) : null}
+      </div>
+    </div>
+  );
+};
 
 export default CityPage;
