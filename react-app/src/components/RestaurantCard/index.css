@@ -1,27 +1,60 @@
 .restaurant-card-container {
-    height: 300px;
-    width: 300px;
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 5px 0 5px -2px #036603;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 5px 0 5px -2px #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2.25rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out;
+}
+@media (min-width: 481px) {
+  .restaurant-card-container {
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    max-width: 300px;
+  }
+}
+
+.restaurant-card-container:focus,
+.restaurant-card-container:hover {
+  background-color: #f0f0f0;
 }
 
 .restaurant-card-container__title {
-    color: #036603;
-    text-align: center;
+  border-bottom: 1px solid #036603;
+  color: #036603;
+  font-size: 1.25rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  width: 100%;
+}
+
+.restaurant-card-container__address {
+  color: #036603;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
+  text-align: center;
+}
+
+.restaurant-card-container__rating {
+  margin-bottom: 0.75rem;
 }
 
 .restaurant-card-container__rating img {
-    width: 150px;
+  width: 150px;
 }
 
+.restaurant-card-container__photo {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
 
 .restaurant-card-container__photo img {
-    width: 200px;
-    height: 80px;
-    border: solid 0.3px black;
+  border: 1px solid #031176;
+  width: 100%;
 }
