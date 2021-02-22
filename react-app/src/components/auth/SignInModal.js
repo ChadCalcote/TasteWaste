@@ -18,37 +18,30 @@ export default function SignInModal({
   setAuthenticated,
   setUser,
   open,
-  setOpen,
+  onClose,
 }) {
   const classes = useStyles();
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const body = (
     <div className={classes.paper}>
       <LoginForm
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
-        closeModal={() => setOpen(false)}
+        closeModal={() => onClose()}
         setUser={setUser}
       />
     </div>
   );
 
   return (
-    <div>
-      <div style={{ color: "#f37588" }}>Sign In</div>
-      <Modal
-        className="modal"
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        {body}
-      </Modal>
-    </div>
+    <Modal
+      className="modal"
+      open={open}
+      onClose={() => onClose()}
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+    >
+      {body}
+    </Modal>
   );
 }

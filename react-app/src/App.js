@@ -47,6 +47,7 @@ function App() {
         id="mainContainer"
       >
         <NavBar
+          authenticated={authenticated}
           setAuthenticated={setAuthenticated}
           changeImg={changeImg}
           setUser={setUser}
