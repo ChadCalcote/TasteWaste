@@ -6,16 +6,15 @@ export default function SignUpDrawer({
   authenticated,
   setAuthenticated,
   open,
-  setOpen,
+  onClose,
 }) {
   return (
     <div>
-      <div style={{ color: "#f37588" }}>Sign Up</div>
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+      <Drawer anchor="right" open={open} onClose={() => onClose()}>
         <SignUpForm
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}
-          closeDrawer={() => setOpen(false)}
+          closeDrawer={() => onClose()}
         />
       </Drawer>
     </div>

@@ -1,6 +1,6 @@
 // React Dependencies
-import React, { useState } from "react";
-import { Redirect, NavLink } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+import { useHistory } from "react-router-dom";
 // Services
 import { logout } from "../services/auth";
 // Material UI Items
@@ -9,15 +9,15 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import ArrowUpwardSharpIcon from "@material-ui/icons/ArrowUpwardSharp";
-import ExitToAppSharpIcon from "@material-ui/icons/ExitToAppSharp";
 import AssignmentReturnRoundedIcon from "@material-ui/icons/AssignmentReturnRounded";
+import ExitToAppSharpIcon from "@material-ui/icons/ExitToAppSharp";
 import { makeStyles } from "@material-ui/core/styles";
 // Local Components
 import SignInModal from "./auth/SignInModal";
 import SignUpDrawer from "./auth/SignUpDrawer";
-import LogoutButton from "./auth/LogoutButton";
 
 const useStyles = makeStyles({
   root: {
@@ -57,26 +57,44 @@ const StyledMenu = withStyles({
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
+    color: "#f37588",
+    "& svg": {
+      fill: "#f37588",
+    },
     "&:focus": {
       backgroundColor: theme.palette.primary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
+      },
+      "& svg": {
+        fill: "#fff",
+      },
+    },
+    "&:hover": {
+      backgroundColor: theme.palette.primary.main,
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: theme.palette.common.white,
+      },
+      "& svg": {
+        fill: "#fff",
       },
     },
   },
 }))(MenuItem);
 
 export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [openSignInModal, setOpenSignInModal] = useState(false);
-  const [openSignUpDrawer, setOpenSignUpDrawer] = useState(false);
+  const history = useHistory();
 
-  const handleOpen = () => {
-    setOpenSignInModal(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [logInModalIsOpen, setLogInModalIsOpen] = useState(false);
+  const [signUpDrawerIsOpen, setSignUpDrawerIsOpen] = useState(false);
+
+  const handleLogInModalOpen = () => {
+    setLogInModalIsOpen(true);
   };
 
-  const handleDrawer = () => {
-    setOpenSignUpDrawer(true);
+  const handleSignUpDrawerOpen = () => {
+    setSignUpDrawerIsOpen(true);
   };
 
   const classes = useStyles();
@@ -93,68 +111,67 @@ export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
     e.preventDefault();
     await logout();
     setAuthenticated(false);
-    return <Redirect to="/" />;
+    history.push("/");
   };
 
   return (
-    <div>
-      <Button
-        classes={{
-          root: classes.root, // class name, e.g. `classes-nesting-root-x`
-          label: classes.label, // class name, e.g. `classes-nesting-label-x`
-        }}
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        <AccountCircleRoundedIcon fontSize="large" />
-      </Button>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <StyledMenuItem onClick={handleOpen}>
-          <ListItemIcon>
-            <ExitToAppSharpIcon fontSize="small" />
-          </ListItemIcon>
-          <SignInModal
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-            setUser={setUser}
-            open={openSignInModal}
-            setOpen={setOpenSignInModal}
-          />
-        </StyledMenuItem>
-        <StyledMenuItem onClick={handleDrawer}>
-          <ListItemIcon>
-            <ArrowUpwardSharpIcon fontSize="small" />
-          </ListItemIcon>
-          <SignUpDrawer
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-            open={openSignUpDrawer}
-            setOpen={setOpenSignUpDrawer}
-          />
-        </StyledMenuItem>
-        <NavLink
-          style={{ textDecoration: "none" }}
-          to="/"
-          onClick={onLogout}
-          exact={true}
+    <Fragment>
+      <div>
+        <Button
+          classes={{
+            root: classes.root, // class name, e.g. `classes-nesting-root-x`
+            label: classes.label, // class name, e.g. `classes-nesting-label-x`
+          }}
+          aria-controls="customized-menu"
+          aria-haspopup="true"
+          variant="contained"
+          color="primary"
+          onClick={handleClick}
         >
-          <StyledMenuItem>
+          <AccountCircleRoundedIcon fontSize="large" />
+        </Button>
+        <StyledMenu
+          id="customized-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <StyledMenuItem onClick={handleLogInModalOpen}>
+            <ListItemIcon>
+              <ExitToAppSharpIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Sign in" />
+          </StyledMenuItem>
+          <StyledMenuItem onClick={handleSignUpDrawerOpen}>
+            <ListItemIcon>
+              <ArrowUpwardSharpIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Sign up" />
+          </StyledMenuItem>
+          <StyledMenuItem onClick={onLogout}>
             <ListItemIcon>
               <AssignmentReturnRoundedIcon fontSize="small" />
             </ListItemIcon>
-            <LogoutButton setAuthenticated={setAuthenticated} />
+            <ListItemText primary="Log out" />
           </StyledMenuItem>
-        </NavLink>
-      </StyledMenu>
-    </div>
+        </StyledMenu>
+      </div>
+
+      <SignInModal
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+        setUser={setUser}
+        open={logInModalIsOpen}
+        onClose={() => setLogInModalIsOpen(false)}
+      />
+
+      <SignUpDrawer
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+        open={signUpDrawerIsOpen}
+        onClose={() => setSignUpDrawerIsOpen(false)}
+      />
+    </Fragment>
   );
 }

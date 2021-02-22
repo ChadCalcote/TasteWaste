@@ -4,7 +4,7 @@ import "./index.css";
 
 const Footer = () => {
   return (
-    <footer class="footer-container" role="contentinfo">
+    <footer className="footer-container" role="contentinfo">
       <p className="footer-container_title">TasteWaste</p>
       <div className="footer-container_chad">
         <div className="name">Chad Calcote</div>
