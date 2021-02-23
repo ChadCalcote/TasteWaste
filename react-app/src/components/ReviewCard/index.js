@@ -2,6 +2,7 @@ import "./index.css";
 import React from "react";
 
 import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
+import UserPhoto from "../UserPhoto";
 
 const dateFormat = (date) => {
   return date.slice(5, 17);
@@ -25,6 +26,7 @@ const ReviewCard = ({ review, user, currentUser }) => {
   return (
     <div className="review-card-container">
       <div className="review-card-container__username">
+          <UserPhoto user={user} />
           {user.username}
           {currentUser && user.id === currentUser.id ? <CancelRoundedIcon onClick={onDelete}/> : null}
       </div>
