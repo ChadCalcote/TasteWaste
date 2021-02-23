@@ -29,6 +29,10 @@ h1 {
   position: relative;
 }
 
+.test {
+  background: linear-gradient(#760492, rgba(255, 116, 3, 0.945))
+}
+
 .nav2 {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.1);
