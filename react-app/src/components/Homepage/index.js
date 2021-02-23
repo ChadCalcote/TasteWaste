@@ -7,7 +7,7 @@ const Homepage = ({ setUser, changeImg }) => {
 
   useEffect(() => {
     changeImg(
-      "linear-gradient(to right top, rgb(28,28,28), rgb(98,63,63), rgb(184,99,99), rgb(252,119,119), rgb(253,154,154), rgb(252,172,172), rgb(252,188,188))"
+      "linear-gradient(0deg, rgba(252,197,228,1) 0%, rgba(255,125,124,1) 40%, rgba(54,41,142,1) 89%, rgba(3,16,118,1) 100%)"
     );
   });
 
