@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { fetchAllReviews } from "../../store/reviews";
 import { useDispatch } from "react-redux";
 
+import ReactStars from "react-rating-stars-component";
+
 const RestaurantCard = ({ restaurant }) => {
   const dispatch = useDispatch();
 
@@ -24,9 +26,13 @@ const RestaurantCard = ({ restaurant }) => {
     >
       <h2 className="restaurant-card-container__title">{restaurant.name}</h2>
       <div className="restaurant-card-container__rating">
-        <img
-          src="https://lh3.googleusercontent.com/proxy/FbGWNQjICuLl5S5N4WRQmARk-c-UL4_A15_fgxOTmn1rc__MQ_9_YHkdr1Uc2xSq22Ftie96XDgq1tb-iKZ3DpEOkV_CnRDtC_0qn4G2EhRY"
-          alt="stars"
+        <ReactStars
+          count={5}
+          size={24}
+          edit={false}
+          value={5}
+          isHalf={true}
+          activeColor="darkgreen"
         />
       </div>
       <div className="restaurant-card-container__address">

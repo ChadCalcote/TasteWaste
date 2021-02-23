@@ -1,9 +1,15 @@
 import "./home.css";
 import DemoButton from "../auth/DemoButton";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Homepage = ({ setUser }) => {
+const Homepage = ({ setUser, changeImg }) => {
   const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    changeImg(
+      "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
+    );
+  });
 
   return (
     <div className="homepage-container">
