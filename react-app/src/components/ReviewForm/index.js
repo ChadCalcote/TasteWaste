@@ -33,20 +33,12 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
 
   return (
     <form onSubmit={onSubmit}>
-    <h1 style={{color: "black"}}>{`${restaurant.name} Waste Review`}</h1>
+      <h1 style={{ color: "black" }}>{`${restaurant.name} Waste Review`}</h1>
       <div>
-        <input
-          type="hidden"
-          name="user"
-          value={user ? user.id : 1}
-        ></input>
+        <input type="hidden" name="user" value={user ? user.id : 1}></input>
       </div>
       <div>
-        <input
-          type="hidden"
-          name="restaurant"
-          value={restaurant.id}
-        ></input>
+        <input type="hidden" name="restaurant" value={restaurant.id}></input>
       </div>
       <div>
         <label>How was your experience?</label>
@@ -61,6 +53,15 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
       </div>
       <div>
         <label>Rating</label>
+        <input
+          type="number"
+          name="rating"
+          onChange={updateRating}
+          value={rating}
+        ></input>
+      </div>
+      <div>
+        <label>Rating Test</label>
         <input
           type="number"
           name="rating"
