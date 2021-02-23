@@ -3,6 +3,8 @@ import './index.css';
 import React, { useState } from "react";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
+import ReactStars from "react-rating-stars-component";
+
 
 const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisplay, setReviewsToDisplay }) => {
   const [body, setBody] = useState("");
@@ -27,8 +29,8 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
     setBody(e.target.value);
   };
 
-  const updateRating = (e) => {
-    setRating(e.target.value);
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
   };
 
   return (
@@ -41,7 +43,17 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
         <input type="hidden" name="restaurant" value={restaurant.id}></input>
       </div>
       <div>
-        <label>How was your experience?</label>
+        <label>Overall Sustainability Score</label>
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          value={rating}
+          size={24}
+          activeColor="darkgreen"
+        />
+      </div>
+      <div>
+        <label>Tell us about your experience</label>
         <br />
         <textarea
           className="body"
@@ -51,25 +63,8 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
           value={body}
         ></textarea>
       </div>
-      <div>
-        <label>Rating</label>
-        <input
-          type="number"
-          name="rating"
-          onChange={updateRating}
-          value={rating}
-        ></input>
-      </div>
-      <div>
-        <label>Rating Test</label>
-        <input
-          type="number"
-          name="rating"
-          onChange={updateRating}
-          value={rating}
-        ></input>
-      </div>
-      <h3>Check Box if Items were Compostable, Recyclable, or not offered</h3>
+
+      <h3>Check box if items were Compostable, Recyclable, or not offered</h3>
       <div>
         <label>Bags</label>
         <input

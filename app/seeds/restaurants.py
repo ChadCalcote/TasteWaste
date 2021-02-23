@@ -3,7 +3,7 @@ from app.models import db, Restaurant
 # Adds a demo restaurant, you can add other restaurants here if you want
 def seed_restaurants():
 
-    joann = Restaurant(name='Joann\'s Fine Foods', description='Joann’s Fine Foods is a South Congress neighborhood spot, a new take on the American diner, and a vacation for locals and tourists alike. Open early and late at the Austin Motel, Joann’s is a welcome respite for early birds and night owls, outlaws and in-laws, all ways always.', photo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROPbs93YKsB4YQpGis0wY4adNYc8FhdwFXvg&usqp=CAU', address='1224 S Congress Ave', city='Austin', state='TX', zip_code='78704',
+    joann = Restaurant(name='Joann\'s Fine Foods', description='Joann’s Fine Foods is a South Congress neighborhood spot, a new take on the American diner, and a vacation for locals and tourists alike. Open early and late at the Austin Motel, Joann’s is a welcome respite for early birds and night owls, outlaws and in-laws, all ways always.', photo='https://joannsaustin.com/wp-content/uploads/2018/10/MH_MMG_JOANNS_1568_FINAL-e1540241567159.jpg', address='1224 S Congress Ave', city='Austin', state='TX', zip_code='78704',
                 lat="30.251772505429667", lng="-97.7491314024451")
 
     db.session.add(joann)
@@ -24,7 +24,7 @@ def seed_restaurants():
 
     db.session.commit()
 
-    cityO = Restaurant(name='City O\' City', description='Bohemian hangout dishing up high-concept vegetarian fare to meat & plant eaters alike.', photo='https://resizer.otstatic.com/v2/photos/wide-huge/1/26369987.jpg', address='206 E 13th Ave', city='Denver', state='CO', zip_code='80203',
+    cityO = Restaurant(name='City O\' City', description='Bohemian hangout dishing up high-concept vegetarian fare to meat & plant eaters alike.', photo='https://custombyrushton.com/w/wp-content/uploads/2015/04/city-o-city-vegetarian-restaurant-denver_1.jpg', address='206 E 13th Ave', city='Denver', state='CO', zip_code='80203',
                 lat="39.73686403703116", lng="-104.98463530223482")
 
     db.session.add(cityO)
