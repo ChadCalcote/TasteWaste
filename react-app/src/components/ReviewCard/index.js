@@ -19,11 +19,14 @@ const ReviewCard = ({ review, user, currentUser }) => {
     return await response.json();
   }
 
+  console.log(user.id === currentUser.id);
+  console.log(currentUser);
+
   return (
     <div className="review-card-container">
       <div className="review-card-container__username">
           {user.username}
-          {user === currentUser ? <CancelRoundedIcon onClick={onDelete}/> : null}
+          {currentUser && user.id === currentUser.id ? <CancelRoundedIcon onClick={onDelete}/> : null}
       </div>
       <div className="review-card-container__date">
           {dateFormat(review.created)}

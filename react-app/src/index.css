@@ -29,9 +29,13 @@ h1 {
   position: relative;
 }
 
+.test {
+  background: linear-gradient(#760492, rgba(255, 116, 3, 0.945))
+}
+
 .nav2 {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   padding-left: 0.375rem;

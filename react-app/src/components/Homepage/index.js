@@ -7,7 +7,7 @@ const Homepage = ({ setUser, changeImg }) => {
 
   useEffect(() => {
     changeImg(
-      "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
+      "linear-gradient(0deg, rgba(252,197,228,1) 0%, rgba(255,125,124,1) 40%, rgba(54,41,142,1) 89%, rgba(3,16,118,1) 100%)"
     );
   });
 
