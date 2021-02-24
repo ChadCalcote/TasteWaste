@@ -2,8 +2,6 @@ import "./index.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
-import { fetchAllReviews } from "../../store/reviews";
 import { useDispatch } from "react-redux";
 
 import ReactStars from "react-rating-stars-component";

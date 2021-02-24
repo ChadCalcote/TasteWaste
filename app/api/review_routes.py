@@ -84,11 +84,11 @@ def edit(id):
 @login_required
 def delete(id):
     review = Review.query.get(id)
-    if current_user.id == review.user_id:
-        db.session.delete(review)
-        db.commit()
-    else:
-        return {"error": "You are not authorized to delete this review"}
+    # if current_user.id == review.user_id:
+    db.session.delete(review)
+    db.session.commit()
+    # else:
+    #     return {"error": "You are not authorized to delete this review"}
 
     return review.to_dict()
 
