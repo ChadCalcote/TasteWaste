@@ -26,7 +26,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     method: "DELETE",
   });
   console.log(response);
-  // dispatch(removeOneReview(response.data.review));
+  // dispatch(removeOneReview(response.review));
 };
 
 export const createReview = (data) => {
@@ -65,7 +65,7 @@ const reviewsReducer = (state = initialState, action) => {
       newState = action.reviews;
       return newState;
     case REMOVE_ONE_REVIEW:
-      newState = [...state.filter((review) => review.id != action.payload.id)];
+      newState = [...state.filter((review) => review.id !== action.payload.id)];
       return newState;
     default:
       return state;

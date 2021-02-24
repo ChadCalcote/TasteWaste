@@ -19,7 +19,7 @@ const ReviewCard = ({ review, user, currentUser, reviewsToDisplay, setReviewsToD
   const handleReviewDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteReview(review.id));
-    setReviewsToDisplay([...reviewsToDisplay.filter(setReview => setReview.id != review.id)])
+    setReviewsToDisplay([...reviewsToDisplay.filter(setReview => setReview.id !== review.id)])
   }
 
   return (
