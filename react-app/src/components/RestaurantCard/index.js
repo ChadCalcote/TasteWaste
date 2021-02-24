@@ -1,5 +1,5 @@
 import "./index.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -11,12 +11,35 @@ import ReactStars from "react-rating-stars-component";
 const RestaurantCard = ({ restaurant }) => {
   const dispatch = useDispatch();
 
-  // const [reviews, setReviews] = useState({});
-  // const [rating, setRating] = useState();
+  const [reviews, setReviews] = useState({});
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    dispatch(fetchAllReviews(restaurant.id));
+    async function fetchData() {
+      const responseFromDb = await fetch(
+        `/api/restaurants/${restaurant.id}/reviews`
+      );
+      const reviewsList = await responseFromDb.json();
+      setReviews(reviewsList);
+    }
+    fetchData();
   }, [dispatch, restaurant.id]);
+
+  useEffect(() => {
+    setRating(getRating(reviews))
+  }, [reviews])
+
+  const getRating = (reviews) => {
+    let ratings = [];
+
+    if (Array.isArray(reviews)) {
+      reviews.forEach((review) => {
+        ratings.push(review["rating"]);
+      });
+      return ratings.reduce((rating, acc) => rating + acc) / ratings.length;
+    }
+  }
+
 
   return (
     <Link
@@ -26,14 +49,14 @@ const RestaurantCard = ({ restaurant }) => {
     >
       <h2 className="restaurant-card-container__title">{restaurant.name}</h2>
       <div className="restaurant-card-container__rating">
-        <ReactStars
+        {rating && <ReactStars
           count={5}
           size={24}
           edit={false}
-          value={5}
+          value={rating}
           isHalf={true}
           activeColor="darkgreen"
-        />
+        />}
       </div>
       <div className="restaurant-card-container__address">
         {restaurant.address}
