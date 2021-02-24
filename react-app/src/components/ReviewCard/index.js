@@ -5,20 +5,21 @@ import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 import UserPhoto from "../UserPhoto";
 import ReactStars from "react-rating-stars-component";
 
+import { useDispatch } from "react-redux";
+import { deleteReview } from "../../store/reviews";
+
 const dateFormat = (date) => {
   return date.slice(5, 17);
 };
 
-const ReviewCard = ({ review, user, currentUser }) => {
+const ReviewCard = ({ review, user, currentUser, reviewsToDisplay, setReviewsToDisplay }) => {
 
-  const onDelete = async () => {
-    const response = await fetch(`/api/reviews/${review.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await response.json();
+  const dispatch = useDispatch();
+
+  const handleReviewDelete = async (e) => {
+    e.preventDefault();
+    await dispatch(deleteReview(review.id));
+    setReviewsToDisplay([...reviewsToDisplay.filter(setReview => setReview.id != review.id)])
   }
 
   return (
@@ -27,7 +28,7 @@ const ReviewCard = ({ review, user, currentUser }) => {
         <UserPhoto user={user} />
         {user.username}
         {currentUser && user.id === currentUser.id ? (
-          <CancelRoundedIcon onClick={onDelete} />
+          <CancelRoundedIcon onClick={handleReviewDelete} />
         ) : null}
       </div>
       <div className="review-card-container__date">

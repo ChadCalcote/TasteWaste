@@ -1,6 +1,6 @@
 const SET_REVIEW = "SET_REVIEW";
 const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
-
+const REMOVE_ONE_REVIEW = "REMOVE_ONE_REVIEW";
 
 export const setReview = (review) => {
   return {
@@ -14,6 +14,19 @@ export const getAllReviews = (reviews) => {
     type: GET_ALL_REVIEWS,
     reviews: reviews,
   };
+};
+
+export const removeOneReview = (review) => ({
+  type: REMOVE_ONE_REVIEW,
+  payload: review,
+});
+
+export const deleteReview = (reviewId) => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method: "DELETE",
+  });
+  console.log(response);
+  // dispatch(removeOneReview(response.data.review));
 };
 
 export const createReview = (data) => {
@@ -50,6 +63,9 @@ const reviewsReducer = (state = initialState, action) => {
       return newState;
     case GET_ALL_REVIEWS:
       newState = action.reviews;
+      return newState;
+    case REMOVE_ONE_REVIEW:
+      newState = [...state.filter((review) => review.id != action.payload.id)];
       return newState;
     default:
       return state;

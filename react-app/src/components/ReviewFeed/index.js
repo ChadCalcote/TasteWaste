@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers } from "../../store/users";
 
 
-const ReviewFeed = ({ reviewsToDisplay, currentUser }) => {
+const ReviewFeed = ({ reviewsToDisplay, setReviewsToDisplay, currentUser }) => {
   const dispatch = useDispatch();
 
   const users = useSelector((reduxState) => {
@@ -36,7 +36,7 @@ const ReviewFeed = ({ reviewsToDisplay, currentUser }) => {
       {!Array.isArray(reviewsToDisplay) && <h3>Start the Conversation</h3>}
       {Array.isArray(reviewsToDisplay) &&
         reviewsToDisplay.map((review) => (
-          <ReviewCard key={review.id} review={review} user={reviewUser(review)} currentUser={currentUser} className="review" />
+          <ReviewCard key={review.id} review={review} user={reviewUser(review)} currentUser={currentUser} reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} className="review" />
         ))}
     </div>
   );
