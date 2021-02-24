@@ -6,7 +6,7 @@ import UserPhoto from "../UserPhoto";
 import ReactStars from "react-rating-stars-component";
 
 import { useDispatch } from "react-redux";
-import { deleteReview } from "../../store/reviews";
+import { deleteReviewTest } from "../../store/reviews";
 
 const dateFormat = (date) => {
   return date.slice(5, 17);
@@ -18,7 +18,7 @@ const ReviewCard = ({ review, user, currentUser, reviewsToDisplay, setReviewsToD
 
   const handleReviewDelete = async (e) => {
     e.preventDefault();
-    await dispatch(deleteReview(review.id));
+    await dispatch(deleteReviewTest(review.id));
     setReviewsToDisplay([...reviewsToDisplay.filter(setReview => setReview.id !== review.id)])
   }
 

@@ -19,7 +19,6 @@ import "./index.css";
 // Thunks
 import { fetchOneRestaurant } from "../../store/restaurants";
 import { fetchAllReviews } from "../../store/reviews";
-import { fetchAllUsers } from "../../store/users";
 
 const RestaurantPage = ({ changeImg, user }) => {
   const params = useParams();
@@ -45,10 +44,6 @@ const RestaurantPage = ({ changeImg, user }) => {
     dispatch(fetchOneRestaurant(restaurantId));
     dispatch(fetchAllReviews(restaurantId));
   }, [dispatch, restaurantId]);
-
-  useEffect(() => {
-    dispatch(fetchAllUsers());
-  }, [dispatch]);
 
   useEffect(() => {
     if (reviews[0]) {

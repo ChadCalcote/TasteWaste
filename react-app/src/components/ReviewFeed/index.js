@@ -29,7 +29,7 @@ const ReviewFeed = ({ reviewsToDisplay, setReviewsToDisplay, currentUser }) => {
 
     useEffect(() => {
       dispatch(fetchAllUsers());
-    });
+    }, [dispatch]);
 
   return (
     <div className="review-feed">
