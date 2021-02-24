@@ -20,9 +20,6 @@ const ReviewCard = ({ review, user, currentUser }) => {
     return await response.json();
   }
 
-  console.log(user.id === currentUser.id);
-  console.log(currentUser);
-
   return (
     <div className="review-card-container">
       <div className="review-card-container__username">
