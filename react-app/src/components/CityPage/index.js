@@ -57,6 +57,7 @@ const CityPage = ({ changeImg, user }) => {
                 className="restaurant"
                 key={restaurant.id}
                 restaurant={restaurant}
+                isLink
               />
             ))
           : null}

@@ -1,12 +1,18 @@
-import './index.css';
+import "./index.css";
 
 import React, { useState } from "react";
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleHook";
 import ReactStars from "react-rating-stars-component";
 
-
-const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisplay, setReviewsToDisplay }) => {
+const ReviewForm = ({
+  authenticated,
+  closeModal,
+  user,
+  restaurant,
+  reviewsToDisplay,
+  setReviewsToDisplay,
+}) => {
   const [body, setBody] = useState("");
   const [rating, setRating] = useState();
   const [bags, toggleBags] = useToggleState(false);
@@ -18,11 +24,22 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
 
   const onSubmit = async (e) => {
     e.preventDefault();
-      const review = await addReview(user.id, restaurant.id, body, rating, bags, utensils, napkins, cups, bowls, straws);
-      if (!review.errors) {
-        closeModal();
-        setReviewsToDisplay([...reviewsToDisplay, review])
-      }
+    const review = await addReview(
+      user.id,
+      restaurant.id,
+      body,
+      rating,
+      bags,
+      utensils,
+      napkins,
+      cups,
+      bowls,
+      straws
+    );
+    if (!review.errors) {
+      closeModal();
+      setReviewsToDisplay([...reviewsToDisplay, review]);
+    }
   };
 
   const updateBody = (e) => {
@@ -42,7 +59,7 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
       <div>
         <input type="hidden" name="restaurant" value={restaurant.id}></input>
       </div>
-      <div>
+      <div className="review-form__item">
         <label>Overall Sustainability Score</label>
         <ReactStars
           count={5}
@@ -52,83 +69,84 @@ const ReviewForm = ({ authenticated, closeModal, user, restaurant, reviewsToDisp
           activeColor="darkgreen"
         />
       </div>
-      <div>
-        <label>Tell us about your experience</label>
-        <br />
+      <div className="review-form__item">
+        <label htmlFor="experience">Tell us about your experience</label>
         <textarea
           className="body"
           type="text"
           name="body"
+          id="experience"
           onChange={updateBody}
           value={body}
         ></textarea>
       </div>
 
       <h3>Check box if items were Compostable, Recyclable, or not offered</h3>
-      <div>
-        <label>Bags</label>
+      <div className="review-form__checkbox">
         <input
           type="checkbox"
           name="bags"
           checked={bags}
           onChange={toggleBags}
           value={bags}
-        ></input>
+        />
+        <label>Bags</label>
       </div>
-      <div>
-        <label>Utensils</label>
+      <div className="review-form__checkbox">
         <input
           type="checkbox"
           name="utensils"
           checked={utensils}
           onChange={toggleUtensils}
           value={utensils}
-        ></input>
+        />
+        <label>Utensils</label>
       </div>
-      <div>
-        <label>Napkins</label>
+      <div className="review-form__checkbox">
         <input
           type="checkbox"
           name="napkins"
           checked={napkins}
           onChange={toggleNapkins}
           value={napkins}
-        ></input>
+        />
+        <label>Napkins</label>
       </div>
-      <div>
-        <label>Cups</label>
+      <div className="review-form__checkbox">
         <input
           type="checkbox"
           name="cups"
           checked={cups}
           onChange={toggleCups}
           value={cups}
-        ></input>
+        />
+        <label>Cups</label>
       </div>
-      <div>
-        <label>Bowls</label>
+      <div className="review-form__checkbox">
         <input
           type="checkbox"
           name="bowls"
           checked={bowls}
           onChange={toggleBowls}
           value={bowls}
-        ></input>
+        />
+        <label>Bowls</label>
       </div>
-      <div>
-        <label>Straws</label>
+      <div className="review-form__checkbox">
         <input
           type="checkbox"
           name="straws"
           checked={straws}
           onChange={toggleStraws}
           value={straws}
-        ></input>
+        />
+        <label>Straws</label>
       </div>
-      <button type="submit">Add Review</button>
+      <button className="review-form__button" type="submit">
+        Add Review
+      </button>
     </form>
   );
 };
 
 export default ReviewForm;
-

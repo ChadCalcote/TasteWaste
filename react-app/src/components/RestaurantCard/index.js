@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 import ReactStars from "react-rating-stars-component";
 
-const RestaurantCard = ({ restaurant }) => {
+const RestaurantCard = ({ isLink, restaurant }) => {
   const dispatch = useDispatch();
 
   const [reviews, setReviews] = useState({});
@@ -24,8 +24,8 @@ const RestaurantCard = ({ restaurant }) => {
   }, [dispatch, restaurant.id]);
 
   useEffect(() => {
-    setRating(getRating(reviews))
-  }, [reviews])
+    setRating(getRating(reviews));
+  }, [reviews]);
 
   const getRating = (reviews) => {
     let ratings = [];
@@ -36,36 +36,65 @@ const RestaurantCard = ({ restaurant }) => {
       });
       return ratings.reduce((rating, acc) => rating + acc) / ratings.length;
     }
+  };
+
+  if (isLink) {
+    return (
+      <Link
+        className="restaurant-card-container"
+        style={{ textDecoration: "none" }}
+        to={`/restaurants/${restaurant.id}`}
+      >
+        <h2 className="restaurant-card-container__title">{restaurant.name}</h2>
+        <div className="restaurant-card-container__rating">
+          {rating && (
+            <ReactStars
+              count={5}
+              size={24}
+              edit={false}
+              value={rating}
+              isHalf={true}
+              activeColor="darkgreen"
+            />
+          )}
+        </div>
+        <div className="restaurant-card-container__address">
+          {restaurant.address}
+          <br />
+          {`${restaurant.city}, ${restaurant.state}, ${restaurant.zip_code}`}
+        </div>
+        <div className="restaurant-card-container__photo">
+          <img src={restaurant.photo} alt="restaurant" />
+        </div>
+      </Link>
+    );
+  } else {
+    return (
+      <article className="restaurant-card-container">
+        <h2 className="restaurant-card-container__title">{restaurant.name}</h2>
+        <div className="restaurant-card-container__rating">
+          {rating && (
+            <ReactStars
+              count={5}
+              size={24}
+              edit={false}
+              value={rating}
+              isHalf={true}
+              activeColor="darkgreen"
+            />
+          )}
+        </div>
+        <div className="restaurant-card-container__address">
+          {restaurant.address}
+          <br />
+          {`${restaurant.city}, ${restaurant.state}, ${restaurant.zip_code}`}
+        </div>
+        <div className="restaurant-card-container__photo">
+          <img src={restaurant.photo} alt="restaurant" />
+        </div>
+      </article>
+    );
   }
-
-
-  return (
-    <Link
-      className="restaurant-card-container"
-      style={{ textDecoration: "none" }}
-      to={`/restaurants/${restaurant.id}`}
-    >
-      <h2 className="restaurant-card-container__title">{restaurant.name}</h2>
-      <div className="restaurant-card-container__rating">
-        {rating && <ReactStars
-          count={5}
-          size={24}
-          edit={false}
-          value={rating}
-          isHalf={true}
-          activeColor="darkgreen"
-        />}
-      </div>
-      <div className="restaurant-card-container__address">
-        {restaurant.address}
-        <br />
-        {`${restaurant.city}, ${restaurant.state}, ${restaurant.zip_code}`}
-      </div>
-      <div className="restaurant-card-container__photo">
-        <img src={restaurant.photo} alt="restaurant" />
-      </div>
-    </Link>
-  );
 };
 
 export default RestaurantCard;
