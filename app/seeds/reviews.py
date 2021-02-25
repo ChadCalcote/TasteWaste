@@ -37,7 +37,7 @@ def seed_reviews():
     osaka1 = Review(user_id=2, restaurant_id=5, body='Using up a lot of energy with their bright lights.', rating=3, bowls=False, cups=False, napkins=False, straws=True,
                    created=datetime.datetime.now(), updated=datetime.datetime.now())
 
-    osaka2 = Review(user_id=7, restaurant_id=5, body='I really enjoyed it, kept it simple with fine linens being used. Not a lot of waste going on in my experience', rating=5, bowls=False, cups=False, napkins=False, straws=True,
+    osaka2 = Review(user_id=6, restaurant_id=5, body='I really enjoyed it, kept it simple with fine linens being used. Not a lot of waste going on in my experience', rating=5, bowls=False, cups=False, napkins=False, straws=True,
                    created=datetime.datetime.now(), updated=datetime.datetime.now())
 
     osaka3 = Review(user_id=3, restaurant_id=5, body='There was more plastic being used for my to-go order than I expected.', rating=1, bowls=False, cups=False, napkins=False, straws=True,
