@@ -1,9 +1,14 @@
+# Import Flask dependencies
 from flask import Blueprint, jsonify, session, request
+# Database Models
 from app.models import User, db
+# Flask Forms for Validation
 from app.forms import LoginForm
 from app.forms import SignUpForm
+# Flask Login dependencies
 from flask_login import current_user, login_user, logout_user, login_required
 
+# Setup Auth Bluperint for all routes listed below
 auth_routes = Blueprint('auth', __name__)
 
 
