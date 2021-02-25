@@ -9,6 +9,7 @@ import ReviewModal from "../auth/ReviewModal";
 import ReviewFeed from "../ReviewFeed";
 
 // Icons
+import addReview from "../../resources/addReview.svg";
 import directions from "../../resources/directions.svg";
 import order from "../../resources/orderFood.svg";
 import call from "../../resources/phone.svg";
@@ -23,6 +24,11 @@ import { fetchAllReviews } from "../../store/reviews";
 const RestaurantPage = ({ changeImg, user }) => {
   const params = useParams();
   const dispatch = useDispatch();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const restaurant = useSelector((reduxState) => {
     return reduxState.restaurants;
@@ -32,12 +38,12 @@ const RestaurantPage = ({ changeImg, user }) => {
     return reduxState.reviews;
   });
 
-  const [ reviewsToDisplay, setReviewsToDisplay ] = useState([])
+  const [reviewsToDisplay, setReviewsToDisplay] = useState([]);
 
   const { restaurantId } = params;
 
   useEffect(() => {
-    changeImg("darkgreen")
+    changeImg("darkgreen");
   });
 
   useEffect(() => {
@@ -47,29 +53,57 @@ const RestaurantPage = ({ changeImg, user }) => {
 
   useEffect(() => {
     if (reviews[0]) {
-      setReviewsToDisplay([...reviews])
+      setReviewsToDisplay([...reviews]);
     }
   }, [dispatch, reviews]);
 
   return (
-    <div className="restaurant-page-container">
-      <div className="restaurant-page-container__banner">
+    <div className="restaurant-page__container">
+      <div className="restaurant-page__banner">
         <img className="photo" src={restaurant.photo} alt="restaurant"></img>
+      </div>
+      <div className="restaurant-page__content">
         <RestaurantCard restaurant={restaurant} />
+
+        <ul className="restaurant-page__link-bar">
+          <li>
+            <button onClick={handleOpen}>
+              Leave Review
+              <img src={addReview} alt="addReview" />
+            </button>
+          </li>
+          <li>
+            <button onClick={handleOpen}>
+              Get Directions
+              <img src={directions} alt="directions" />
+            </button>
+          </li>
+          <li>
+            <button onClick={handleOpen}>
+              Order Food
+              <img src={order} alt="order" />
+            </button>
+          </li>
+          <li>
+            <button onClick={handleOpen}>
+              Call Business
+              <img src={call} alt="call" />
+            </button>
+          </li>
+        </ul>
+
+        <ReviewFeed
+          reviewsToDisplay={reviewsToDisplay}
+          setReviewsToDisplay={setReviewsToDisplay}
+          currentUser={user}
+        />
       </div>
-      <div className="restaurant-page-container__link-bar">
-        Leave Review
-        <ReviewModal user={user} restaurant={restaurant} reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} />
-        Get Directions
-        <img src={directions} alt="directions" />
-        Order Food
-        <img src={order} alt="order" />
-        Call Business
-        <img src={call} alt="call" />
-      </div>
-      <div>
-        <ReviewFeed reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} currentUser={user} />
-      </div>
+      <ReviewModal
+        user={user}
+        restaurant={restaurant}
+        reviewsToDisplay={reviewsToDisplay}
+        setReviewsToDisplay={setReviewsToDisplay}
+      />
     </div>
   );
 };

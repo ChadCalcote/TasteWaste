@@ -1,6 +1,28 @@
 .review-card-container {
-    border: solid black 3px;
-    color: white;
-    height: 150px;
-    width: 200px;
+  color: #222;
+  max-width: 300px;
+}
+
+.review-card-container__username {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.375rem;
+}
+
+.review-card-container__username > div {
+  align-items: center;
+  display: flex;
+}
+
+.review-card-container__username .user_photo {
+  margin-right: 0.75rem;
+}
+
+.review-card-container__date {
+  margin-bottom: 0.375rem;
+}
+
+.review-card-container__rating {
+  margin-bottom: 0.375rem;
 }

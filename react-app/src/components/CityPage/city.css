@@ -20,12 +20,15 @@
 .city-page-container__restaurant-cards {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1080px;
 }
 @media (min-width: 400px) {
   .city-page-container__restaurant-cards {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 }
 

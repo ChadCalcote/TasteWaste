@@ -4,6 +4,7 @@ button {
   border: 1px solid #fff;
   border-radius: 10px;
   color: #fff;
+  cursor: pointer;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;

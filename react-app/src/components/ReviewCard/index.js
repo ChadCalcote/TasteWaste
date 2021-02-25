@@ -12,21 +12,30 @@ const dateFormat = (date) => {
   return date.slice(5, 17);
 };
 
-const ReviewCard = ({ review, user, currentUser, reviewsToDisplay, setReviewsToDisplay }) => {
-
+const ReviewCard = ({
+  review,
+  user,
+  currentUser,
+  reviewsToDisplay,
+  setReviewsToDisplay,
+}) => {
   const dispatch = useDispatch();
 
   const handleReviewDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteReviewTest(review.id));
-    setReviewsToDisplay([...reviewsToDisplay.filter(setReview => setReview.id !== review.id)])
-  }
+    setReviewsToDisplay([
+      ...reviewsToDisplay.filter((setReview) => setReview.id !== review.id),
+    ]);
+  };
 
   return (
     <div className="review-card-container">
       <div className="review-card-container__username">
-        <UserPhoto user={user} />
-        {user.username}
+        <div>
+          <UserPhoto user={user} />
+          {user.username}
+        </div>
         {currentUser && user.id === currentUser.id ? (
           <CancelRoundedIcon onClick={handleReviewDelete} />
         ) : null}
