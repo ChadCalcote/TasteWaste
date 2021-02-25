@@ -103,6 +103,8 @@ const RestaurantPage = ({ changeImg, user }) => {
         restaurant={restaurant}
         reviewsToDisplay={reviewsToDisplay}
         setReviewsToDisplay={setReviewsToDisplay}
+        open={open}
+        setOpen={setOpen}
       />
     </div>
   );
