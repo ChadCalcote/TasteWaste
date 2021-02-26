@@ -1,6 +1,18 @@
 .review-card-container {
+  border: 1px solid #aaa;
+  border-radius: 18px;
   color: #222;
-  max-width: 300px;
+  flex-basis: calc(33.33333% - 1.5rem);
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+  max-width: calc(33.33333% - 1.5rem);
+  max-height: 275px;
+  overflow: auto;
+  padding: 1.5rem;
+}
+
+.review-card-container:last-child {
+  margin-right: 0;
 }
 
 .review-card-container__username {
