@@ -1,9 +1,14 @@
+# Flask Dependencies
 from flask import Blueprint, jsonify, session, request
+# Flask Login Dependencies
 from flask_login import login_required, current_user
+# Flask Form for Validation
 from app.forms import ReviewForm
+# Import Database Models
 from app.models import User, db, Review, Restaurant
+# DateTime Object to be used for reviews
 import datetime
-
+# Setup Blueprint for all routes written below
 review_routes = Blueprint('review', __name__)
 
 def validation_errors_to_error_messages(validation_errors):

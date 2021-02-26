@@ -1,6 +1,9 @@
+# Flask Dependency
 from flask import Blueprint
+# Import City Model
 from app.models import City
 
+# Setup Blueprint for all routes written below
 city_routes = Blueprint('city', __name__)
 
 

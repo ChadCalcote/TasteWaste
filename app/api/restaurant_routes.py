@@ -1,7 +1,11 @@
+#Flask Dependency
 from flask import Blueprint, jsonify
+# Flask Login imported
 from flask_login import login_required
+# Import Models
 from app.models import User, Restaurant, Review
 
+# Setup Blueprint for all routes listed below
 restaurant_routes = Blueprint('restaurants', __name__)
 
 

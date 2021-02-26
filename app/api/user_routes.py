@@ -1,7 +1,10 @@
+# Flask Dependencies
 from flask import Blueprint, jsonify
+# Flask Login Dependencies
 from flask_login import login_required
+# Import Database Models
 from app.models import User, Review
-
+# Setup Blueprint for all routes written below
 user_routes = Blueprint('users', __name__)
 
 # Retrieve All Users

@@ -1,3 +1,4 @@
+# Import Database and Review Model
 from app.models import db, Review
 import datetime
 # Adds a demo restaurant, you can add other restaurants here if you want
@@ -45,7 +46,7 @@ def seed_reviews():
 
     osaka4 = Review(user_id=4, restaurant_id=5, body='I would recommend staying away from here if you care about the Earth.', rating=2, bowls=False, cups=False, napkins=False, straws=True,
                    created=datetime.datetime.now(), updated=datetime.datetime.now())
-    
+
     osaka5 = Review(user_id=2, restaurant_id=5, body='Not my favorite place to be since they are wasting SO much.', rating=3, bowls=False, cups=False, napkins=False, straws=True,
                     created=datetime.datetime.now(), updated=datetime.datetime.now())
 
