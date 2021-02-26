@@ -1,3 +1,4 @@
+# Import Created Database
 from .db import db
 class Restaurant(db.Model):
   __tablename__ = 'restaurants'
@@ -32,5 +33,6 @@ class Restaurant(db.Model):
       "lat": self.lat
     }
 
+  # Used for url later to lowercase the city name
   def city_to_lower(self):
     return self.city.lower()

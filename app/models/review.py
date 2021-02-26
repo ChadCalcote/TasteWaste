@@ -1,5 +1,6 @@
+# Import Created Database
 from .db import db
-
+# Setup Review Model
 class Review(db.Model):
   __tablename__ = 'reviews'
 
