@@ -6,9 +6,9 @@
     padding: 1.5rem 0.75rem;
   }
 }
-@media (min-width: 800px) and (min-height: 880px) {
+@media (min-width: 984px) and (min-height: 880px) {
   .city-page-container {
-    height: calc(100vh - 64px - 130px);
+    height: calc(100vh - 64px - 98px - 1.5rem);
   }
 }
 
@@ -22,13 +22,23 @@
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1080px;
+  max-width: 660px;
 }
 @media (min-width: 400px) {
   .city-page-container__restaurant-cards {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (min-width: 664px) {
+  .city-page-container__restaurant-cards {
     justify-content: space-between;
+  }
+}
+@media (min-width: 984px) {
+  .city-page-container__restaurant-cards {
+    max-width: 1080px;
   }
 }
 

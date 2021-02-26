@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding: 1.5rem;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .footer-container {
     flex-direction: row;
   }
@@ -16,9 +16,16 @@
   color: #031176;
   font-size: 20px;
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .footer-container_title {
     margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-container_chad {
+    align-items: center;
+    display: flex;
   }
 }
 
@@ -28,6 +35,12 @@
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
+}
+@media (min-width: 768px) {
+  .name {
+    margin-bottom: 0;
+    margin-right: 0.75rem;
+  }
 }
 
 .icons a:not(:last-child) {
