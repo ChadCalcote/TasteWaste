@@ -1,7 +1,9 @@
-from werkzeug.security import generate_password_hash
+# Import Database and User Model
 from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
+
+
 def seed_users():
 
     demo = User(username='RickRoso', email='demo@aa.io', photo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-YsD_la2rVKnomkk6GhPMy7a0z2HskhmPFQ&usqp=CAU',
@@ -12,14 +14,14 @@ def seed_users():
     db.session.commit()
 
     jimmy = User(username='JimmyBuckets', email='jb@tastewaste.com', photo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPXUM7HkSUlBD-H1OTJ8R_sIhAjvmNn6qj1g&usqp=CAU',
-                password='miamiheat', zip_code='98101')
+                 password='miamiheat', zip_code='98101')
 
     db.session.add(jimmy)
 
     db.session.commit()
 
     hez = User(username='hezekiah', email='hez@tastewaste.com', photo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxUCjQluo2q7zdpotaVXLTD7EvLXYiRi1VAw&usqp=CAU',
-                password='lookitup', zip_code='78704')
+               password='lookitup', zip_code='78704')
 
     db.session.add(hez)
 
@@ -33,28 +35,28 @@ def seed_users():
     db.session.commit()
 
     eugene = User(username='eugene', email='eugene@tastewaste.com', photo='https://media-exp1.licdn.com/dms/image/C5603AQEG6yHR1wjoyw/profile-displayphoto-shrink_800_800/0/1517239454875?e=1617840000&v=beta&t=-NwbBZTTTUg4089MTFHy2Cpw78bR5MuE_cMcL7_DdHg',
-                password='shinobi', zip_code='80205')
+                  password='shinobi', zip_code='80205')
 
     db.session.add(eugene)
 
     db.session.commit()
 
     mac = User(username='mac', email='mac@tastewaste.com', photo='https://pbs.twimg.com/profile_images/654128264840151040/FNq0rrj0_400x400.jpg',
-                password='michigan', zip_code='80205')
+               password='michigan', zip_code='80205')
 
     db.session.add(mac)
 
     db.session.commit()
 
     ari = User(username='ari', email='ari@tastewaste.com',
-                password='meatloverspizza', zip_code='98101')
+               password='meatloverspizza', zip_code='98101')
 
     db.session.add(ari)
 
     db.session.commit()
 
     zendaya = User(username='zendaya', email='zendaya@tastewaste.com', photo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Vv5o-FfKG3fhWdU6KTmKJfw2NSJr5PxKuA&usqp=CAU',
-                password='emmy', zip_code='98101')
+                   password='emmy', zip_code='98101')
 
     db.session.add(zendaya)
 

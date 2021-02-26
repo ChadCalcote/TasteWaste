@@ -1,3 +1,4 @@
+# Import Database and Review Model
 from app.models import db, Review
 import datetime
 # Adds a demo restaurant, you can add other restaurants here if you want
