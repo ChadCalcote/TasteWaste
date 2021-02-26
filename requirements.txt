@@ -4,7 +4,7 @@
 #
 #    pipenv lock --requirements
 #
-
+# List of all requirements -- this is used in our Docker deployment
 -i https://pypi.org/simple
 alembic==1.4.3
 boto3==1.17.2
