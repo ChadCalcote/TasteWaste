@@ -57,4 +57,5 @@
 .restaurant-card-container__photo img {
   border: 1px solid #031176;
   width: 100%;
+  height: 125px;
 }
