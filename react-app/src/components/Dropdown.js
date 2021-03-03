@@ -111,6 +111,7 @@ export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
     e.preventDefault();
     await logout();
     setAuthenticated(false);
+    setUser();
     history.push("/");
   };
 
