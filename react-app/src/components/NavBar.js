@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import fork from "../resources/forklogo.png";
 import Dropdown from "./Dropdown";
 
-const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
+const NavBar = ({ authenticated, setAuthenticated, setUser }) => {
   return (
     <nav className="nav2">
       <NavLink
@@ -11,17 +11,9 @@ const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
         exact={true}
         className="fork"
         activeClassName="active"
-        // onClick={() =>
-        //   changeImg(
-        //     "url(https://img.pngio.com/fresh-background-gradients-webgradientscom-purple-and-orange-png-2400_2000.png)"
-        //   )
-        // }
       >
         <img src={fork} alt="fork" />
       </NavLink>
-      {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink> */}
       <div>
         <NavLink
           to="/city/austin"
@@ -55,8 +47,6 @@ const NavBar = ({ authenticated, setAuthenticated, changeImg, setUser }) => {
           setUser={setUser}
         />
       </div>
-
-      {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
     </nav>
   );
 };
