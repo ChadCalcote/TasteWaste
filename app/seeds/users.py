@@ -27,7 +27,7 @@ def seed_users():
 
     db.session.commit()
 
-    evan = User(username='evan', email='evan@tastewaste.com', photo='https://scontent-den4-1.xx.fbcdn.net/v/t1.0-9/12573051_10153841541358427_2886908032463095761_n.jpg?_nc_cat=100&ccb=2&_nc_sid=174925&_nc_ohc=Wx-3GIf7NjUAX-jVNrz&_nc_ht=scontent-den4-1.xx&oh=a783ff6f0ab9dc718c45a11ce29e4075&oe=603DF249',
+    evan = User(username='evan', email='evan@tastewaste.com', photo='https://scontent-den4-1.xx.fbcdn.net/v/t1.0-9/54385155_10156221229692895_1118517339097137152_n.jpg?_nc_cat=108&ccb=3&_nc_sid=8bfeb9&_nc_ohc=lg42W9gnN7YAX9OdEdY&_nc_ht=scontent-den4-1.xx&oh=859164b82d73715c14e9220c812cb7fa&oe=606793A3',
                 password='portland', zip_code='80205')
 
     db.session.add(evan)
