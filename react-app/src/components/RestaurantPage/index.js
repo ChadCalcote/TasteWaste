@@ -75,7 +75,10 @@ const RestaurantPage = ({ changeImg, user }) => {
           <li>
             <button
               onClick={() =>
-                window.open("https://www.google.com/maps", "_blank")
+                window.open(
+                  `https://www.google.com/maps/search/?api=1&query=${restaurant.lat},${restaurant.lng}`,
+                  "_blank"
+                )
               }
             >
               Get Directions
