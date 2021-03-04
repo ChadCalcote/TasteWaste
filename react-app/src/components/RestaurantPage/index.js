@@ -101,7 +101,6 @@ const RestaurantPage = ({ changeImg, user }) => {
             </a>
           </li>
         </ul>
-
         <ReviewFeed
           reviewsToDisplay={reviewsToDisplay}
           setReviewsToDisplay={setReviewsToDisplay}
