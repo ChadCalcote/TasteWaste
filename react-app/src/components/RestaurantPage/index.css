@@ -48,20 +48,34 @@
 
 .restaurant-page__content .restaurant-page__link-bar {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   list-style: none;
   margin: 0;
   margin-bottom: 2.25rem;
   padding: 0;
 }
 
+@media (min-width: 568px) {
+  .restaurant-page__content .restaurant-page__link-bar {
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+}
+
 .restaurant-page__content .restaurant-page__link-bar li {
-  align-items: center;
   display: flex;
-  flex-direction: column;
-  margin-right: 6rem;
-  text-align: center;
+  flex-basis: 50%;
+  justify-content: center;
+  margin-bottom: 1.5rem;
   width: 5rem;
+}
+
+@media (min-width: 768px) {
+  .restaurant-page__content .restaurant-page__link-bar li {
+    margin-bottom: 0;
+    margin-right: 6rem;
+  }
 }
 
 .restaurant-page__content .restaurant-page__link-bar li:last-child {
@@ -69,9 +83,13 @@
 }
 
 .restaurant-page__content .restaurant-page__link-bar button {
+  align-items: center;
   border: 0;
   color: #222;
+  display: flex;
+  flex-direction: column;
   padding: 0;
+  text-align: center;
 }
 
 .restaurant-page__content .restaurant-page__link-bar button:focus,

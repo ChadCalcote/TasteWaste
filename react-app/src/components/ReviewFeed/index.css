@@ -1,6 +1,13 @@
 .review-feed {
   display: flex;
+  flex-direction: column;
   overflow: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .review-feed {
+    flex-direction: row;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
