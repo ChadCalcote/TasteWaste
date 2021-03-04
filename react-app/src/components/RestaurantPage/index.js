@@ -79,15 +79,10 @@ const RestaurantPage = ({ changeImg, user }) => {
             </button>
           </li>
           <li>
-            <a
-              href={restaurant.menu}
-              style={{ textDecoration: "none" }}
-            >
-              <button>
+              <button onClick={() => window.open(restaurant.menu, "_blank")}>
                 Menu
                 <img src={order} alt="order" />
               </button>
-            </a>
           </li>
           <li>
             <a
