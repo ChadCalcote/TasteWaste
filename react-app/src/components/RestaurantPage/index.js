@@ -85,7 +85,7 @@ const RestaurantPage = ({ changeImg, user }) => {
             </button>
           </li>
           <li>
-            <a href="tel:1-877-538-5888" style={{"textDecoration": "none"}}>
+            <a href={`tel:${restaurant.phone}`} style={{ textDecoration: "none" }}>
               <button>
                 Call Business
                 <img src={call} alt="call" />
