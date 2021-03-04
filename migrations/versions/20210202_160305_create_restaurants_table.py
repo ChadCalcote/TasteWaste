@@ -30,6 +30,7 @@ def upgrade():
     sa.Column('lng', sa.String(), nullable=False),
     sa.Column('lat', sa.String(), nullable=False),
     sa.Column('phone', sa.String(), nullable=False),
+    sa.Column('menu', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )

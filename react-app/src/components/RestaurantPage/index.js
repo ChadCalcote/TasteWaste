@@ -79,13 +79,21 @@ const RestaurantPage = ({ changeImg, user }) => {
             </button>
           </li>
           <li>
-            <button onClick={handleOpen}>
-              Order Food
-              <img src={order} alt="order" />
-            </button>
+            <a
+              href={restaurant.menu}
+              style={{ textDecoration: "none" }}
+            >
+              <button>
+                Menu
+                <img src={order} alt="order" />
+              </button>
+            </a>
           </li>
           <li>
-            <a href={`tel:${restaurant.phone}`} style={{ textDecoration: "none" }}>
+            <a
+              href={`tel:${restaurant.phone}`}
+              style={{ textDecoration: "none" }}
+            >
               <button>
                 Call Business
                 <img src={call} alt="call" />
