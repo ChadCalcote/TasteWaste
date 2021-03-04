@@ -85,10 +85,12 @@ const RestaurantPage = ({ changeImg, user }) => {
             </button>
           </li>
           <li>
-            <button onClick={handleOpen}>
-              Call Business
-              <img src={call} alt="call" />
-            </button>
+            <a href="tel:1-877-538-5888" style={{"textDecoration": "none"}}>
+              <button>
+                Call Business
+                <img src={call} alt="call" />
+              </button>
+            </a>
           </li>
         </ul>
 
