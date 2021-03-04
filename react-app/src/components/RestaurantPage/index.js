@@ -73,16 +73,20 @@ const RestaurantPage = ({ changeImg, user }) => {
             </button>
           </li>
           <li>
-            <button onClick={handleOpen}>
+            <button
+              onClick={() =>
+                window.open("https://www.google.com/maps", "_blank")
+              }
+            >
               Get Directions
               <img src={directions} alt="directions" />
             </button>
           </li>
           <li>
-              <button onClick={() => window.open(restaurant.menu, "_blank")}>
-                Menu
-                <img src={order} alt="order" />
-              </button>
+            <button onClick={() => window.open(restaurant.menu, "_blank")}>
+              Menu
+              <img src={order} alt="order" />
+            </button>
           </li>
           <li>
             <a
