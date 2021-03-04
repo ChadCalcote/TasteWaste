@@ -18,6 +18,7 @@ class Restaurant(db.Model):
     lng = db.Column(db.String, nullable=False)
     lat = db.Column(db.String, nullable=False)
     phone = db.Column(db.String, nullable=False)
+    menu = db.Column(db.String, nullable=False)
 
     # Set up has many relationship
     reviews = db.relationship('Review', back_populates='restaurant')
@@ -35,7 +36,8 @@ class Restaurant(db.Model):
             "zip_code": self.zip_code,
             "lng": self.lng,
             "lat": self.lat,
-            "phone": self.phone
+            "phone": self.phone,
+            "menu": self.menu
         }
 
     # Used for url later to lowercase the city name
