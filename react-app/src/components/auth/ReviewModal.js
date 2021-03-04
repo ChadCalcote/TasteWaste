@@ -3,10 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import ReviewForm from "../ReviewForm";
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: "rgba(255, 255, 255, .9)",
@@ -20,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ReviewModal({
   authenticated,
-  setAuthenticated,
   user,
   restaurant,
   reviewsToDisplay,

@@ -47,16 +47,7 @@ const RestaurantCard = ({ isLink, restaurant }) => {
       >
         <h2 className="restaurant-card-container__title">{restaurant ? restaurant.name : "Restaurant"}</h2>
         <div className="restaurant-card-container__rating">
-          {rating && (
-            <ReactStars
-              count={5}
-              size={24}
-              edit={false}
-              value={rating}
-              isHalf={true}
-              activeColor="darkgreen"
-            />
-          )}
+          {rating && (<ReactStars count={5} size={24} edit={false} value={rating} isHalf={true} activeColor="darkgreen"/>)}
         </div>
         <div className="restaurant-card-container__address">
           {restaurant.address}
