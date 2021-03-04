@@ -2,8 +2,8 @@ import "./home.css";
 import DemoButton from "../auth/DemoButton";
 import React, { useEffect, useState } from "react";
 
-const Homepage = ({ setUser, changeImg }) => {
-  const [authenticated, setAuthenticated] = useState(false);
+const Homepage = ({ setUser, changeImg, authenticated, setAuthenticated }) => {
+
 
   useEffect(() => {
     changeImg(

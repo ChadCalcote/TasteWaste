@@ -111,6 +111,7 @@ export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
     e.preventDefault();
     await logout();
     setAuthenticated(false);
+    setUser();
     history.push("/");
   };
 
@@ -137,24 +138,30 @@ export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <StyledMenuItem onClick={handleLogInModalOpen}>
-            <ListItemIcon>
-              <ExitToAppSharpIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Sign in" />
-          </StyledMenuItem>
-          <StyledMenuItem onClick={handleSignUpDrawerOpen}>
-            <ListItemIcon>
-              <ArrowUpwardSharpIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Sign up" />
-          </StyledMenuItem>
-          <StyledMenuItem onClick={onLogout}>
-            <ListItemIcon>
-              <AssignmentReturnRoundedIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Log out" />
-          </StyledMenuItem>
+          {!authenticated && (
+            <StyledMenuItem onClick={handleLogInModalOpen}>
+              <ListItemIcon>
+                <ExitToAppSharpIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Sign in" />
+            </StyledMenuItem>
+          )}
+          {!authenticated && (
+            <StyledMenuItem onClick={handleSignUpDrawerOpen}>
+              <ListItemIcon>
+                <ArrowUpwardSharpIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Sign up" />
+            </StyledMenuItem>
+          )}
+          {authenticated && (
+            <StyledMenuItem onClick={onLogout}>
+              <ListItemIcon>
+                <AssignmentReturnRoundedIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Log out" />
+            </StyledMenuItem>
+          )}
         </StyledMenu>
       </div>
 
