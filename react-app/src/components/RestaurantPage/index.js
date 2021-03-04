@@ -73,25 +73,36 @@ const RestaurantPage = ({ changeImg, user }) => {
             </button>
           </li>
           <li>
-            <button onClick={handleOpen}>
+            <button
+              onClick={() =>
+                window.open(
+                  `https://www.google.com/maps/search/?api=1&query=${restaurant.lat},${restaurant.lng}`,
+                  "_blank"
+                )
+              }
+            >
               Get Directions
               <img src={directions} alt="directions" />
             </button>
           </li>
           <li>
-            <button onClick={handleOpen}>
-              Order Food
+            <button onClick={() => window.open(restaurant.menu, "_blank")}>
+              Menu
               <img src={order} alt="order" />
             </button>
           </li>
           <li>
-            <button onClick={handleOpen}>
-              Call Business
-              <img src={call} alt="call" />
-            </button>
+            <a
+              href={`tel:${restaurant.phone}`}
+              style={{ textDecoration: "none" }}
+            >
+              <button>
+                Call Business
+                <img src={call} alt="call" />
+              </button>
+            </a>
           </li>
         </ul>
-
         <ReviewFeed
           reviewsToDisplay={reviewsToDisplay}
           setReviewsToDisplay={setReviewsToDisplay}

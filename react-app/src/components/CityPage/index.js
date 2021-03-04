@@ -6,6 +6,7 @@ import MapContainer from "../MapContainer";
 import { fetchCityRestaurants } from "../../store/restaurants";
 import { fetchOneCity } from "../../store/cities";
 import RestaurantCard from "../RestaurantCard";
+import RestaurantPlaceholder from "../RestaurantPlaceholder";
 
 const CityPage = ({ changeImg, user }) => {
   const { city } = useParams();
@@ -60,7 +61,7 @@ const CityPage = ({ changeImg, user }) => {
                 isLink
               />
             ))
-          : null}
+          : <RestaurantPlaceholder />}
       </div>
 
       {/*<div className="city-page-container__community-impact">
