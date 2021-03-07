@@ -1,6 +1,6 @@
 import "./home.css";
 import DemoButton from "../auth/DemoButton";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 const Homepage = ({ setUser, changeImg, authenticated, setAuthenticated }) => {
 

@@ -8,9 +8,6 @@ import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
 import { deleteReviewTest } from "../../store/reviews";
 
-const exampleUser = {
-  photo: "https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg",
-};
 
 const dateFormat = (date) => {
   return date.slice(5, 17);
