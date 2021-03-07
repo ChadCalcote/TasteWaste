@@ -15,7 +15,6 @@ import RestaurantPage from "./components/RestaurantPage";
 import Footer from "./components/Footer";
 // Services
 import { authenticate } from "./services/auth";
-import RestaurantCard from "./components/RestaurantCard";
 
 function App() {
 
