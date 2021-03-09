@@ -1,4 +1,4 @@
-# Codezvous
+# TasteWaste
 *By [Chad Calcote](http://chadcalcote.com/) - [Live Site](https://tastewaste.herokuapp.com/)*
 
 A consumer-based review app geared to increase sustainability practices in the restaurant industry.
