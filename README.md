@@ -51,10 +51,10 @@ The frontend is a `create-react-app` using functional components with hooks. The
 ## Frontend Overview
 The front end is an original design aiming for a modern website with original styling. I implemented a custom component library for all restaurants, reviews, and users to keep styling the same and DRY up the code base.
 
-Code Snippet Description Here:
+To render out the unique rating for each restaurant, I had to make an API call to fetch all the reviews from that restaurant and construct a function that calculated the average of all of the ratings from those reviews.
 
-Code Snippet Photos
-Code Snippet Photos
+<img width="852" alt="TasteWaste" src="https://user-images.githubusercontent.com/65975008/110406263-2bbc7c80-803f-11eb-9df9-b28b9109d997.png">
+
 
 ## Backend Overview
 The Flask backend is a collection of RESTful routes serving data to the frontend and an interface with the Postgres database.
