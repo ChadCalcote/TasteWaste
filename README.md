@@ -25,10 +25,11 @@ The backend is a Python Flask server with a PostgreSQL database.
 * User sign in / sign up with flask-login authentication and encrypted password with werkzeug
 
 ![Animated GIF-downsized_large](https://user-images.githubusercontent.com/65975008/110410419-172fb280-8046-11eb-87d7-3157ce57ec49.gif)
-
-* View other user reviews, add new reviews, or delete your own reviews
 * View restaurants using TasteWaste in your area
 * Call restaurant, get directions to their location, and view their menu
+* View other user reviews, add new reviews, or delete your own reviews
+
+![Animated GIF-downsized_large (1)](https://user-images.githubusercontent.com/65975008/110411161-501c5700-8047-11eb-93db-8db051b53fe9.gif)
 
 ## Technologies Used
 * Frontend
