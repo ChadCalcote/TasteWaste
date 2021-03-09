@@ -51,7 +51,7 @@ The frontend is a `create-react-app` using functional components with hooks. The
 ## Frontend Overview
 The front end is an original design aiming for a modern website with original styling. I implemented a custom component library for all restaurants, reviews, and users to keep styling the same and DRY up the code base.
 
-To render out the unique rating for each restaurant, I had to make an API call to fetch all the reviews from that restaurant and construct a function that calculated the average of all of the ratings from those reviews.
+To render out the unique rating for each restaurant, I had to make an API call to fetch all the reviews from that restaurant and construct a function that calculated the average of all of the ratings from those reviews:
 
 <img width="852" alt="TasteWaste" src="https://user-images.githubusercontent.com/65975008/110406263-2bbc7c80-803f-11eb-9df9-b28b9109d997.png">
 
@@ -61,7 +61,7 @@ The Flask backend is a collection of RESTful routes serving data to the frontend
 
 The database is queried using the SQLAlchemy ORM, and seed data added using the Alembic library.
 
-To get all of the reviews from a single restaurant I had to write a custom query that filtered the Reivew model using the restaurant id passed into the route.
+To get all of the reviews from a single restaurant I had to write a custom query that filtered the Reivew model using the restaurant id passed into the route:
 
 <img width="920" alt="TasteWaste (1)" src="https://user-images.githubusercontent.com/65975008/110406557-a9808800-803f-11eb-82c5-4af9f4ec6506.png">
 
