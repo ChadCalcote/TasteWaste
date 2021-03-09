@@ -1,13 +1,5 @@
-Checkout Wiki For Details on TasteWaste!
-
-https://github.com/ChadCalcote/TasteWaste/wiki
-
-Live site is available now! More updates to come!
-
-https://tastewaste.herokuapp.com/
-
 # Codezvous
-*By [Chad Calcote](http://chadcalcote.com/)[Live Site](https://codezvous.herokuapp.com/)*
+*By [Chad Calcote](http://chadcalcote.com/) - [Live Site](https://tastewaste.herokuapp.com/)*
 
 A consumer-based review app geared to increase sustainability practices in the restaurant industry.
 
