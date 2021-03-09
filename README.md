@@ -61,6 +61,11 @@ The Flask backend is a collection of RESTful routes serving data to the frontend
 
 The database is queried using the SQLAlchemy ORM, and seed data added using the Alembic library.
 
+To get all of the reviews from a single restaurant I had to write a custom query that filtered the Reivew model using the restaurant id passed into the route.
+
+<img width="920" alt="TasteWaste (1)" src="https://user-images.githubusercontent.com/65975008/110406557-a9808800-803f-11eb-82c5-4af9f4ec6506.png">
+
+
 ## Backend Installation and Setup
 
 1. Clone this repository (only this branch)
