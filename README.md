@@ -46,8 +46,7 @@ The backend is a Python Flask server with a PostgreSQL database.
 The frontend is a `create-react-app` using functional components with hooks. The backend is a Flask server with various RESTful endpoints. They are deployed via Docker to a Heroku server.
 
 ##### TasteWaste Postgres Database Schema
-Insert Photo Here
-
+![image](https://user-images.githubusercontent.com/65975008/110405539-fc594000-803d-11eb-88d6-e439fc2950f7.png)
 
 ## Frontend Overview
 The front end is an original design aiming for a modern website with original styling. I implemented a custom component library for all restaurants, reviews, and users to keep styling the same and DRY up the code base.
