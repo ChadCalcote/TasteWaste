@@ -7,33 +7,33 @@ Live site is available now! More updates to come!
 https://tastewaste.herokuapp.com/
 
 # Codezvous
-*By [Chad Calcote](http://chadcalcote.com/), [Chris Clark](https://percist.github.io/), [Daniel Chin](https://bongochin.github.io/#) - [Live site](https://codezvous.herokuapp.com/)*
+*By [Chad Calcote](http://chadcalcote.com/)[Live Site](https://codezvous.herokuapp.com/)*
 
-A Meetup clone designed for fellow programmers to meet other tech-minded individuals within groups and at events in their area.
+A consumer-based review app geared to increase sustainability practices in the restaurant industry.
 
-You can also visit Meetup [here](https://www.meetup.com/home/).
+For a deeper dive into my planning process and code setup, please visit my [Wiki](https://github.com/ChadCalcote/TasteWaste/wiki)!
 
 **Table of Contents**
-  * [Codezvous at a Glance](#Codezvous-at-a-glance)
+  * [TasteWaste at a Glance](#TasteWaste-at-a-glance)
   * [Technologies Used](#technologies-used)
   * [Application Architecture](#application-architecture)
   * [Frontend Overview](#frontend-overview)
   * [Backend Overview](#backend-overview)
+  * [Backend Installation and Setup](#Backend-Installation-and-Setup)
+  * [Frontend Installation and Run Application Locally](#Frontend-Installation-and-Run-Application-Locally)
   * [Conclusion](#conclusion)
 
-## Codezvous at a Glance
-Codezvous is a Meetup clone designed for fellow programmers to meet other tech-minded individuals within groups and at events in their area.
+## TasteWaste at a Glance
+TasteWaste is a consumer-based review app geared to increase sustainability practices in the restaurant industry.
 
-The application is made with a React frontend utilizing original components.
+The application is made with a React frontend utilizing mostly original components and some material-ui components.
 The backend is a Python Flask server with a PostgreSQL database.
 
 **Key Features**
 * User sign in / sign up with flask-login authentication and encrypted password with werkzeug
-* View, create, and join tech groups in your area
-* View, create, and RSVP for events of the groups you are a part of
-* Comment and see other comments on events
-<!--
-![CoffeeHub mini-demo](/readme-assets/star-trader-demo-full.gif) -->
+* View other user reviews, add new reviews, or delete your own reviews
+* View restaurants using TasteWaste in your area
+* Call restaurant, get directions to their location, and view their menu
 
 ## Technologies Used
 * Frontend
@@ -41,6 +41,7 @@ The backend is a Python Flask server with a PostgreSQL database.
   * Javascript
   * Redux
   * CSS
+  * Material-UI
 * Backend
   * Flask
   * Python
@@ -52,12 +53,12 @@ The backend is a Python Flask server with a PostgreSQL database.
 ## Application Architecture
 The frontend is a `create-react-app` using functional components with hooks. The backend is a Flask server with various RESTful endpoints. They are deployed via Docker to a Heroku server.
 
-##### Codezvous Postgres database schema
-Schema Photo
+##### TasteWaste Postgres Database Schema
+Insert Photo Here
 
 
 ## Frontend Overview
-The front end is is modeled after Meetup and uses all original styling. We implemented a custom component library for all events, groups, and users to keep styling the same and DRY up the code base.
+The front end is an original design aiming for a modern website with original styling. I implemented a custom component library for all restaurants, reviews, and users to keep styling the same and DRY up the code base.
 
 Code Snippet Description Here:
 
@@ -67,10 +68,89 @@ Code Snippet Photos
 ## Backend Overview
 The Flask backend is a collection of RESTful routes serving data to the frontend and an interface with the Postgres database.
 
-The database is queried using the SQLAlchemy ORM, and seed data was created using the faker packing and added using the Alembic library.
+The database is queried using the SQLAlchemy ORM, and seed data added using the Alembic library.
+
+## Backend Installation and Setup
+
+1. Clone this repository (only this branch)
+
+   ```bash
+   git clone https://github.com/ChadCalcote/TasteWaste
+   ```
+
+2. Install dependencies
+
+      ```bash
+      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+      ```
+
+3. Create a **.env** file based on the .env.example with proper settings for your
+   development environment
+
+4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+
+5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+
+   ```bash
+   pipenv shell
+   ```
+
+   ```bash
+   flask db upgrade
+   ```
+
+   ```bash
+   flask seed all
+   ```
+
+   ```bash
+   flask run
+   ```
+
+***
+*IMPORTANT!*
+   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
+   You can do this by running:
+
+   ```bash
+   pipenv lock -r > requirements.txt
+   ```
+
+*ALSO IMPORTANT!*
+   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
+   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+***
+
+## Frontend Installation and Run Application Locally
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+No environment variables are needed to run this application in development, but be sure to set the REACT_APP_BASE_URL environment variable in heroku!
+
+This app will be automatically built when you deploy to heroku, please see the `heroku-postbuild` script in your `express.js` applications `package.json` to see how this works.
+
+1. Change Directory to react-app
+
+   ```bash
+   cd react-app
+   ```
+   
+2. Install Dependencies
+
+  ```bash
+   npm install
+   ```
+ 
+3. Start the local host
+
+ ```bash
+   npm start
+   ```
+
+4. Visit application at localhost:3000 (changes you make locally will appear)
 
 
 ## Conclusion
-Codezvous was our idea as a team to create a Meetup clone that was more niche. As outgoing developers who have been bogged down behind our desks and writing endless lines of code, we wanted to create a platform for individuals like ourselves to meet other engineers in their area, network, and talk about code, all coming together for the common goal to strengthen technology in your community. 
+COVID-19 has minimized our dining experiences to mostly takeout service only. With that, this means more of those to-go boxes going into your trash. What are your favorite restaurants doing to reduce waste and help the planet? Our application dives into this question by rating restaurants' sustainability practices while offering solutions.
 
-Future features would include a search bar to find events and groups, categories to isolate events or groups, and a calendar feature to keep you and your groups' events organized.
+Future features would include a search bar to find restaurants, more information in review form to better support sustainability efforts, and expand to cities across the U.S. rather than select cities.
