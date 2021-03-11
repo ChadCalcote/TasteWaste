@@ -1,7 +1,11 @@
+// React Dependecies
 import React from "react";
+// Material UI Dependencies
 import Drawer from "@material-ui/core/Drawer";
+// Components
 import SignUpForm from "./SignUpForm";
 
+// Define SignUpDrawer component with destructured props
 export default function SignUpDrawer({
   authenticated,
   setAuthenticated,
