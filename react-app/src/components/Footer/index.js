@@ -1,5 +1,8 @@
+// React Dependencies
 import React from "react";
+// Special React Social Dependency
 import { SocialIcon } from "react-social-icons";
+// CSS StyleSheet
 import "./index.css";
 
 const Footer = () => {
