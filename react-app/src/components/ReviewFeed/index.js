@@ -18,10 +18,12 @@ const ReviewFeed = ({ reviewsToDisplay, setReviewsToDisplay, currentUser }) => {
       return reduxState.users;
   });
   // React Hooks
+  // Need to write a better query to fetch just users who have left reviews on this restaurant to speed up
       useEffect(() => {
         dispatch(fetchAllUsers());
       }, [dispatch]);
   // Component Functions / Variables
+  // Finds Review User in store
   const reviewUser = (review) => {
     if (Array.isArray(users)) {
       let foundUser = users.find((user) => {
@@ -34,7 +36,6 @@ const ReviewFeed = ({ reviewsToDisplay, setReviewsToDisplay, currentUser }) => {
       };
     }
   };
-
 
   return (
     <div className="review-feed">
