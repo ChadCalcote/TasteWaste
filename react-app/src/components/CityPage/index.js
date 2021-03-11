@@ -21,6 +21,15 @@ const CityPage = ({ changeImg, user }) => {
   // Redux Hooks
   // Used to dispatch actions
   const dispatch = useDispatch();
+  // All City Restaurants
+  const restaurants = useSelector((reduxState) => {
+    return reduxState.restaurants;
+  });
+  // City from store
+  // Used Redux here in order to get all information from that city in the database
+  const reduxCity = useSelector((reduxState) => {
+    return reduxState.cities;
+  });
   // React Hooks
   // Based on city in param change the background image state to city photo
   // Need to change the photos to grab them from AWS or other photo bucket site
@@ -53,31 +62,23 @@ const CityPage = ({ changeImg, user }) => {
     dispatch(fetchCityRestaurants(city));
   }, [dispatch, city]);
 
-  // All City Restaurants
-    const restaurants = useSelector((reduxState) => {
-      return reduxState.restaurants;
-    });
-  // City from store
-  // Used Redux here in order to get all information from that city in the database
-    const reduxCity = useSelector((reduxState) => {
-      return reduxState.cities;
-    });
-
   return (
     <div className="city-page-container">
       {user ? <h1>{`Welcome to TasteWaste, ${user.username}!`}</h1> : null}
 
       <div className="city-page-container__restaurant-cards">
-        {restaurants.length > 0
-          ? restaurants.map((restaurant) => (
-              <RestaurantCard
-                className="restaurant"
-                key={restaurant.id}
-                restaurant={restaurant}
-                isLink
-              />
-            ))
-          : <RestaurantPlaceholder />}
+        {restaurants.length > 0 ? (
+          restaurants.map((restaurant) => (
+            <RestaurantCard
+              className="restaurant"
+              key={restaurant.id}
+              restaurant={restaurant}
+              isLink
+            />
+          ))
+        ) : (
+          <RestaurantPlaceholder />
+        )}
       </div>
 
       {/*<div className="city-page-container__community-impact">
