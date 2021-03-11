@@ -30,7 +30,7 @@ function App() {
   // Handle user state throughout app
   const [user, setUser] = useState();
 
-  // As app is loaded up, 
+  // As app is loaded up, try and authenticate the user, if there are no errors set authenticated to true
   useEffect(() => {
     (async () => {
       const user = await authenticate();
