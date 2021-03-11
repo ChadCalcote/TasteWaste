@@ -1,61 +1,61 @@
 // React Dependencies
 import React, { useEffect, useState } from "react";
+// React Router Dom Dependencies
 import { useParams } from "react-router-dom";
+// React Redux Dependencies
 import { useDispatch, useSelector } from "react-redux";
-
 // Local Components
 import RestaurantCard from "../RestaurantCard";
 import ReviewModal from "../auth/ReviewModal";
 import ReviewFeed from "../ReviewFeed";
-
 // Icons
 import addReview from "../../resources/addReview.svg";
 import directions from "../../resources/directions.svg";
 import order from "../../resources/orderFood.svg";
 import call from "../../resources/phone.svg";
-
-// CSS
-import "./index.css";
-
 // Thunks
 import { fetchOneRestaurant } from "../../store/restaurants";
 import { fetchAllReviews } from "../../store/reviews";
+// CSS Stylesheet
+import "./index.css";
 
+// Define RestaurantPageComponent with destructured props
 const RestaurantPage = ({ changeImg, user }) => {
+  // React Router Dom Hooks
   const params = useParams();
+  const { restaurantId } = params;
+  // Redux Hooks
+  // Dispatch actions from store
   const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+  // Restaurant from store
   const restaurant = useSelector((reduxState) => {
     return reduxState.restaurants;
   });
-
+  // All Reviews from store
   const reviews = useSelector((reduxState) => {
     return reduxState.reviews;
   });
-
+  // React Hooks
+  // Setup state for reviews to be displayed
   const [reviewsToDisplay, setReviewsToDisplay] = useState([]);
-
-  const { restaurantId } = params;
-
-  useEffect(() => {
-    changeImg("darkgreen");
-  });
-
+  // Setup state for open and close of review modal
+  const [open, setOpen] = useState(false);
+  // If there is a valid restaurantId from the url params, we will dispatch actions to fetch that restaurant and fetch all the reviews of that restaurant
   useEffect(() => {
     dispatch(fetchOneRestaurant(restaurantId));
     dispatch(fetchAllReviews(restaurantId));
   }, [dispatch, restaurantId]);
-
+  // If we have reviews in our store set the state of our reviews to display to those reviews
   useEffect(() => {
     if (reviews[0]) {
       setReviewsToDisplay([...reviews]);
     }
   }, [dispatch, reviews]);
+  // Component Functions / Variables
+  // Handle the opening of review modal
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div className="restaurant-page__container">

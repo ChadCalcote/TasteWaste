@@ -1,8 +1,13 @@
+// React Dependencies
 import React from "react";
+// React Router Dom Dependencies
 import { NavLink } from "react-router-dom";
+// Fork Icon
 import fork from "../resources/forklogo.png";
+// Dropdown Component
 import Dropdown from "./Dropdown";
 
+// Define NavBar component with destructured props
 const NavBar = ({ authenticated, setAuthenticated, setUser }) => {
   return (
     <nav className="nav2">

@@ -21,15 +21,7 @@ export const removeOneReview = (review) => ({
   payload: review,
 });
 
-export const deleteReview = (reviewId) => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${reviewId}`, {
-    method: "DELETE",
-  });
-  console.log(response);
-  // dispatch(removeOneReview(response.review));
-};
-
-export const deleteReviewTest = (reviewId) => {
+export const deleteReview = (reviewId) => {
   return async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
       method: "DELETE",

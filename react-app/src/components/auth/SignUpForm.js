@@ -1,9 +1,16 @@
+// React Dependencies
 import React, { useState } from "react";
+// React Router Dom Dependencies
 import { Redirect, useHistory } from "react-router-dom";
-
+// Sign Up Helper Function
 import { signUp } from "../../services/auth";
 
+// Sign Up Form Component with Destructured Props
 const SignUpForm = ({ authenticated, setAuthenticated, closeDrawer }) => {
+  // React Router Dom Hooks
+  const history = useHistory();
+  // React Hooks
+  // Setup State for form inputs
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
@@ -13,10 +20,11 @@ const SignUpForm = ({ authenticated, setAuthenticated, closeDrawer }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setConfirmPassword] = useState("");
 
-  const history = useHistory();
-
+  // What happens when user submits sign up form
   const onSignUp = async (e) => {
+    // Prevent form from automatically submitting
     e.preventDefault();
+    // If the password equals the repeat password field, use signUp helper function to sign them up
     if (password === repeatPassword) {
       const user = await signUp(
         username,
@@ -25,6 +33,7 @@ const SignUpForm = ({ authenticated, setAuthenticated, closeDrawer }) => {
         zipCode,
         password
       );
+      // If there are no errors in the user, set authenticated to true, close the drawer, and redirect them to the Austin City Page
       if (!user.errors) {
         setAuthenticated(true);
         closeDrawer();
@@ -33,12 +42,16 @@ const SignUpForm = ({ authenticated, setAuthenticated, closeDrawer }) => {
     }
   };
 
+  // Manual File Upload function
+  // Not efficient needs to be changed to AWS
+  // Slows down sign up process
   const onFileChange = async (e) => {
     setSrc(URL.createObjectURL(e.target.files[0]));
     setPhoto(e.target.value);
     setPhotoBase64(JSON.stringify(await toBase64(e.target.files[0])));
   };
 
+  // Helper function to change file to base64 format
   const toBase64 = (file) =>
     new Promise((res, rej) => {
       const reader = new FileReader();
@@ -47,6 +60,7 @@ const SignUpForm = ({ authenticated, setAuthenticated, closeDrawer }) => {
       reader.onerror = (error) => rej(error);
     });
 
+  // Update state as user makes input to form
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -66,10 +80,6 @@ const SignUpForm = ({ authenticated, setAuthenticated, closeDrawer }) => {
   const updateConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
-
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <div className="drawer">

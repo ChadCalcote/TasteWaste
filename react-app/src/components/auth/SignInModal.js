@@ -1,8 +1,12 @@
+// React Dependencies
 import React from "react";
+// Material UI Dependencies
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+// Components
 import LoginForm from "./LoginForm";
 
+// Modal Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: "rgba(255, 255, 255, .9)",
@@ -13,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Define SignInModal Component with destructured props
 export default function SignInModal({
   authenticated,
   setAuthenticated,
@@ -20,8 +25,13 @@ export default function SignInModal({
   open,
   onClose,
 }) {
+
+  // Component Functions / Variables
+
+  // Set styles to variable for use
   const classes = useStyles();
 
+  // Modal content
   const body = (
     <div className={classes.paper}>
       <LoginForm
@@ -33,6 +43,7 @@ export default function SignInModal({
     </div>
   );
 
+  // Modal to return
   return (
     <Modal
       className="modal"
