@@ -1,4 +1,4 @@
-import "./home.css";
+import "./index.css";
 import DemoButton from "../auth/DemoButton";
 import React, { useEffect } from "react";
 
