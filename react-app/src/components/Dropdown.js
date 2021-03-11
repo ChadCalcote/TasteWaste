@@ -18,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // Local Components
 import SignInModal from "./auth/SignInModal";
 import SignUpDrawer from "./auth/SignUpDrawer";
-
+// Styles for Dropdown
 const useStyles = makeStyles({
   root: {
     appearance: "none",
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
   },
 });
-
+// Styles for dropdown menu
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5",
@@ -54,7 +54,7 @@ const StyledMenu = withStyles({
     {...props}
   />
 ));
-
+// Styles for dropdown items
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     color: "#f37588",
@@ -82,36 +82,44 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem);
 
+// Dropdown component with destructured props
 export default function Dropdown({ authenticated, setAuthenticated, setUser }) {
+  // React Router Dom Hooks
   const history = useHistory();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  // React Hooks
+  const [anchorEl, setAnchorEl] = useState(null);
   const [logInModalIsOpen, setLogInModalIsOpen] = useState(false);
   const [signUpDrawerIsOpen, setSignUpDrawerIsOpen] = useState(false);
-
+  // Component Functions / Variables
+  // Handle the opening of the login modal
   const handleLogInModalOpen = () => {
     setLogInModalIsOpen(true);
   };
-
+  // Handle the opening of the sign up drawer
   const handleSignUpDrawerOpen = () => {
     setSignUpDrawerIsOpen(true);
   };
-
+  // Set styles to variable for use in component
   const classes = useStyles();
-
+  // Handle the click of menu items
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  // Handle the close of menu items
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  // When logout button is clicked, do this
   const onLogout = async (e) => {
+    // Prevent normal "form" submit
     e.preventDefault();
+    // await the logout helper function
     await logout();
+    // set authenticated state to false
     setAuthenticated(false);
+    // set the user state to empty
     setUser();
+    // redirect them to homepage
     history.push("/");
   };
 
