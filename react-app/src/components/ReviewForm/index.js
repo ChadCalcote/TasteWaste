@@ -1,18 +1,23 @@
-import "./index.css";
-
+// React Dependencies
 import React, { useState } from "react";
+// Helper Functions / Custom Hooks
 import addReview from "../../services/review";
 import useToggleState from "../hooks/useToggleState";
+// React Rating Stars Component
 import ReactStars from "react-rating-stars-component";
+// CSS Stylesheet
+import "./index.css";
 
+// Define Review Form Component with destructured props
 const ReviewForm = ({
-  authenticated,
   closeModal,
   user,
   restaurant,
   reviewsToDisplay,
   setReviewsToDisplay,
 }) => {
+  // React Hooks
+  // Setup state for all form inputs
   const [body, setBody] = useState("");
   const [rating, setRating] = useState();
   const [bags, toggleBags] = useToggleState(false);
@@ -22,8 +27,11 @@ const ReviewForm = ({
   const [bowls, toggleBowls] = useToggleState(false);
   const [straws, toggleStraws] = useToggleState(false);
 
+  // What happens on submitting form
   const onSubmit = async (e) => {
+    // Prevent automatic form submission
     e.preventDefault();
+    // Add Review To Database with helper function
     const review = await addReview(
       user.id,
       restaurant.id,
@@ -36,16 +44,18 @@ const ReviewForm = ({
       bowls,
       straws
     );
+    // If there are no errors with the submitted review, close the modal and display the review
+    // Need to add error handling
     if (!review.errors) {
       closeModal();
       setReviewsToDisplay([...reviewsToDisplay, review]);
     }
   };
-
+  // Update the form inputs as the user fills it out
   const updateBody = (e) => {
     setBody(e.target.value);
   };
-
+  // If the rating changes, change the state of the rating so stars can reflect that rating
   const ratingChanged = (newRating) => {
     setRating(newRating);
   };
