@@ -1,8 +1,12 @@
+// React Dependencies
 import React from "react";
+// Material UI dependencies
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+// Components
 import ReviewForm from "../ReviewForm";
 
+// Modal Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: "rgba(255, 255, 255, .9)",
@@ -14,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Review Modal Component with destructured props
 export default function ReviewModal({
   authenticated,
   user,
@@ -23,12 +28,17 @@ export default function ReviewModal({
   open,
   setOpen,
 }) {
+  // Component Functions/Variables
+
+  // Set Styles to variable for use
   const classes = useStyles();
 
+  // Handle the close of the modal
   const handleClose = () => {
     setOpen(false);
   };
 
+  // Content of Modal
   const body = (
     <div className={classes.paper}>
       <ReviewForm
@@ -42,6 +52,7 @@ export default function ReviewModal({
     </div>
   );
 
+  // Modal to return
   return (
     <Modal
       className="modal"
