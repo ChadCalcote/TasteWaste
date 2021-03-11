@@ -1,11 +1,14 @@
+// Redux Dependencies
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
+// Redux Thunk Dependency
 import thunk from "redux-thunk";
+// Custom Reducers
 import restaurantsReducer from "./restaurants.js";
 import reviewsReducer from "./reviews.js";
 import usersReducer from "./users.js";
 import citiesReducer from "./cities.js";
 import sessionReducer from "./session";
-
+// Setup Root Reducer with all reducers
 const rootReducer = combineReducers({
   session: sessionReducer,
   restaurants: restaurantsReducer,
@@ -13,7 +16,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   cities: citiesReducer
 });
-
+// Boiler plate redux code
 let enhancer;
 
 if (process.env.NODE_ENV === "production") {
