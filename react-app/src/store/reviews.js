@@ -28,7 +28,7 @@ export const removeOneReview = (review) => ({
 // Deletes Review from store
 export const deleteReview = (reviewId) => {
   return async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId}/`, {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
       method: "DELETE",
     });
     if (response.ok) {
@@ -57,7 +57,7 @@ export const createReview = (data) => {
 export const fetchAllReviews = (restaurantId) => {
   return async (dispatch) => {
     const responseFromDb = await fetch(
-      `/api/restaurants/${restaurantId}/reviews/`
+      `/api/restaurants/${restaurantId}/reviews`
     );
     const reviewsList = await responseFromDb.json();
     dispatch(getAllReviews(reviewsList));

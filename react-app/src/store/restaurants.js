@@ -37,7 +37,7 @@ export const fetchAllRestaurants = () => {
 // Fetch One Restaurant and dispatch to store
 export const fetchOneRestaurant = (restaurantId) => {
   return async (dispatch) => {
-    const responseFromDb = await fetch(`/api/restaurants/${restaurantId}/`);
+    const responseFromDb = await fetch(`/api/restaurants/${restaurantId}`);
     const restaurant = await responseFromDb.json();
     dispatch(setOneRestaurant(restaurant));
   };
@@ -45,7 +45,7 @@ export const fetchOneRestaurant = (restaurantId) => {
 // Fetch All Restaurants from city and dispatch to store
 export const fetchCityRestaurants = (city) => {
   return async (dispatch) => {
-    const responseFromDb = await fetch(`/api/restaurants/${city}/`);
+    const responseFromDb = await fetch(`/api/restaurants/${city}`);
     const restaurants = await responseFromDb.json();
     dispatch(setCityRestaurants(restaurants));
   };

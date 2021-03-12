@@ -20,7 +20,7 @@ export const setAllUsers = (users) => {
 // Fetch one user and dispatch action to store
 export const fetchSingleUser = (userId) => {
   return async (dispatch) => {
-    const responseFromDb = await fetch(`/api/users/${userId}/`);
+    const responseFromDb = await fetch(`/api/users/${userId}`);
     const user = await responseFromDb.json();
     dispatch(setSingleUser(user));
   };
