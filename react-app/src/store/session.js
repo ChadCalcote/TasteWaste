@@ -10,7 +10,7 @@ export const setCurrentUser = (user) => {
 // Action Creator (Thunk)
 // Set Current User To Store
 export const getCurrentUser = () => async (dispatch) => {
-  const response = await fetch("/api/auth");
+  const response = await fetch("/api/auth/");
   const current_user = await response.json();
   dispatch(setCurrentUser(current_user));
 };

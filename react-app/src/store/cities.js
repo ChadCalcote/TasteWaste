@@ -16,7 +16,7 @@ export const setOneCity = (city) => {
 // Then dispatches that action to the reducer
 export const fetchOneCity = (city) => {
   return async (dispatch) => {
-    const responseFromDb = await fetch(`/api/cities/${city}`);
+    const responseFromDb = await fetch(`/api/cities/${city}/`);
     const found_city = await responseFromDb.json();
     dispatch(setOneCity(found_city));
   };
