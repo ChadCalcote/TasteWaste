@@ -1,7 +1,7 @@
-// Dependencies
+// React Dependencies
 import React, { useState, useEffect } from "react";
+// React Router Dependencies
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 // Components
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -15,17 +15,22 @@ import RestaurantPage from "./components/RestaurantPage";
 import Footer from "./components/Footer";
 // Services
 import { authenticate } from "./services/auth";
-
+// App Component
 function App() {
 
-  // Use State Hooks
+  // React Hooks
+  // Handle Authentication throughout app
   const [authenticated, setAuthenticated] = useState(false);
+  // Handle loaded state throughout app
   const [loaded, setLoaded] = useState(false);
+  // Handle background state throughout apo
   const [img, changeImg] = useState(
     "linear-gradient(0deg, rgba(252,197,228,1) 0%, rgba(255,125,124,1) 40%, rgba(54,41,142,1) 89%, rgba(3,16,118,1) 100%)"
   );
+  // Handle user state throughout app
   const [user, setUser] = useState();
 
+  // As app is loaded up, try and authenticate the user, if there are no errors set authenticated to true
   useEffect(() => {
     (async () => {
       const user = await authenticate();
