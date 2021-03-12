@@ -1,5 +1,5 @@
 // Action Type
-const SET_ONE_CITY = "SET_ONE_CITY"
+const SET_ONE_CITY = "SET_ONE_CITY";
 
 // Action - Set One City to the store
 export const setOneCity = (city) => {

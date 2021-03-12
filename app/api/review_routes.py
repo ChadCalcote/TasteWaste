@@ -11,6 +11,7 @@ import datetime
 # Setup Blueprint for all routes written below
 review_routes = Blueprint('review', __name__)
 
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -22,6 +23,8 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 # Get all reviews
+
+
 @review_routes.route('/')
 # @login_required
 def reviews():
@@ -29,6 +32,8 @@ def reviews():
     return jsonify([review.to_dict() for review in reviews])
 
 # Get single review
+
+
 @review_routes.route('/<int:id>')
 @login_required
 def review(id):
@@ -69,6 +74,8 @@ def addReview():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 # Edit a review
+
+
 @review_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def edit(id):
@@ -85,6 +92,8 @@ def edit(id):
     return {"message": "success"}
 
 # Delete a Review
+
+
 @review_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete(id):
@@ -98,9 +107,12 @@ def delete(id):
     return review.to_dict()
 
 # Retrieve the user of the review
+
+
 @review_routes.route('/<int:id>/user')
 def get_user(id):
-    user_of_review = User.query.join(Review).filter(Review.id == id).filter(User.id == Review.user_id).all()
+    user_of_review = User.query.join(Review).filter(
+        Review.id == id).filter(User.id == Review.user_id).all()
     return jsonify([user.to_dict() for user in user_of_review])
 
 

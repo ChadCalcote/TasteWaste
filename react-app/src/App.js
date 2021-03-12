@@ -17,7 +17,6 @@ import Footer from "./components/Footer";
 import { authenticate } from "./services/auth";
 // App Component
 function App() {
-
   // React Hooks
   // Handle Authentication throughout app
   const [authenticated, setAuthenticated] = useState(false);
@@ -71,7 +70,12 @@ function App() {
             <CityPage changeImg={changeImg} user={user} />
           </Route>
           <Route path="/" exact={true}>
-            <Homepage setUser={setUser} changeImg={changeImg} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <Homepage
+              setUser={setUser}
+              changeImg={changeImg}
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </Route>
           <Route path="/restaurants/:restaurantId" exact={true}>
             <RestaurantPage changeImg={changeImg} user={user} />

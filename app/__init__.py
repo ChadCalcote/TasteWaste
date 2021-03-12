@@ -26,10 +26,12 @@ app = Flask(__name__)
 
 # Setup login manager
 login = LoginManager(app)
-# Setup login view 
+# Setup login view
 login.login_view = 'auth.unauthorized'
 
 # Load the user when they login
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -58,6 +60,7 @@ CORS(app)
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
+
 
 @app.before_request
 def https_redirect():

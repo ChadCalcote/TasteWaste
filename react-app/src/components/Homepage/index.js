@@ -7,7 +7,6 @@ import "./index.css";
 
 // Define Homepage component with destructured props
 const Homepage = ({ setUser, changeImg, authenticated, setAuthenticated }) => {
-
   // React Hooks
   // When homepage loads up, change background to linear gradient
   useEffect(() => {

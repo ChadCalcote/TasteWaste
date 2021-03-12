@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   restaurants: restaurantsReducer,
   reviews: reviewsReducer,
   users: usersReducer,
-  cities: citiesReducer
+  cities: citiesReducer,
 });
 // Boiler plate redux code
 let enhancer;
