@@ -1,7 +1,7 @@
 // React Dependencies
 import React, { useState } from "react";
 // React Router Dom Dependencies
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // Sign Up Helper Function
 import { signUp } from "../../services/auth";
 
