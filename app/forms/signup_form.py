@@ -8,6 +8,8 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 # Check if user exists
+
+
 def user_exists(form, field):
     print("Checking if user exits", field.data)
     # Grabs email from user input on form

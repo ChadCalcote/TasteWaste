@@ -7,6 +7,8 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 # Check if the user exists in the database
+
+
 def user_exists(form, field):
     print("Checking if user exists", field.data)
     # Grabs username from input
@@ -17,6 +19,8 @@ def user_exists(form, field):
         raise ValidationError("Email provided not found.")
 
 # Check if password matches to hashed password in database
+
+
 def password_matches(form, field):
     print("Checking if password matches")
     # Grabs password from input
@@ -32,9 +36,12 @@ def password_matches(form, field):
         raise ValidationError("Password was incorrect.")
 
 # Setup Login Form
+
+
 class LoginForm(FlaskForm):
     # username string field checks if data has been inputted and username exists in database
-    username = StringField('username', validators=[DataRequired(), user_exists])
+    username = StringField('username', validators=[
+                           DataRequired(), user_exists])
     # password string field checks if data has been inputted and password matches to what is in database
     password = StringField('password', validators=[
                            DataRequired(), password_matches])
