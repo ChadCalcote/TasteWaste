@@ -8,6 +8,8 @@ from app.models import User, Review
 user_routes = Blueprint('users', __name__)
 
 # Retrieve All Users
+
+
 @user_routes.route('/')
 # @login_required
 def users():
@@ -15,6 +17,8 @@ def users():
     return jsonify([user.to_dict() for user in users])
 
 # Retrieve single user by ID
+
+
 @user_routes.route('/<int:id>')
 # @login_required
 def user(id):
@@ -22,6 +26,8 @@ def user(id):
     return user.to_dict()
 
 # Retrieve all reviews from single user
+
+
 @user_routes.route('/<int:id>/reviews')
 @login_required
 def user_reviews(id):
