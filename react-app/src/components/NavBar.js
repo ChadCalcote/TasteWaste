@@ -11,12 +11,7 @@ import Dropdown from "./Dropdown";
 const NavBar = ({ authenticated, setAuthenticated, setUser }) => {
   return (
     <nav className="nav2">
-      <NavLink
-        to="/"
-        exact={true}
-        className="fork"
-        activeClassName="active"
-      >
+      <NavLink to="/" exact={true} className="fork" activeClassName="active">
         <img src={fork} alt="fork" />
       </NavLink>
       <div>

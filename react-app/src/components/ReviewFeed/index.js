@@ -15,13 +15,13 @@ const ReviewFeed = ({ reviewsToDisplay, setReviewsToDisplay, currentUser }) => {
   const dispatch = useDispatch();
   // All users from store
   const users = useSelector((reduxState) => {
-      return reduxState.users;
+    return reduxState.users;
   });
   // React Hooks
   // Need to write a better query to fetch just users who have left reviews on this restaurant to speed up
-      useEffect(() => {
-        dispatch(fetchAllUsers());
-      }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, [dispatch]);
   // Component Functions / Variables
   // Finds Review User in store
   const reviewUser = (review) => {
@@ -42,7 +42,15 @@ const ReviewFeed = ({ reviewsToDisplay, setReviewsToDisplay, currentUser }) => {
       {!Array.isArray(reviewsToDisplay) && <h3>Start the Conversation</h3>}
       {Array.isArray(reviewsToDisplay) &&
         reviewsToDisplay.map((review) => (
-          <ReviewCard key={review.id} review={review} user={reviewUser(review)} currentUser={currentUser} reviewsToDisplay={reviewsToDisplay} setReviewsToDisplay={setReviewsToDisplay} className="review" />
+          <ReviewCard
+            key={review.id}
+            review={review}
+            user={reviewUser(review)}
+            currentUser={currentUser}
+            reviewsToDisplay={reviewsToDisplay}
+            setReviewsToDisplay={setReviewsToDisplay}
+            className="review"
+          />
         ))}
     </div>
   );

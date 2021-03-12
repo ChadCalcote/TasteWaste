@@ -20,11 +20,11 @@ export const setOneRestaurant = (restaurant) => {
 };
 // Set All City Restaurants
 export const setCityRestaurants = (restaurants) => {
-    return {
-        type: SET_CITY_RESTAURANTS,
-        restaurants: restaurants,
-    }
-}
+  return {
+    type: SET_CITY_RESTAURANTS,
+    restaurants: restaurants,
+  };
+};
 // Action Creators (Thunks)
 // Fetch All Restaurants and dispatch to store
 export const fetchAllRestaurants = () => {
@@ -44,12 +44,12 @@ export const fetchOneRestaurant = (restaurantId) => {
 };
 // Fetch All Restaurants from city and dispatch to store
 export const fetchCityRestaurants = (city) => {
-    return async (dispatch) => {
-      const responseFromDb = await fetch(`/api/restaurants/${city}`);
-      const restaurants = await responseFromDb.json();
-      dispatch(setCityRestaurants(restaurants));
-    };
-}
+  return async (dispatch) => {
+    const responseFromDb = await fetch(`/api/restaurants/${city}`);
+    const restaurants = await responseFromDb.json();
+    dispatch(setCityRestaurants(restaurants));
+  };
+};
 // Setup initial state
 const initialState = [];
 

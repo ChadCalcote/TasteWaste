@@ -56,7 +56,9 @@ export const createReview = (data) => {
 // Fetch All Reviews and set to store
 export const fetchAllReviews = (restaurantId) => {
   return async (dispatch) => {
-    const responseFromDb = await fetch(`/api/restaurants/${restaurantId}/reviews`);
+    const responseFromDb = await fetch(
+      `/api/restaurants/${restaurantId}/reviews`
+    );
     const reviewsList = await responseFromDb.json();
     dispatch(getAllReviews(reviewsList));
   };

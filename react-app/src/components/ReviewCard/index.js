@@ -13,8 +13,6 @@ import { deleteReview } from "../../store/reviews";
 // CSS Stylesheet
 import "./index.css";
 
-
-
 // Define Review Card Component with destructured props
 const ReviewCard = ({
   review,

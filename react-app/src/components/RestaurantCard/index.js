@@ -54,14 +54,27 @@ const RestaurantCard = ({ isLink, restaurant }) => {
         style={{ textDecoration: "none" }}
         to={`/restaurants/${restaurant.id}`}
       >
-        <h2 className="restaurant-card-container__title">{restaurant ? restaurant.name : "Restaurant"}</h2>
+        <h2 className="restaurant-card-container__title">
+          {restaurant ? restaurant.name : "Restaurant"}
+        </h2>
         <div className="restaurant-card-container__rating">
-          {rating && (<ReactStars count={5} size={24} edit={false} value={rating} isHalf={true} activeColor="darkgreen"/>)}
+          {rating && (
+            <ReactStars
+              count={5}
+              size={24}
+              edit={false}
+              value={rating}
+              isHalf={true}
+              activeColor="darkgreen"
+            />
+          )}
         </div>
         <div className="restaurant-card-container__address">
           {restaurant.address}
           <br />
-          {restaurant ? `${restaurant.city}, ${restaurant.state}, ${restaurant.zip_code}` : "Address"}
+          {restaurant
+            ? `${restaurant.city}, ${restaurant.state}, ${restaurant.zip_code}`
+            : "Address"}
         </div>
         <div className="restaurant-card-container__photo">
           <img src={restaurant.photo} alt="restaurant" />

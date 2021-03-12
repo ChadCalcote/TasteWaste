@@ -1,5 +1,16 @@
 // Helper Function to Add Reviews to Database
-const addReview = async (userS, restaurantS, body, ratingS, bags, utensils, napkins, cups, bowls, straws) => {
+const addReview = async (
+  userS,
+  restaurantS,
+  body,
+  ratingS,
+  bags,
+  utensils,
+  napkins,
+  cups,
+  bowls,
+  straws
+) => {
   const user = parseInt(userS);
   const restaurant = parseInt(restaurantS);
   const rating = parseInt(ratingS);
@@ -18,7 +29,7 @@ const addReview = async (userS, restaurantS, body, ratingS, bags, utensils, napk
       napkins,
       cups,
       bowls,
-      straws
+      straws,
     }),
   });
   return await response.json();
