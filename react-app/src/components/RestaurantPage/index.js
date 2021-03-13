@@ -16,11 +16,13 @@ import call from "../../resources/phone.svg";
 // Thunks
 import { fetchOneRestaurant } from "../../store/restaurants";
 import { fetchAllReviews } from "../../store/reviews";
+// Custom Hooks
+import useLoader from "../hooks/useLoader";
 // CSS Stylesheet
 import "./index.css";
 
 // Define RestaurantPageComponent with destructured props
-const RestaurantPage = ({ changeImg, user }) => {
+const RestaurantPage = ({ user }) => {
   // React Router Dom Hooks
   const params = useParams();
   const { restaurantId } = params;
@@ -35,22 +37,31 @@ const RestaurantPage = ({ changeImg, user }) => {
   const reviews = useSelector((reduxState) => {
     return reduxState.reviews;
   });
+
+  const loaderClose = true;
   // React Hooks
   // Setup state for reviews to be displayed
   const [reviewsToDisplay, setReviewsToDisplay] = useState([]);
   // Setup state for open and close of review modal
   const [open, setOpen] = useState(false);
+  const [loader, showLoader, hideLoader] = useLoader();
   // If there is a valid restaurantId from the url params, we will dispatch actions to fetch that restaurant and fetch all the reviews of that restaurant
   useEffect(() => {
+    showLoader();
     dispatch(fetchOneRestaurant(restaurantId));
     dispatch(fetchAllReviews(restaurantId));
-  }, [dispatch, restaurantId]);
+  }, [dispatch]);
   // If we have reviews in our store set the state of our reviews to display to those reviews
   useEffect(() => {
     if (reviews[0]) {
       setReviewsToDisplay([...reviews]);
     }
   }, [dispatch, reviews]);
+
+  useEffect(() => {
+    hideLoader();
+  }, [restaurant])
+
   // Component Functions / Variables
   // Handle the opening of review modal
   const handleOpen = () => {
@@ -117,6 +128,7 @@ const RestaurantPage = ({ changeImg, user }) => {
         open={open}
         setOpen={setOpen}
       />
+      {loader}
     </div>
   );
 };

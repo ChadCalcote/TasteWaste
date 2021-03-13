@@ -12,6 +12,8 @@ import MapContainer from "../MapContainer";
 // Redux Thunks
 import { fetchCityRestaurants } from "../../store/restaurants";
 import { fetchOneCity } from "../../store/cities";
+// Custom Hooks
+import useLoader from "../hooks/useLoader";
 
 // Define CityPage component with destructured props
 const CityPage = ({ changeImg, user }) => {
@@ -33,6 +35,7 @@ const CityPage = ({ changeImg, user }) => {
   // React Hooks
   // Based on city in param change the background image state to city photo
   // Need to change the photos to grab them from AWS or other photo bucket site
+  const [loader, showLoader, hideLoader] = useLoader()
   useEffect(() => {
     switch (city) {
       case "denver":
@@ -58,9 +61,14 @@ const CityPage = ({ changeImg, user }) => {
   // Fetch one city
   // Fetch the restaurants of that city
   useEffect(() => {
+    showLoader();
     dispatch(fetchOneCity(city));
     dispatch(fetchCityRestaurants(city));
   }, [dispatch, city]);
+
+  useEffect(() => {
+    hideLoader();
+  }, [restaurants])
 
   return (
     <div className="city-page-container">
@@ -90,6 +98,7 @@ const CityPage = ({ changeImg, user }) => {
           <MapContainer restaurants={restaurants} city={reduxCity} />
         ) : null}
       </div>
+      {loader}
     </div>
   );
 };

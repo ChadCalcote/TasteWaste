@@ -34,6 +34,10 @@ const RestaurantCard = ({ isLink, restaurant }) => {
     setRating(getRating(reviews));
   }, [reviews]);
 
+  [...document.querySelectorAll("[data-src]")].map((img) =>
+    img.addEventListener("click", (e) => (img.src = img.dataset.src))
+  );
+
   // Takes all reviews, pushes the rating into an array, and averages out all of the ratings from that array
   const getRating = (reviews) => {
     let ratings = [];
@@ -77,7 +81,7 @@ const RestaurantCard = ({ isLink, restaurant }) => {
             : "Address"}
         </div>
         <div className="restaurant-card-container__photo">
-          <img src={restaurant.photo} alt="restaurant" />
+          <img data-src={restaurant.photo} src={restaurant.photo} alt="restaurant" />
         </div>
       </Link>
     );
