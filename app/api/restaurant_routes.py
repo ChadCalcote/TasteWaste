@@ -34,7 +34,7 @@ def restaurant_reviews(id):
 # Retrieve all restaurants from the same city
 
 
-@restaurant_routes.route('/<string:city>/')
+@restaurant_routes.route('/<string:city>')
 def city_restaurants(city):
     search_city = city.capitalize()
     print(search_city)
