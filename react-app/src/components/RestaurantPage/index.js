@@ -8,11 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import RestaurantCard from "../RestaurantCard";
 import ReviewModal from "../auth/ReviewModal";
 import ReviewFeed from "../ReviewFeed";
+import Loader from "../Loader";
 // Icons
 import addReview from "../../resources/addReview.svg";
 import directions from "../../resources/directions.svg";
 import order from "../../resources/orderFood.svg";
 import call from "../../resources/phone.svg";
+import burger from "../Loader/burger.gif"
 // Thunks
 import { fetchOneRestaurant } from "../../store/restaurants";
 import { fetchAllReviews } from "../../store/reviews";
@@ -38,7 +40,6 @@ const RestaurantPage = ({ user }) => {
     return reduxState.reviews;
   });
 
-  const loaderClose = true;
   // React Hooks
   // Setup state for reviews to be displayed
   const [reviewsToDisplay, setReviewsToDisplay] = useState([]);
@@ -69,66 +70,75 @@ const RestaurantPage = ({ user }) => {
   };
 
   return (
-    <div className="restaurant-page__container">
-      <div className="restaurant-page__banner">
-        <img className="photo" src={restaurant.photo} alt="restaurant"></img>
-      </div>
-      <div className="restaurant-page__content">
-        <RestaurantCard restaurant={restaurant} />
-
-        <ul className="restaurant-page__link-bar">
-          <li>
-            <button onClick={handleOpen}>
-              Leave Review
-              <img src={addReview} alt="addReview" />
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() =>
-                window.open(
-                  `https://www.google.com/maps/search/?api=1&query=${restaurant.lat},${restaurant.lng}`,
-                  "_blank"
-                )
-              }
-            >
-              Get Directions
-              <img src={directions} alt="directions" />
-            </button>
-          </li>
-          <li>
-            <button onClick={() => window.open(restaurant.menu, "_blank")}>
-              Menu
-              <img src={order} alt="order" />
-            </button>
-          </li>
-          <li>
-            <a
-              href={`tel:${restaurant.phone}`}
-              style={{ textDecoration: "none" }}
-            >
-              <button>
-                Call Business
-                <img src={call} alt="call" />
+    <div>
+    {restaurant ? (
+      <div className="restaurant-page__container">
+        <div className="restaurant-page__banner">
+          <img className="photo" src={restaurant.photo} alt="restaurant"></img>
+        </div>
+        <div className="restaurant-page__content">
+          {restaurant.name && restaurant.address ? (
+            <RestaurantCard restaurant={restaurant} />
+          ) : (
+            burger
+          )}
+          <ul className="restaurant-page__link-bar">
+            <li>
+              <button onClick={handleOpen}>
+                Leave Review
+                <img src={addReview} alt="addReview" />
               </button>
-            </a>
-          </li>
-        </ul>
-        <ReviewFeed
+            </li>
+            <li>
+              <button
+                onClick={() =>
+                  window.open(
+                    `https://www.google.com/maps/search/?api=1&query=${restaurant.lat},${restaurant.lng}`,
+                    "_blank"
+                  )
+                }
+              >
+                Get Directions
+                <img src={directions} alt="directions" />
+              </button>
+            </li>
+            <li>
+              <button onClick={() => window.open(restaurant.menu, "_blank")}>
+                Menu
+                <img src={order} alt="order" />
+              </button>
+            </li>
+            <li>
+              <a
+                href={`tel:${restaurant.phone}`}
+                style={{ textDecoration: "none" }}
+              >
+                <button>
+                  Call Business
+                  <img src={call} alt="call" />
+                </button>
+              </a>
+            </li>
+          </ul>
+          <ReviewFeed
+            reviewsToDisplay={reviewsToDisplay}
+            setReviewsToDisplay={setReviewsToDisplay}
+            currentUser={user}
+          />
+        </div>
+        <ReviewModal
+          user={user}
+          restaurant={restaurant}
           reviewsToDisplay={reviewsToDisplay}
           setReviewsToDisplay={setReviewsToDisplay}
-          currentUser={user}
+          open={open}
+          setOpen={setOpen}
         />
+        {loader}
       </div>
-      <ReviewModal
-        user={user}
-        restaurant={restaurant}
-        reviewsToDisplay={reviewsToDisplay}
-        setReviewsToDisplay={setReviewsToDisplay}
-        open={open}
-        setOpen={setOpen}
-      />
-      {loader}
+    ) : (
+      <Loader />
+    )}
     </div>
   );
 };
